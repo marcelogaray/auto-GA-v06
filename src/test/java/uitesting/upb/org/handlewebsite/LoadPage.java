@@ -1,7 +1,6 @@
 package uitesting.upb.org.handlewebsite;
 
 import uitesting.upb.org.managefile.PropertyAccesor;
-import uitesting.upb.org.managepage.google.home.Home;
 import uitesting.upb.org.managepage.personalwallet.AccountHomeMenu;
 import uitesting.upb.org.managepage.personalwallet.MainMenu;
 import uitesting.upb.org.managepage.personalwallet.ReportsPage;
