@@ -5,12 +5,17 @@ import org.openqa.selenium.support.FindBy;
 import uitesting.upb.org.manageevents.Events;
 import uitesting.upb.org.managepage.BasePage;
 import uitesting.upb.org.managepage.personalwallet.Transactions.ExpensesPage;
+import uitesting.upb.org.managepage.personalwallet.Transactions.IncomePage;
 
 public class MainMenu extends BasePage {
     @FindBy(id = "Report")
     private WebElement reportsButton;
     @FindBy(id = "Expenses")
     private WebElement expensesButton;
+    @FindBy(id = "Transfer")
+    private WebElement transferButton;
+    @FindBy(id = "Income")
+    private WebElement incomeButton;
 
     public ReportsPage clickReportsButton() {
         Events.click(reportsButton);
@@ -20,5 +25,15 @@ public class MainMenu extends BasePage {
     public ExpensesPage clickExpensesButton() {
         Events.click(expensesButton);
         return new ExpensesPage();
+    }
+
+    public TransferPage clickTransferButton() {
+        Events.click(transferButton);
+        return new TransferPage();
+    }
+
+    public IncomePage clickIncomeButton() {
+        Events.click(incomeButton);
+        return new IncomePage();
     }
 }
