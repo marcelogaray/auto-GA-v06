@@ -27,4 +27,8 @@ public class Events {
 
     public static void fillNumberField(WebElement numberField, int number){numberField.sendKeys(String.valueOf(number));};
 
+    public static void clearField(WebElement webElement) {
+        webElement.clear();
+    }
+  
 }

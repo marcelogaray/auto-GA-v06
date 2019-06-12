@@ -14,7 +14,7 @@ import uitesting.upb.org.managepage.wallet.Income;
 public class MyStepdefs {
 
     // No se olviden eliminar espacios innecesarios y subir hasta antes de las 5
-    // En account creator esta un ejemplo de la estructura para cada linea en los features_
+    // En account creator esta un ejemplo de la estructura para cada linea en los features
     // accion objeto lugar (en ingles)
 
     private AccountCreator accountCreator;
