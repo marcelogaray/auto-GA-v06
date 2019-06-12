@@ -8,9 +8,11 @@ import uitesting.upb.org.webdrivermanager.DriverManager;
  * @autor Marcelo Garay
  */
 public class Events {
+
     public static void click(WebElement webElement){
         webElement.click();
     }
+
     public static void click(By by){
         DriverManager.getInstance().getWebDriver().findElement(by).click();
     }
@@ -22,5 +24,7 @@ public class Events {
     public static boolean isVisibleWebElement(WebElement webElement) {
         return webElement.isDisplayed();
     }
+
+    public static void fillNumberField(WebElement numberField, int number){numberField.sendKeys(String.valueOf(number));};
 
 }
