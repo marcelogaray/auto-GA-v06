@@ -14,9 +14,9 @@ Feature: Manage Income
 
   Scenario: create an income
     Given clicked 'Income' button on 'MainMenu' page
-    And fill 'income name' field with "Prueba" on 'Income Page'
+    And fill 'income name' field with "Prueba income" on 'Income Page'
     And select "Others" values on 'category' selector on 'Income Page'
-    And fill 'AmountBS' field with "100" on 'Income Page'
-    And fill 'DateField' field with "23/05/2019" on 'Income Page'
+    And fill 'AmountBS' field with "1000" on 'Income Page'
+    And fill 'DateField' field with "11/05/2019" on 'Income Page'
     And click 'Register Transition' button on 'Income Page'
     Then Search 'transaction success' alert on 'Income Page'
