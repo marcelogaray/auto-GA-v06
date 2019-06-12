@@ -1,7 +1,6 @@
 package uitesting.upb.org.handlewebsite;
 
 import uitesting.upb.org.managefile.PropertyAccesor;
-import uitesting.upb.org.managepage.google.home.Home;
 import uitesting.upb.org.managepage.wallet.AccountCreator;
 import uitesting.upb.org.webdrivermanager.DriverManager;
 
