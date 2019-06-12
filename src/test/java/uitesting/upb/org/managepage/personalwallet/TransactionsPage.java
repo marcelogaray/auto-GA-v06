@@ -1,11 +1,9 @@
 package uitesting.upb.org.managepage.personalwallet;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import uitesting.upb.org.manageevents.Events;
 import uitesting.upb.org.managepage.BasePage;
-import uitesting.upb.org.webdrivermanager.DriverManager;
 
 public class TransactionsPage extends BasePage {
     @FindBy(id = "categoryRegister")
