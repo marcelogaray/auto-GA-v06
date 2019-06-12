@@ -31,4 +31,5 @@ public class AccountSettings extends BasePage {
     public boolean windowIsVisible() {
         return Events.isVisibleWebElement(changeAccountNameTextField);
     }
+
 }

@@ -157,7 +157,6 @@ public class WalletStepdefs {
     @And("^Click 'Add' button in 'Account Creator' page$")
     public void clickAddButtonInAccountCreator() {
         accountCreator.clickAddAccountButton();
-
     }
 
     @And("^Click 'Mateo' button in 'Account Creator' page$")
@@ -174,7 +173,6 @@ public class WalletStepdefs {
     @Then("^Click 'Account Settings' button in 'NavBar' page$")
     public void clickAccountSettingsButtonInNavBar() {
         accountSettings = navBar.clickAccountSettings();
-
     }
 
     @When("^'Account Settings' window is loaded$")

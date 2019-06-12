@@ -10,6 +10,7 @@ import java.util.Properties;
  * @autor Marcelo Garay
  */
 public class PropertyAccessor {
+
     private static PropertyAccessor propertyAccessor;
     private Properties prop;
 

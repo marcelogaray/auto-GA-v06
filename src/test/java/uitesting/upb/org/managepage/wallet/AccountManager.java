@@ -64,60 +64,74 @@ public class AccountManager extends BasePage {
         fillAccountNameField(accountName);
         clickAddAccountButton();
     }
-    public void createAccount() {
-        clickAddAccountButton();
-    }
+
     public void fillAccountNameField(String accountName) {
         Events.fillField(accountNameInput, accountName);
     }
+
     public void clickAddAccountButton() {
         Events.click(addAccountButton);
     }
+
     public void clickGeneralAccountButton() {
         Events.click(generalAccountButton);
     }
+
     public void selectAccount(String accountName) {
         WebElement newAccountButton = webDriver.findElement(By.id(accountName));
         Events.click(newAccountButton);
     }
+
     public boolean checkIfNewAccountButtonIsVisible(String accountName) {
         WebElement newAccountButton = webDriver.findElement(By.id(accountName));
         return Events.isVisibleWebElement(newAccountButton);
     }
-    public void clickIncomeButton(){
+
+    public void clickIncomeButton() {
         Events.click(incomeButton);
     }
-    public void fillName(String nameTransfer){
-        Events.fillField(fieldName,nameTransfer);
+
+    public void fillName(String nameTransfer) {
+        Events.fillField(fieldName, nameTransfer);
     }
-    public void selectSalaryIncome(){
+
+    public void selectSalaryIncome() {
         Events.click(optionIncome);
     }
-    public void fillAmount(String bs){
-        Events.fillField(fieldAmount,bs);
+
+    public void fillAmount(String bs) {
+        Events.fillField(fieldAmount, bs);
     }
-    public void fillDate(String date){
-        Events.fillField(fieldDate,date);
+
+    public void fillDate(String date) {
+        Events.fillField(fieldDate, date);
     }
-    public void registerTransaction(){
+
+    public void registerTransaction() {
         Events.click(transactionButton);
     }
-    public void clickExitButton(){
+
+    public void clickExitButton() {
         Events.click(exitButton);
     }
-    public void clickTransferButton(){
+
+    public void clickTransferButton() {
         Events.click(transferButton);
     }
-    public void selectAccountDestination(){
+
+    public void selectAccountDestination() {
         Events.click(optionAccountDestination);
     }
-    public void fillAmountTransfer(String amount){
-        Events.fillField(fieldAmountTransfer,amount);
+
+    public void fillAmountTransfer(String amount) {
+        Events.fillField(fieldAmountTransfer, amount);
     }
-    public void clearFieldAmount(){
+
+    public void clearFieldAmount() {
         Events.clearFieldText(fieldAmountTransfer);
     }
-    public void clickTransferTransactionButton(){
+
+    public void clickTransferTransactionButton() {
         Events.click(transferTransactionButton);
     }
 
