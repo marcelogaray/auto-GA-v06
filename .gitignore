@@ -15,6 +15,9 @@
 *.tar.gz
 *.rar
 
+chromedriver
+geckodriver
+
 # Java class files
 *.class
 

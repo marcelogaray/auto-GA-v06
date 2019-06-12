@@ -18,13 +18,13 @@ public class WalletStepdefs {
         accountManager = LoadPage.loadAccountManager();
     }
 
-    @And("^fill \"([^\"]*)\" account name input$")
-    public void fillAccountNameInput(String accountName) {
+    @And("^fill \"([^\"]*)\" 'Account name' input on 'Account Manager'$")
+    public void fillAccountNameInputOnAccountManager(String accountName) {
         accountManager.fillAccountNameField(accountName);
     }
 
-    @Then("^click create button$")
-    public void clickCreateButton() {
+    @Then("^click 'Add' button on 'Account Manager'$")
+    public void clickAddButtonOnAccountManager() {
         accountManager.clickAddAccountButton();
     }
 
@@ -33,15 +33,15 @@ public class WalletStepdefs {
         accountManager.createAccount(EXAMPLE_ACCOUNT_NAME);
     }
 
-    @Then("^check if the account button is visible$")
-    public void checkIfTheAccountButtonIsVisible() {
-        boolean check = accountManager.checkIfNewAccountButtonIsVisible(EXAMPLE_ACCOUNT_NAME);
+    @Then("^check if \"([^\"]*)\" button is visible on 'Account Manager'$")
+    public void checkIfButtonIsVisibleOnAccountManager(String accountName) {
+        boolean check = accountManager.checkIfNewAccountButtonIsVisible(accountName);
 
         Assert.assertTrue(check);
     }
 
-    @Then("^click General button$")
-    public void clickGeneralButton() {
+    @Then("^click 'General' account button on 'Account Manager'$")
+    public void clickGeneralAccountButtonOnAccountManager() {
         accountManager.clickGeneralAccountButton();
     }
 

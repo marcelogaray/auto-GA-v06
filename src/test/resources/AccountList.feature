@@ -1,9 +1,12 @@
 Feature: Select an account
-  Scenario: Check if new account button is visible
+
+  Background:
     Given Account manager is loaded
-    And new account is created
-    Then check if the account button is visible
+
+  Scenario: Check if new account button is visible
+    And fill "A new account" 'Account name' input on 'Account Manager'
+    And click 'Add' button on 'Account Manager'
+    Then check if "A new account" button is visible on 'Account Manager'
 
   Scenario: Choose the general user account
-    Given Account manager is loaded
-    Then click General button
+    Then click 'General' account button on 'Account Manager'
