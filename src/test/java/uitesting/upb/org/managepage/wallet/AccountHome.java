@@ -7,9 +7,6 @@ import uitesting.upb.org.managepage.BasePage;
 
 public class AccountHome extends BasePage {
 
-    @FindBy(id = "Income")
-    private WebElement incomeButton;
-
     @FindBy(xpath = "//*[@id=\"app\"]/div/div[2]/div/div[2]/a")
     private WebElement expenseButton;
 
@@ -18,6 +15,17 @@ public class AccountHome extends BasePage {
 
     @FindBy(xpath = "//a[contains(text(),'Account settings')]")
     private WebElement accountSettingsButton;
+  
+      @FindBy(id = "Income")
+    private WebElement incomeButton;
+
+    public boolean isIncomeButtonVisible() {
+        return Events.isVisibleWebElement(incomeButton);
+    }
+
+    public Income clickIncomeButton() {
+        Events.click(incomeButton);
+        return new Income();
 
     public boolean expensesButtonIsVisible(){
         return Events.isVisibleWebElement(expenseButton);
@@ -35,4 +43,5 @@ public class AccountHome extends BasePage {
     public boolean isAccountSettingsButtonIsVisible() {
         return Events.isVisibleWebElement(accountSettingsButton);
     }
+
 }
