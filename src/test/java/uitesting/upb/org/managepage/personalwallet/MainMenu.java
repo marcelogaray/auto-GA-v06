@@ -13,6 +13,8 @@ public class MainMenu extends BasePage {
     private WebElement reportsButton;
     @FindBy(id = "Expenses")
     private WebElement expensesButton;
+    @FindBy(id = "Transfer")
+    private WebElement transferButton;
     @FindBy(id = "Income")
     private WebElement incomeButton;
     @FindBy(id = "settings")
@@ -33,9 +35,13 @@ public class MainMenu extends BasePage {
         return new ExpensesPage();
     }
 
-    public IncomePage clickIncomeButton(){
+    public TransferPage clickTransferButton() {
+        Events.click(transferButton);
+        return new TransferPage();
+    }
+
+    public IncomePage clickIncomeButton() {
         Events.click(incomeButton);
         return new IncomePage();
-
     }
 }
