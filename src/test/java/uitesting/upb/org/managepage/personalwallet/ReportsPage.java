@@ -1,4 +1,4 @@
-package uitesting.upb.org.managepage.personalWallet;
+package uitesting.upb.org.managepage.personalwallet;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
