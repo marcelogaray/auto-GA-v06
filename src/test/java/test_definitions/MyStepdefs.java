@@ -7,10 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
 import uitesting.upb.org.handlewebsite.LoadPage;
-import uitesting.upb.org.managepage.wallet.AccountCreator;
-import uitesting.upb.org.managepage.wallet.AccountHome;
-import uitesting.upb.org.managepage.wallet.Income;
-import uitesting.upb.org.managepage.wallet.AccountInfo;
+import uitesting.upb.org.managepage.wallet.*;
 
 import static uitesting.upb.org.handlewebsite.LoadPage.loadAccountCreator;
 
@@ -24,6 +21,8 @@ public class MyStepdefs {
     private AccountHome accountHome;
     private Income income;
     private AccountInfo accountInfo;
+    private ExpensesPage expensesPage;
+    private String accountName="Cuenta1";
 
     @Given("^'Account creator' is loaded$")
     public void accountCreatorIsLoaded() {
@@ -310,4 +309,78 @@ public class MyStepdefs {
     }
 
     //------------- Income steps -------------//
+
+    //EXPENSES
+
+    @Given("^Fill \"Cuenta1\" in 'Account Name' text field on 'Account Creator'$")
+    public void accountCreatorIsLoadedAndVisible() {
+        accountCreator = LoadPage.loadAccountCreator();
+        accountCreator.fillAccountNameTextField(accountName);
+    }
+
+    @And("^Click 'Create Account' Button on 'Account Creator'$")
+    public void clickCreateAccount(){
+        accountCreator.clickAddButton();
+    }
+
+    @And("^Select and Click  Account \"Cuenta1\" Button on 'Account Creator'$")
+    public void clickAccountButton(){
+        accountHome = accountCreator.clickAccountButton(accountName);
+    }
+
+    @And("^Check if \"Expenses\" Button is displayed and clickable on 'Account Home'$")
+    public void expenseButtonIsVisible(){
+        Assert.assertTrue(accountHome.expensesButtonIsVisible());
+    }
+
+    @Given("^Check if 'Expense Name' TextField is visible on 'Expenses Page'$")
+    public void nameFieldVisible(){
+        Assert.assertTrue(expensesPage.nameFieldVisible());
+    }
+
+    @And("^Check if 'Expense Category Selector' is visible on 'Expense Page'$")
+    public void categorySelectorVisible(){
+        Assert.assertTrue(expensesPage.categorySelectorVisible());
+    }
+    @And("^Check if 'Expense Amount' TextField is visible on 'Expenses Page'$")
+    public void amountFieldVisible(){
+        Assert.assertTrue(expensesPage.amountFieldVisible());
+    }
+
+    @And("^Check if 'Date Picker' is Visible on 'Expenses Page'$")
+    public void datePickerVisible(){
+        Assert.assertTrue(expensesPage.datePickerVisible());
+    }
+
+
+
+    @Then("^Click 'Expenses' Button on 'Account Home'$")
+    public void clickExpenseButtonOnAccountHome(){
+        expensesPage = accountHome.clickExpenseButton();
+    }
+
+
+    @And("^Fill \"Medical Bills\" in 'Expense Name' on 'Expenses Page'$")
+    public void fillExpenseName(){
+        expensesPage.fillExpenseName("Medical Bills");
+    }
+
+    @And("^Fill \"Expenses\" in 'Expense Category' on 'Expense Page'$")
+    public void fillExpenseCategory(){
+        expensesPage.fillCategorySelector("Expenses");
+    }
+
+    @And("^Fill \"1000\" in 'Expense Amount' on 'Expense Page'$")
+    public void fillExpenseAmount(){
+        expensesPage.fillExpenseAmount(1000);
+    }
+    @And("^Fill \"12/06/2019\" in 'Expense Date' on 'Expense Page'$")
+    public void fillExpenseDate(){
+        expensesPage.fillExpenseDate("12/06/2019");
+    }
+
+    @And("^Click 'Create Expense' Button on 'Expense Page'$")
+    public void clickCreateExpense(){
+        expensesPage.clickCreateExpenseButton();
+    }
 }

@@ -22,21 +22,21 @@ public class ExpensesPage extends BasePage {
     @FindBy(id = "buttonTransaction")
     private WebElement createExpenseButton;
 
-    public ExpensesPage fillExpenseName(){
-        Events.fillField(expenseNameField,"Expensa1");
+    public ExpensesPage fillExpenseName(String name){
+        Events.fillField(expenseNameField,name);
         return this;
     }
 
-    public ExpensesPage fillCategorySelector(){
-        Events.fillField(expenseCategorySelector,"Expenses");
+    public ExpensesPage fillCategorySelector(String category){
+        Events.fillField(expenseCategorySelector,category);
         return this;
     }
-    public ExpensesPage fillExpenseAmount(){
-        Events.fillNumberField(expenseAmountField,100);
+    public ExpensesPage fillExpenseAmount(int amount){
+        Events.fillNumberField(expenseAmountField,amount);
         return this;
     }
-    public ExpensesPage fillExpenseDate(){
-        Events.fillField(datePicker,"06/11/2019");
+    public ExpensesPage fillExpenseDate(String date){
+        Events.fillField(datePicker,date);
         return this;
     }
 
@@ -58,8 +58,8 @@ public class ExpensesPage extends BasePage {
         return Events.isVisibleWebElement(datePicker);
     }
 
-    public void createExpense(){
-        this.fillExpenseName().fillCategorySelector().fillExpenseAmount().fillExpenseDate().clickCreateExpenseButton();
+    public void createExpense(String name, String category, int amount, String date){
+        this.fillExpenseName(name).fillCategorySelector(category).fillExpenseAmount(amount).fillExpenseDate(date).clickCreateExpenseButton();
     }
 
 }

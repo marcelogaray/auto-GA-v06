@@ -28,6 +28,11 @@ public class AccountHome extends BasePage {
         return new Income();
     }
 
+    public ExpensesPage clickExpenseButton() {
+        Events.click(expenseButton);
+        return new ExpensesPage();
+    }
+
     public boolean expensesButtonIsVisible(){
         return Events.isVisibleWebElement(expenseButton);
     }
