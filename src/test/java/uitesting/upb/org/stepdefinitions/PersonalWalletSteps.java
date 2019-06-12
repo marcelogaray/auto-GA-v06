@@ -15,22 +15,22 @@ public class PersonalWalletSteps {
     private MainMenu mainMenu;
     private ExpensesPage expensesPage;
 
-    @cucumber.api.java.en.Given("^The main page is loaded$")
+    @cucumber.api.java.en.Given("^The 'AccountHomeMenu' is loaded$")
     public void theMainPageIsLoaded() {
         accountHomeMenu = LoadPage.loadHomeMenu();
     }
 
-    @Given("^filled the 'Account name' field on 'AccountHomeMenu' with \"([^\"]*)\"$")
+    @Given("^filled 'Account name' field on 'AccountHomeMenu' with \"([^\"]*)\"$")
     public void filledTheAccountNameFieldOnAccountHomeMenuWith(String name) {
         accountHomeMenu = accountHomeMenu.writeAccountName(name);
     }
 
-    @And("^clicked the 'Add' button on 'AccountHomeMenu'$")
+    @And("^clicked 'Add' button on 'AccountHomeMenu'$")
     public void clickedTheAddButtonOnAccountHomeMenu() {
         accountHomeMenu = accountHomeMenu.clickAddButton();
     }
 
-    @Given("^clicked the \"([^\"]*)\" button on 'AccountHomeMenu'$")
+    @Given("^clicked \"([^\"]*)\" button on 'AccountHomeMenu'$")
     public void clickedTheButtonOnAccountHomeMenu(String accountId) {
         mainMenu = accountHomeMenu.clickButtonById(accountId);
     }
@@ -55,7 +55,7 @@ public class PersonalWalletSteps {
         Assert.assertTrue(expensesPage.isCategorySuccessAlertVisible());
     }
 
-    @And("^Search 'category option' \"([^\"]*)\" on 'category selector' on 'Expenses page'$")
+    @And("^Search \"([^\"]*)\" on 'category' selector on 'Expenses page'$")
     public void searchTheCategoryOptionOnTheCategorySelectorOnExpensesPage(String category) {
         Assert.assertTrue(expensesPage.searchCategoryOnSelector(category));
     }
@@ -65,7 +65,7 @@ public class PersonalWalletSteps {
         expensesPage = (ExpensesPage) expensesPage.fillTransactionNameField(name);
     }
 
-    @And("^select \"([^\"]*)\" values on category selector on 'Expenses Page'$")
+    @And("^select \"([^\"]*)\" values on 'category' selector on 'Expenses Page'$")
     public void selectValuesOnCategorySelectorOnExpensesPage(String category) {
        expensesPage = (ExpensesPage) expensesPage.selectCategory(category);
     }
