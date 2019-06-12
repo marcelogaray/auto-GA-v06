@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import uitesting.upb.org.webdrivermanager.DriverManager;
 
+import java.util.List;
 
 public class Events {
     public static void click(WebElement webElement){
@@ -20,6 +21,10 @@ public class Events {
 
     public static WebElement GetWebElementById(String id) {
         return DriverManager.getInstance().getWebDriver().findElement(By.id(id));
+    }
+    public static int GetNumberOfElements(String xpathSelector) {
+        List<WebElement> webElements = DriverManager.getInstance().getWebDriver().findElements(By.xpath(xpathSelector));
+        return webElements.size();
     }
     public static boolean isWebElementVisible(WebElement webElement) {
         return DriverManager.getInstance().wait.until(ExpectedConditions.visibilityOf(webElement)).isDisplayed();
