@@ -10,7 +10,7 @@ public class AccountHome extends BasePage {
     @FindBy(id = "Income")
     private WebElement incomeButton;
 
-    @FindBy(xpath = "//*[@id=\"app\"]/div/div[2]/div/div[2]/a")
+    @FindBy(id = "Expenses")
     private WebElement expenseButton;
 
     @FindBy(id = "account-main-menu")
