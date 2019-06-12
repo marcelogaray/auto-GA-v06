@@ -33,6 +33,8 @@ public class TransactionsPage extends BasePage {
     @FindBy(id = "transactionFail")
     protected WebElement transactionFailAlert;
 
+    @FindBy(id = "exit")
+    private WebElement exitButton;
     @FindBy(id = "transactionSuccess")
     protected WebElement transactionSuccessAlert;
 
@@ -85,6 +87,11 @@ public class TransactionsPage extends BasePage {
     public TransactionsPage selectCategory(String category) {
         Events.fillField(categorySelector, category);
         return this;
+    }
+
+    public AccountHomeMenu clickExitButton() {
+        Events.click(exitButton);
+        return new AccountHomeMenu();
     }
 
 }
