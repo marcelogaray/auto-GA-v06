@@ -26,6 +26,7 @@ public class AccountHome extends BasePage {
     public Income clickIncomeButton() {
         Events.click(incomeButton);
         return new Income();
+    }
 
     public boolean expensesButtonIsVisible(){
         return Events.isVisibleWebElement(expenseButton);
