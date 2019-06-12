@@ -7,7 +7,7 @@ import uitesting.upb.org.managepage.BasePage;
 
 public class AccountHome extends BasePage {
 
-    @FindBy(xpath = "//*[@id=\"app\"]/div/div[2]/div/div[2]/a")
+    @FindBy(id = "Expenses")
     private WebElement expenseButton;
 
     @FindBy(id = "account-main-menu")
@@ -16,7 +16,7 @@ public class AccountHome extends BasePage {
     @FindBy(xpath = "//a[contains(text(),'Account settings')]")
     private WebElement accountSettingsButton;
   
-      @FindBy(id = "Income")
+    @FindBy(id = "Income")
     private WebElement incomeButton;
 
     public boolean isIncomeButtonVisible() {

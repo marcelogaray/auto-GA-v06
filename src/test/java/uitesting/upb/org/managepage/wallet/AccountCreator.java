@@ -13,6 +13,9 @@ public class AccountCreator extends BasePage {
     @FindBy(id = "addAccountButton")
     private WebElement addAccountButton;
 
+    @FindBy(id = "general")
+    private WebElement generalAccount;
+
     public AccountCreator fillAccountNameTextField(String nameAccount){
         Events.fillField(accountNameTextField, nameAccount);
         return this;
@@ -22,14 +25,18 @@ public class AccountCreator extends BasePage {
         Events.click(addAccountButton);
     }
 
-    public AccountCreator enterNameAndClickAddButton(String nameAccount){
-        fillAccountNameTextField(nameAccount).clickAddButton();
+    public AccountCreator enterNameAndClickAddButton(String accountName){
+        fillAccountNameTextField(accountName).clickAddButton();
         return this;
     }
 
-    public AccountHome clickAccountButton(String nameAccount){
-        Events.click(By.id(nameAccount));
+    public AccountCreator createNewAccount(String accountName){
+        this.fillAccountNameTextField(accountName).clickAddButton();
+        return this;
+    }
 
+    public AccountHome clickAccountButton(String accountName){
+        Events.click(By.id(accountName));
         return new AccountHome();
     }
 
@@ -39,5 +46,9 @@ public class AccountCreator extends BasePage {
 
     public boolean isAccountNameButtonVisible(String accountName) {
         return Events.isVisibleWebElement(webDriver.findElement(By.id(accountName)));
+    }
+
+    public boolean isGeneralButtonVisible() {
+        return Events.isVisibleWebElement(generalAccount);
     }
 }

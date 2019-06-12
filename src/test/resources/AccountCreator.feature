@@ -1,6 +1,7 @@
 Feature: Check account creator
   Background: Preconditions
     Given 'Account creator' is loaded
+    And window is maximized
 
   Scenario: Check if text input field and add button are visible
     Then the 'Account name' text field and 'add' button is visible in 'Account Creator'
