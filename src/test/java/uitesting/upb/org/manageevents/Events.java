@@ -23,4 +23,7 @@ public class Events {
         return webElement.isDisplayed();
     }
 
+    public static void clearField(WebElement webElement) {
+        webElement.clear();
+    }
 }
