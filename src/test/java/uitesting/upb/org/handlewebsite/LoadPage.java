@@ -1,7 +1,10 @@
 package uitesting.upb.org.handlewebsite;
 
 import uitesting.upb.org.managefile.PropertyAccesor;
+import uitesting.upb.org.managepage.google.home.Home;
 import uitesting.upb.org.managepage.personalwallet.AccountHomeMenu;
+import uitesting.upb.org.managepage.personalwallet.MainMenu;
+import uitesting.upb.org.managepage.personalwallet.ReportsPage;
 import uitesting.upb.org.webdrivermanager.DriverManager;
 
 public class LoadPage {
@@ -12,6 +15,8 @@ public class LoadPage {
     }
 
     public static void main(String[] args) {
-        loadHomeMenu().writeAccountName("Testing").clickAddButton();
+        String newAccountName = "Test";
+        MainMenu mainMenu = loadHomeMenu().writeAccountName(newAccountName).clickAddButton().clickButtonById(newAccountName);
+        ReportsPage reports = mainMenu.clickReportsButton();
     }
 }
