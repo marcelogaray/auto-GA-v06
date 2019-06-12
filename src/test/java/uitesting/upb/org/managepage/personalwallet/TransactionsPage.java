@@ -33,11 +33,17 @@ public class TransactionsPage extends BasePage {
     @FindBy(id = "transactionFail")
     protected WebElement transactionFailAlert;
 
-    @FindBy(css = "#exit")
+    @FindBy(id = "exit")
     private WebElement exitButton;
+    @FindBy(id = "transactionSuccess")
+    protected WebElement transactionSuccessAlert;
 
     public boolean isTransactionFailAlertVisible() {
         return Events.isWebElementVisible(transactionFailAlert);
+    }
+
+    public boolean isTransactionSuccessAlertVisible() {
+        return Events.isWebElementVisible(transactionSuccessAlert);
     }
 
     public TransactionsPage fillAmountField(String amount) {
