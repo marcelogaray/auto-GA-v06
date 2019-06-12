@@ -1,5 +1,6 @@
 package uitesting.upb.org.stepdefinitions;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -8,12 +9,14 @@ import uitesting.upb.org.handlewebsite.LoadPage;
 import uitesting.upb.org.managepage.personalwallet.AccountHomeMenu;
 import uitesting.upb.org.managepage.personalwallet.MainMenu;
 import uitesting.upb.org.managepage.personalwallet.Transactions.ExpensesPage;
+import uitesting.upb.org.managepage.personalwallet.Transactions.IncomePage;
 
 public class PersonalWalletSteps {
 
     private AccountHomeMenu accountHomeMenu;
     private MainMenu mainMenu;
     private ExpensesPage expensesPage;
+    private IncomePage incomePage;
 
     @cucumber.api.java.en.Given("^The 'AccountHomeMenu' is loaded$")
     public void theMainPageIsLoaded() {
@@ -88,5 +91,62 @@ public class PersonalWalletSteps {
     @Then("^Search 'transaction fail' alert on 'Expenses Page'$")
     public void searchTransactionFailAlertOnExpensesPage() {
         Assert.assertTrue(expensesPage.isTransactionFailAlertVisible());
+    }
+
+    @Given("^clicked 'Income' button on 'MainMenu' page$")
+    public void clickedIncomeButtonOnMainMenuPage() {
+        incomePage = mainMenu.clickIncomeButton();
+    }
+
+    @And("^fill 'category name' field with \"([^\"]*)\" on 'Income page'$")
+    public void fillCategoryNameFieldWithOnIncomePage(String name)   {
+        incomePage = (IncomePage) incomePage.fillCategoryRegisterField(name);
+    }
+
+    @And("^click 'Register Category' button on 'Income page'$")
+    public void clickRegisterCategoryButtonOnIncomePage() {
+        incomePage = (IncomePage) incomePage.clickRegisterCategoryButton();
+    }
+
+    @Then("^Search 'category success' alert on 'Income page'$")
+    public void searchCategorySuccessAlertOnIncomePage() {
+        Assert.assertTrue(incomePage.isCategorySuccessAlertVisible());
+    }
+
+    @And("^Search \"([^\"]*)\" on 'category' selector on 'Income page'$")
+    public void searchOnCategorySelectorOnIncomePage(String category)  {
+        Assert.assertTrue(incomePage.searchCategoryOnSelector(category));
+    }
+
+    @And("^fill 'income name' field with \"([^\"]*)\" on 'Income Page'$")
+    public void fillIncomeNameFieldWithOnIncomePage(String name)  {
+        incomePage = (IncomePage) incomePage.fillTransactionNameField(name);
+    }
+
+    @And("^select \"([^\"]*)\" values on 'category' selector on 'Income Page'$")
+    public void selectValuesOnCategorySelectorOnIncomePage(String category) {
+        incomePage = (IncomePage) incomePage.selectCategory(category);
+    }
+
+    @And("^fill 'AmountBS' field with \"([^\"]*)\" on 'Income Page'$")
+    public void fillAmountBSFieldWithOnIncomePage(String amount){
+        incomePage = (IncomePage) incomePage.fillAmountField(amount);
+
+    }
+
+    @And("^fill 'DateField' field with \"([^\"]*)\" on 'Income Page'$")
+    public void fillDateFieldFieldWithOnIncomePage(String date) {
+        incomePage = (IncomePage) incomePage.fillDateField(date);
+    }
+
+    @And("^click 'Register Transition' button on 'Income Page'$")
+    public void clickRegisterTransitionButtonOnIncomePage() {
+        incomePage = (IncomePage) incomePage.clickRegisterTransactionButton();
+    }
+
+    @Then("^Search 'transaction success' alert on 'Income Page'$")
+    public void searchTransactionSuccessAlertOnIncomePage() {
+        Assert.assertTrue(incomePage.isTransactionSuccessAlertVisible());
+
     }
 }

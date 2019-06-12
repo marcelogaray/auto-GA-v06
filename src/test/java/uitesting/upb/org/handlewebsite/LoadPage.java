@@ -19,6 +19,7 @@ public class LoadPage {
     }
 
     public static AccountHomeMenu loadHomeMenu() {
+        DriverManager.getInstance().getWebDriver().manage().window().maximize();
         DriverManager.getInstance().getWebDriver().navigate().to(PropertyAccesor.getInstance().getBaseURL());
         return new AccountHomeMenu();
     }
