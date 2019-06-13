@@ -35,3 +35,22 @@ Feature: testing transfer
     And filed countnamee "Count2"
     Then click transerferButtonn
     And check msg-error
+
+  Scenario: error empty count doing a tranfer
+    Then click firstCoun
+    And Click Tranfer button
+    And Click trnasfer Button
+    And check message error is true
+
+Scenario: see other error
+  Then click second count
+  And click trasfer button
+  Then empty fiel ammunt
+  And files ammount tranfer "100000"
+  Then try to make a biggest mount tranfer
+  And check message error
+  
+
+
+
+

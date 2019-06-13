@@ -23,6 +23,7 @@ public class MyStepdefs {
     private AccountInfo accountInfo;
     private ExpensesPage expensesPage;
     private String accountName="Cuenta1";
+    private String accountName2;
 
     @Given("^'Account creator' is loaded$")
     public void accountCreatorIsLoaded() {
@@ -408,6 +409,7 @@ public class MyStepdefs {
     @Then("^new acount \"([^\"]*)\"$")
     public void newAcount(String NameAccouns) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+        accountName2=NameAccouns;
         accountCreator.fillAccountNameTextField(NameAccouns);
     }
 
@@ -576,6 +578,71 @@ accountCreator.clickIngresoButton();
     }
 
 
+    @Then("^click firstCoun$")
+    public void clickFirstCoun() {
+    accountHome =  accountCreator.clickAccountButtonByXpath(accountName);
+    }
 
 
+    @And("^Click Tranfer button$")
+    public void clickTranferButton() {
+    accountCreator.clickTranferButton();
+
+    }
+
+    @And("^Click trnasfer Button$")
+    public void clickTrnasferButton() {
+
+    accountCreator.clickActionTransferencia();
+    }
+
+
+    @And("^check message error is true$")
+    public void checkMessageErrorIsTrue() {
+
+    Assert.assertTrue(accountCreator.messagebad());
+    }
+
+
+
+
+
+    @And("^click trasfer button$")
+    public void clickTrasferButton() {
+
+    accountCreator.clickTranferButton();
+    }
+
+
+    @Then("^empty fiel ammunt$")
+    public void emptyFielAmmunt() {
+    accountCreator.emptyFieldMount();
+
+    }
+
+
+    @And("^files ammount tranfer \"([^\"]*)\"$")
+    public void filesAmmountTranfer(String arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        accountCreator.fieldMountTransfer(arg0);
+    }
+
+
+    @Then("^try to make a biggest mount tranfer$")
+    public void tryToMakeABiggestMountTranfer() {
+
+    accountCreator.clickActionTransferencia();
+    }
+
+
+    @And("^check message error$")
+    public void checkMessageError() {
+    Assert.assertTrue(accountCreator.messagebad(),"is true");
+
+    }
+
+    @Then("^click second count$")
+    public void clickSecondCount() {
+        accountHome=accountCreator.clickAccountButtonByXpath(accountName2);
+    }
 }
