@@ -34,3 +34,18 @@ Feature: Trasnfer Between Accounts
     And filled 'amount in BS' text field with "50" on 'Transfer' page
     And click the 'Transfer' Button on 'Transfer' page
     Then search the 'Success Message' alert on 'Transfer' page
+
+  Scenario: Check title 'Transfer' appears on 'Transfer' Page
+    Given clicked the 'Transfer' Button on 'MainMenu' page
+    Then check that title 'Transfer' title is visible on 'Transfer' Page
+
+  Scenario: Check that 'Transfer' Button is visible on 'Transfer' Page
+    Given clicked the 'Transfer' Button on 'MainMenu' page
+    Then check that 'Transfer' Button is visible on 'Transfer' page
+
+  Scenario: Check that 'Budget Available in Bs' field displays the correct data
+    Given clicked the 'Transfer' Button on 'MainMenu' page
+    And select the "Destination" value on 'Destination Account' selector on 'Transfer' Page
+    And filled 'amount in BS' text field with "20" on 'Transfer' page
+    And click the 'Transfer' Button on 'Transfer' page
+    Then check that 'Budget Available in BS' field is visible

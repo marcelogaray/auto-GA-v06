@@ -17,6 +17,12 @@ public class TransferPage extends BasePage {
     protected WebElement destinationAccountSelector;
     @FindBy(id = "msg-successful")
     protected WebElement transferSuccessMessage;
+    @FindBy(id = "app")
+    protected WebElement transferTitle;
+    @FindBy(id = "budgetAvailable")
+    protected WebElement budgetFieldDisplay;
+
+
 
     public  TransferPage fillAmountTransferTextField(String amount) {
         Events.fillField(amountTransferTextField, amount);
@@ -40,4 +46,10 @@ public class TransferPage extends BasePage {
         return  Events.isWebElementVisible(transferSuccessMessage);
     }
 
+    public boolean isTransferTitleVisible(){return Events.isWebElementVisible(transferTitle);}
+
+
+    public boolean isTransferButtonVisible() {return Events.isWebElementVisible(transferButton);}
+
+    public boolean isBudgetAvailableFieldVisible() {return Events.isWebElementVisible(budgetFieldDisplay);}
 }

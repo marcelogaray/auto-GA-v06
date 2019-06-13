@@ -249,4 +249,19 @@ public class PersonalWalletSteps {
     public void searchTransactionSuccessAlertOnIncomePage() {
         Assert.assertTrue(incomePage.isTransactionSuccessAlertVisible());
     }
+
+    @Then("^check that title 'Transfer' title is visible on 'Transfer' Page$")
+    public void checkThatTitleTransferTitleIsVisibleOnTransferPage() {
+        Assert.assertTrue(transferPage.isTransferTitleVisible());
+    }
+
+    @Then("^check that 'Transfer' Button is visible on 'Transfer' page$")
+    public void checkThatTransferButtonIsVisibleOnTransferPage() {
+        Assert.assertTrue(transferPage.isTransferButtonVisible());
+    }
+
+    @Then("^check that 'Budget Available in BS' field is visible$")
+    public void checkThatBudgetAvailableInBSFieldIsVisible() {
+        Assert.assertTrue(transferPage.isBudgetAvailableFieldVisible());
+    }
 }
