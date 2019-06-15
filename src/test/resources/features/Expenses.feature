@@ -11,6 +11,10 @@ Feature: Manage Expenses
       And click 'Register Category' button on 'Expenses page'
     Then Search 'category success' alert on 'Expenses page'
     And Search "Prueba" on 'category' selector on 'Expenses page'
+    Then fill 'category name' field with "" on 'Expenses page'
+      And click 'Register Category' button on 'Expenses page'
+    Then Search 'Missing or repeat data to complete register category!' alert on 'Expenses page'
+    And Confirm that number of options on 'category selector' is "3" on 'Expenses page'
 
   Scenario: Try to create an expense without enough amount
     Given clicked 'Expenses' button on 'MainMenu' page

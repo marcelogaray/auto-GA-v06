@@ -2,6 +2,7 @@ package uitesting.upb.org.managepage.personalwallet;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import uitesting.upb.org.manageevents.Events;
 import uitesting.upb.org.managepage.BasePage;
 
@@ -33,6 +34,9 @@ public class TransactionsPage extends BasePage {
     @FindBy(id = "transactionFail")
     protected WebElement transactionFailAlert;
 
+    @FindBy(id = "categoryFail")
+    protected WebElement categoryFailAlert;
+
     @FindBy(id = "exit")
     private WebElement exitButton;
     @FindBy(id = "transactionSuccess")
@@ -40,6 +44,14 @@ public class TransactionsPage extends BasePage {
 
     public boolean isTransactionFailAlertVisible() {
         return Events.isWebElementVisible(transactionFailAlert);
+    }
+
+    public boolean isCategoryFailAlertVisible() {
+        return Events.isWebElementVisible(categoryFailAlert);
+    }
+
+    public int getCategorySelectorNumberOptions () {
+     return Events.getSelectorNumberOptions(new Select(categorySelector));
     }
 
     public boolean isTransactionSuccessAlertVisible() {

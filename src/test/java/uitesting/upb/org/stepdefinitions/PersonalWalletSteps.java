@@ -1,5 +1,6 @@
 package uitesting.upb.org.stepdefinitions;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -298,5 +299,20 @@ public class PersonalWalletSteps {
     @Then("^Search 'transaction success' alert on 'Income Page'$")
     public void searchTransactionSuccessAlertOnIncomePage() {
         Assert.assertTrue(incomePage.isTransactionSuccessAlertVisible());
+    }
+
+    @Then("^Search 'Missing or repeat data to complete register category!' alert on 'Expenses page'$")
+    public void searchMissingOrRepeatDataToCompleteRegisterCategoryAlertOnExpensesPage() {
+        Assert.assertTrue(expensesPage.isCategoryFailAlertVisible());
+    }
+
+    @And("^Confirm that \"([^\"]*)\" is not on 'category' selector on 'Expenses page'$")
+    public void confirmThatIsNotOnCategorySelectorOnExpensesPage(String category) {
+        Assert.assertFalse(expensesPage.searchCategoryOnSelector(category));
+    }
+
+    @And("^Confirm that number of options on 'category selector' is \"([^\"]*)\" on 'Expenses page'$")
+    public void confirmThatNumberOfOptionsOnCategorySelectorIsOnExpensesPage(String number) {
+        Assert.assertEquals(Integer.valueOf(number), Integer.valueOf(expensesPage.getCategorySelectorNumberOptions()));
     }
 }

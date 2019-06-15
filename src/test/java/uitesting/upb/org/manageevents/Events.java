@@ -50,4 +50,8 @@ public class Events {
         else {return false;}
     }
 
+    public static int getSelectorNumberOptions (Select select) {
+        return select.getOptions().size();
+    }
+
 }
