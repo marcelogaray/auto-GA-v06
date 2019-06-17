@@ -18,6 +18,9 @@ public class AccountSettingsPage extends BasePage {
     @FindBy(id = "exit")
     private WebElement exitButton;
 
+    @FindBy(xpath = "//div[@class='container']//h1")
+    private WebElement accountSettingstitle;
+
     public AccountSettingsPage writeNewAccountName(String name) {
         Events.fillField(accountNameInput, name);
         return this;
@@ -34,5 +37,11 @@ public class AccountSettingsPage extends BasePage {
     public AccountHomeMenu clickExitButton() {
         Events.click(exitButton);
         return new AccountHomeMenu();
+    }
+    public boolean accountSettingsTitleIsVisible() {
+        return Events.isWebElementVisible(accountSettingstitle);
+    }
+    public String getInputText() {
+        return accountNameInput.getAttribute("value");
     }
 }

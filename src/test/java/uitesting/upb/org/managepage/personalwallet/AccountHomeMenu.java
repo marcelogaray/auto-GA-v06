@@ -33,5 +33,8 @@ public class AccountHomeMenu extends BasePage {
     public int getNumberOfButtons() {
         return Events.getNumberOfElements("//*[@id='app']/div/div[2]");
     }
-
+    public boolean isAccountButtonVisible(String id) {
+        WebElement button = Events.getWebElementById(id);
+        return Events.isWebElementVisible(button);
+    }
 }

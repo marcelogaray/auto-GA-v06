@@ -42,6 +42,8 @@ public class TransactionsPage extends BasePage {
 
     @FindBy(id = "transactionSuccess")
     protected WebElement transactionSuccessAlert;
+    @FindBy(id = "settings")
+    private WebElement accountSettingsButton;
 
     @FindBy(id = "changeSuccess")
     protected WebElement changeSuccesAlert;
@@ -140,6 +142,11 @@ public class TransactionsPage extends BasePage {
         return new AccountHomeMenu();
     }
 
+    public AccountSettingsPage clickAccountSettingsButton() {
+        Events.click(accountSettingsButton);
+        return new AccountSettingsPage();
+    }
+
     public MainMenu clickPersonalWalletLink() {
         Events.click(personalWalletLink);
         return new MainMenu();
@@ -181,7 +188,5 @@ public class TransactionsPage extends BasePage {
         Events.click(registerChangesButton);
         return this;
     }
-
-
 
 }
