@@ -23,7 +23,8 @@ geckodriver
 # generated files
 bin/
 gen/
-
+out/
+project/
 # Intellij project files
 *.iml
 *.ipr

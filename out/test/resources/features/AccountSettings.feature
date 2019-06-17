@@ -30,12 +30,12 @@ Feature: Verify Account Settings Functionality
 
   Scenario: Account not deleted if has an income in it
     Given clicked "Settings" button on 'AccountHomeMenu'
-    And clicked 'Income' button on 'MainMenu' page
+    And click 'Income' button on 'MainMenu' page
     And fill 'income name' field with "ingreso" on 'Income Page'
     And select "Others" values on 'category' selector on 'Income Page'
     And fill 'AmountBS' field with "1000" on 'Income Page'
     And fill 'DateField' field with "06/15/2019" on 'Income Page'
-    And click 'Register Transition' button on 'Income Page'
+    And click 'Register Transaction' button on 'Income Page'
     And Click 'Account Settings' button on 'Income' page
     When Click 'Delete account' button on 'AccountSettings' page
     Then Button "Settings" exists
@@ -62,7 +62,7 @@ Feature: Verify Account Settings Functionality
     Given filled 'Account name' field on 'AccountHomeMenu' with "Settings2"
     And clicked 'Add' button on 'AccountHomeMenu'
     And clicked "Settings" button on 'AccountHomeMenu'
-    And clicked 'Income' button on 'MainMenu' page
+    And click 'Income' button on 'MainMenu' page
     And fill the 'Name' field with "Test Income" on the 'Income' page
     And select "Others" value on the 'Category' selector on the 'Income' page
     And fill the 'Amount BS' field with "100" on the 'Income' page

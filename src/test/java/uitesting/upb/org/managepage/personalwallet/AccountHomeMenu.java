@@ -23,18 +23,18 @@ public class AccountHomeMenu extends BasePage {
     }
 
     public MainMenu clickButtonById(String id) {
-        Events.click(Events.GetWebElementById(id));
+        Events.click(Events.getWebElementById(id));
         return new MainMenu();
     }
     public String getButtonNameById(String id) {
-        WebElement button = Events.GetWebElementById(id);
+        WebElement button = Events.getWebElementById(id);
         return button.getText();
     }
     public int getNumberOfButtons() {
-        return Events.GetNumberOfElements("//*[@id='app']/div/div[2]");
+        return Events.getNumberOfElements("//*[@id='app']/div/div[2]");
     }
     public boolean isAccountButtonVisible(String id) {
-        WebElement button = Events.GetWebElementById(id);
+        WebElement button = Events.getWebElementById(id);
         return Events.isWebElementVisible(button);
     }
 }
