@@ -1,9 +1,11 @@
 package uitesting.upb.org.stepdefinitions;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import uitesting.upb.org.handlewebsite.LoadPage;
 import uitesting.upb.org.managepage.personalwallet.AccountHomeMenu;
@@ -248,5 +250,25 @@ public class PersonalWalletSteps {
     @Then("^Search 'transaction success' alert on 'Income Page'$")
     public void searchTransactionSuccessAlertOnIncomePage() {
         Assert.assertTrue(incomePage.isTransactionSuccessAlertVisible());
+    }
+
+    @And("^Click 'Account Settings' button on 'Income' page$")
+    public void clickAccountSettingsButtonOnIncomePage() {
+        accountSettingsPage = incomePage.clickAccountSettingsButton();
+    }
+
+    @Then("^Button \"([^\"]*)\" exists$")
+    public void buttonExists(String button) {
+        Assert.assertTrue(accountHomeMenu.isAccountButtonVisible(button));
+    }
+
+    @Then("^'Account Info' title is visible on 'AccountSettings' page$")
+    public void accountInfoTitleIsVisibleOnAccountSettingsPage() {
+        Assert.assertTrue(accountSettingsPage.accountSettingsTitleIsVisible());
+    }
+
+    @Then("^'Account name' field on 'AccountSettings' is filled with \"([^\"]*)\"$")
+    public void accountNameFieldOnAccountSettingsIsFilledWith(String name) {
+        Assert.assertEquals(accountSettingsPage.getInputText(), name);
     }
 }

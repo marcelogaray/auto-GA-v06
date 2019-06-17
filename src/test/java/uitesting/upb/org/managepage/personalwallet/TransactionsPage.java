@@ -37,6 +37,8 @@ public class TransactionsPage extends BasePage {
     private WebElement exitButton;
     @FindBy(id = "transactionSuccess")
     protected WebElement transactionSuccessAlert;
+    @FindBy(id = "settings")
+    private WebElement accountSettingsButton;
 
     public boolean isTransactionFailAlertVisible() {
         return Events.isWebElementVisible(transactionFailAlert);
@@ -93,5 +95,8 @@ public class TransactionsPage extends BasePage {
         Events.click(exitButton);
         return new AccountHomeMenu();
     }
-
+    public AccountSettingsPage clickAccountSettingsButton() {
+        Events.click(accountSettingsButton);
+        return new AccountSettingsPage();
+    }
 }
