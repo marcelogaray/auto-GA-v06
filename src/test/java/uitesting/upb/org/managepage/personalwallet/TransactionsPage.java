@@ -43,6 +43,34 @@ public class TransactionsPage extends BasePage {
     @FindBy(id = "transactionSuccess")
     protected WebElement transactionSuccessAlert;
 
+    @FindBy(id = "changeSuccess")
+    protected WebElement changeSuccesAlert;
+
+    @FindBy(id = "changeFail")
+    protected WebElement changeFailAlert;
+
+    @FindBy(id = "old-name")
+    protected WebElement oldNameField;
+
+    @FindBy(id = "new-name")
+    protected WebElement newNameField;
+
+    @FindBy(id = "new-date")
+    protected WebElement newDateField;
+
+    @FindBy(id = "new-amount")
+    protected WebElement newAmountField;
+
+    @FindBy(id = "new-category")
+    protected WebElement newCategoryField;
+
+    @FindBy(id = "buttonChange")
+    protected WebElement registerChangesButton;
+
+
+
+
+
     @FindBy(xpath = "//a[@class='navbar-brand']")
     private WebElement personalWalletLink;
 
@@ -116,4 +144,44 @@ public class TransactionsPage extends BasePage {
         Events.click(personalWalletLink);
         return new MainMenu();
     }
+    public boolean isChangeSuccessAlertVisible() {
+        return Events.isWebElementVisible(changeSuccesAlert);
+    }
+
+    public boolean isChangeFailAlertVisible() {
+        return Events.isWebElementVisible(changeFailAlert);
+    }
+
+    public TransactionsPage fillNewCategoryField(String name) {
+        Events.fillField(newCategoryField, name);
+        return this;
+    }
+
+    public TransactionsPage fillNewNameField(String name) {
+        Events.fillField(newNameField, name);
+        return this;
+    }
+
+    public TransactionsPage fillNewAmountField(String name) {
+        Events.fillField(newAmountField, name);
+        return this;
+    }
+
+    public TransactionsPage fillNewDateField(String name) {
+        Events.fillField(newDateField, name);
+        return this;
+    }
+
+    public TransactionsPage fillOldTransactionNameField(String name) {
+        Events.fillField(oldNameField, name);
+        return this;
+    }
+
+    public TransactionsPage clickRegisterChangesButton() {
+        Events.click(registerChangesButton);
+        return this;
+    }
+
+
+
 }

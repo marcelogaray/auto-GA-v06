@@ -373,4 +373,56 @@ public class PersonalWalletSteps {
     public void fillTheDateOfTheTransactionDateFieldWithOnTheIncomePage(String date) throws Throwable {
         incomePage = (IncomePage) incomePage.fillDateField(date);
     }
+
+    @Then("^Search 'transaction fail' alert on 'Income Page'$")
+    public void searchTransactionFailAlertOnIncomePage() {
+        Assert.assertTrue(incomePage.isTransactionFailAlertVisible());
+    }
+
+    @Then("^Search 'category fail' alert on 'Income page'$")
+    public void searchCategoryFailAlertOnIncomePage() {
+        Assert.assertTrue(incomePage.isCategoryFailAlertVisible());
+    }
+
+
+
+    @And("^fill 'New name' field with \"([^\"]*)\" on 'Income page'$")
+    public void fillNewNameFieldWithOnIncomePage(String newName) {
+        incomePage = (IncomePage) incomePage.fillNewNameField(newName);
+    }
+
+    @And("^fill 'New category' selector with \"([^\"]*)\" on 'Income page'$")
+    public void fillNewCategorySelectorWithOnIncomePage(String newCategory) {
+        incomePage = (IncomePage) incomePage.fillNewCategoryField(newCategory);
+    }
+
+    @And("^fill 'New amount' field  with \"([^\"]*)\" on 'Income page'$")
+    public void fillNewAmountFieldWithOnIncomePage(String newAmount) {
+        incomePage = (IncomePage) incomePage.fillNewAmountField(newAmount);
+    }
+
+    @And("^fill 'New Date' field with \"([^\"]*)\" on 'Income page'$")
+    public void fillNewDateFieldWithOnIncomePage(String newDate) {
+        incomePage = (IncomePage) incomePage.fillNewDateField(newDate);
+    }
+
+    @And("^click 'Register Changes' button$")
+    public void clickRegisterChangesButton() {
+        incomePage = (IncomePage) incomePage.clickRegisterChangesButton();
+    }
+
+    @Then("^Search 'changeSuccess' alert on 'Income page'$")
+    public void searchChangeSuccessAlertOnIncomePage() {
+        Assert.assertTrue(incomePage.isChangeSuccessAlertVisible());
+    }
+
+    @Then("^Search 'changeFail' alert on 'Income page'$")
+    public void searchChangeFailAlertOnIncomePage() {
+        Assert.assertTrue(incomePage.isChangeFailAlertVisible());
+    }
+
+    @And("^fill 'Select transaction Name' with \"([^\"]*)\" field on 'Income page'$")
+    public void fillSelectTransactionNameWithFieldOnIncomePage(String oldName) {
+        incomePage = (IncomePage) incomePage.fillOldTransactionNameField(oldName);
+    }
 }
