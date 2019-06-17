@@ -315,4 +315,14 @@ public class PersonalWalletSteps {
     public void confirmThatNumberOfOptionsOnCategorySelectorIsOnExpensesPage(String number) {
         Assert.assertEquals(Integer.valueOf(number), Integer.valueOf(expensesPage.getCategorySelectorNumberOptions()));
     }
+
+    @Then("^Search 'transaction fail' alert on 'Income Page'$")
+    public void searchTransactionFailAlertOnIncomePage() {
+        Assert.assertTrue(incomePage.isCategoryFailAlertVisible());
+    }
+
+    @Then("^Search 'category fail' alert on 'Income page'$")
+    public void searchCategoryFailAlertOnIncomePage() {
+        Assert.assertTrue(incomePage.isCategoryFailAlertVisible());
+    }
 }

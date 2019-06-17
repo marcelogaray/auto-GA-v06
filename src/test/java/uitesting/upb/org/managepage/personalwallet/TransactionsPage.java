@@ -42,6 +42,30 @@ public class TransactionsPage extends BasePage {
     @FindBy(id = "transactionSuccess")
     protected WebElement transactionSuccessAlert;
 
+    @FindBy(id = "changeSuccess")
+    protected WebElement changeSuccesAlert;
+
+    @FindBy(id = "changeFail")
+    protected WebElement changeFailAlert;
+
+    @FindBy(id = "old-name")
+    protected WebElement oldNameField;
+
+    @FindBy(id = "new-name")
+    protected WebElement newNameField;
+
+    @FindBy(id = "new-date")
+    protected WebElement newDateField;
+
+    @FindBy(id = "new-amount")
+    protected WebElement newAmountField;
+
+    @FindBy(id = "new-category")
+    protected WebElement newCategoryField;
+
+
+
+
     public boolean isTransactionFailAlertVisible() {
         return Events.isWebElementVisible(transactionFailAlert);
     }

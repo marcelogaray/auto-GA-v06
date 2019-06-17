@@ -20,3 +20,123 @@ Feature: Manage Income
     And fill 'DateField' field with "11/05/2019" on 'Income Page'
     And click 'Register Transition' button on 'Income Page'
     Then Search 'transaction success' alert on 'Income Page'
+
+  Scenario: Try to create an income with negative amount
+    Given clicked 'Income' button on 'MainMenu' page
+    And fill 'income name' field with "Prueba income" on 'Income Page'
+    And select "Others" values on 'category' selector on 'Income Page'
+    And fill 'AmountBS' field with "-1000" on 'Income Page'
+    And fill 'DateField' field with "11/05/2019" on 'Income Page'
+    And click 'Register Transition' button on 'Income Page'
+    Then Search 'transaction fail' alert on 'Income Page'
+
+    #1 income with empty amount is not created then fail alert is visible on ‘income page’ LISTO
+    #2income with empty name is not created then fail alert is visible on ‘income page’ LISTO
+    #3income with empty date is not created then fail alert is visible on ‘income page’ LISTO
+    #4 income with empty category is not created then fail alert is visible on ‘income page’ LISTO
+    #5 income with new created category is  created then 'succes alert' is visible on ‘income page’ LISTO
+    #6income with amount with letters is not created then fail alert is visible on ‘income page’ LISTO
+    #7income with duplicate name is not created then fail alert is visible on ‘income page’ listo
+
+    #8category with duplicate name is not created then fail alert is visible on ‘income page’ listo
+    #9 category with empy name is not created then fail alert is visible on ‘income page’ listo
+
+
+    #11 modify income without Select transaction Name is not registered then fail alert is visible on ‘income page’
+    #12 modify income with empty new transaction Name is not registered then fail alert is visible on ‘income page’
+    #13modify income with empty new category is not registered then fail alert is visible on ‘income page’
+    #14 modify income with empty new date is not registered then fail alert is visible on ‘income page’
+    #15 modify income with the same transaction name is not registered then fail alert is visible on ‘income page’
+    #16 modify income with negative amount is not registered then fail alert is visible on ‘income page’
+    #17 modify income with new transaction name is registered then succes alert is visible on ‘income page’
+  Scenario:  Try to create an income with  empty amount,name,category and date
+    Given clicked 'Income' button on 'MainMenu' page
+    And click 'Register Transition' button on 'Income Page'
+    Then Search 'transaction fail' alert on 'Income Page'
+
+  Scenario: Try to register income with new created category
+    Given clicked 'Income' button on 'MainMenu' page
+    And fill 'category name' field with "Pruebas" on 'Income page'
+    And click 'Register Category' button on 'Income page'
+    Then Search 'category success' alert on 'Income page'
+    And Search "Pruebas" on 'category' selector on 'Income page'
+    And fill 'income name' field with "Prueba income" on 'Income Page'
+    And select "Others" values on 'category' selector on 'Income Page'
+    And fill 'AmountBS' field with "1000" on 'Income Page'
+    And fill 'DateField' field with "11/05/2019" on 'Income Page'
+    And click 'Register Transition' button on 'Income Page'
+    Then Search 'transaction success' alert on 'Income Page'
+
+  Scenario: Try to create an income with letter amount
+    Given clicked 'Income' button on 'MainMenu' page
+    And fill 'income name' field with "Prueba income" on 'Income Page'
+    And select "Others" values on 'category' selector on 'Income Page'
+    And fill 'AmountBS' field with "amount" on 'Income Page'
+    And fill 'DateField' field with "11/05/2019" on 'Income Page'
+    And click 'Register Transition' button on 'Income Page'
+    Then Search 'transaction fail' alert on 'Income Page'
+
+  Scenario: Try to create an income  with duplicate name
+    Given clicked 'Income' button on 'MainMenu' page
+    And fill 'income name' field with "Prueba income" on 'Income Page'
+    And select "Others" values on 'category' selector on 'Income Page'
+    And fill 'AmountBS' field with "1000" on 'Income Page'
+    And fill 'DateField' field with "11/05/2019" on 'Income Page'
+    And click 'Register Transition' button on 'Income Page'
+    And click 'Register Transition' button on 'Income Page'
+    Then Search 'transaction success' alert on 'Income Page'
+
+  Scenario: Try to create a duplicate  income category
+    Given clicked 'Income' button on 'MainMenu' page
+    And fill 'category name' field with "Prueba" on 'Income page'
+    And click 'Register Category' button on 'Income page'
+    And click 'Register Category' button on 'Income page'
+    Then Search 'category fail' alert on 'Income page'
+
+  Scenario: Try to create an income category with empty name
+    Given clicked 'Income' button on 'MainMenu' page
+    And click 'Register Category' button on 'Income page'
+    Then Search 'category fail' alert on 'Income page'
+
+  Scenario: Try to modify an Income without select transaction name
+    Given clicked 'Income' button on 'MainMenu' page
+    And fill 'Select transaction Name' field on 'Income page'
+    And fill 'New name' field with "new Name" on 'Income page'
+    And fill 'New category' selector with "Others" on 'Income page'
+    And fill 'New amount' field  with "100" on 'Income page'
+    And fill 'New Date' field with "10/10/2019" on 'Income page'
+    And click 'Register Changes' button
+    Then Search 'changeSuccess' alert on 'Income page'
+    Then Search 'changeFail' alert on 'Income page'
+
+
+  Scenario: 8
+    Given clicked 'Income' button on 'MainMenu' page
+
+  Scenario: 9
+    Given clicked 'Income' button on 'MainMenu' page
+
+  Scenario: 10
+    Given clicked 'Income' button on 'MainMenu' page
+
+  Scenario: 11
+    Given clicked 'Income' button on 'MainMenu' page
+
+  Scenario: 12
+    Given clicked 'Income' button on 'MainMenu' page
+
+  Scenario: 13
+    Given clicked 'Income' button on 'MainMenu' page
+
+  Scenario: 14
+    Given clicked 'Income' button on 'MainMenu' page
+
+  Scenario: 15
+    Given clicked 'Income' button on 'MainMenu' page
+
+  Scenario: 16
+    Given clicked 'Income' button on 'MainMenu' page
+
+  Scenario: 16
+    Given clicked 'Income' button on 'MainMenu' page
+
