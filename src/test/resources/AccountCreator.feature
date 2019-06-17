@@ -3,6 +3,6 @@ Feature: New accounts
   Background:
     Given Account manager is loaded
 
-  Scenario: Fill an input correctly and create account
-    And fill "A new account" 'Account name' input on 'Account Manager'
-    Then click 'Add' button on 'Account Manager'
+  Scenario: 'Account Creator' page is visible
+    Then 'Add' button is visible on 'Account Creator'
+    And 'Account name' input is visible on 'Account Creator'

@@ -73,18 +73,30 @@ public class AccountManager extends BasePage {
         Events.click(addAccountButton);
     }
 
-    public void clickGeneralAccountButton() {
+    public GeneralReports clickGeneralAccountButton() {
         Events.click(generalAccountButton);
+
+        return new GeneralReports();
     }
 
-    public void selectAccount(String accountName) {
+    public AccountMainMenu selectAccount(String accountName) {
         WebElement newAccountButton = webDriver.findElement(By.id(accountName));
         Events.click(newAccountButton);
+
+        return new AccountMainMenu();
     }
 
-    public boolean checkIfNewAccountButtonIsVisible(String accountName) {
+    public boolean newAccountButtonIsVisible(String accountName) {
         WebElement newAccountButton = webDriver.findElement(By.id(accountName));
         return Events.isVisibleWebElement(newAccountButton);
+    }
+
+    public boolean accountNameInputIsVisible() {
+        return Events.isVisibleWebElement(accountNameInput);
+    }
+
+    public boolean addAccountButtonIsVisible() {
+        return Events.isVisibleWebElement(addAccountButton);
     }
 
     public void clickIncomeButton() {
