@@ -7,16 +7,11 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import uitesting.upb.org.handlewebsite.LoadPage;
-import uitesting.upb.org.managepage.personalwallet.AccountHomeMenu;
-import uitesting.upb.org.managepage.personalwallet.AccountSettingsPage;
-import uitesting.upb.org.managepage.personalwallet.MainMenu;
-import uitesting.upb.org.managepage.personalwallet.ReportsPage;
+import uitesting.upb.org.managepage.personalwallet.*;
 import uitesting.upb.org.managepage.personalwallet.Transactions.ExpensesPage;
 import uitesting.upb.org.managepage.personalwallet.Transactions.IncomePage;
-import uitesting.upb.org.managepage.personalwallet.TransferPage;
 
 import java.util.List;
 
@@ -24,6 +19,7 @@ import java.util.List;
 public class PersonalWalletSteps {
 
     private AccountHomeMenu accountHomeMenu;
+    private Header header;
     private MainMenu mainMenu;
     private ReportsPage reportsPage;
     private ExpensesPage expensesPage;
@@ -44,6 +40,7 @@ public class PersonalWalletSteps {
     @Given("^Click \"(.*)\" button on 'home menu' page$")
     public void clickAccountButton(String accountId) {
         mainMenu = accountHomeMenu.clickButtonById(accountId);
+        header = LoadPage.loadHeader();
     }
 
     @When("^Click 'Reports' button on 'main menu' page$")
@@ -112,8 +109,6 @@ public class PersonalWalletSteps {
         String errorMessageFromReportsPage = reportsPage.getErrorMessage();
         Assert.assertEquals(errorMessage, errorMessageFromReportsPage);
     }
-
-
     @Given("^The 'AccountHomeMenu' is loaded$")
     public void mainPageIsLoaded() {
         accountHomeMenu = LoadPage.loadHomeMenu();
@@ -166,6 +161,7 @@ public class PersonalWalletSteps {
 
     @Given("^clicked \"([^\"]*)\" button on 'AccountHomeMenu'$")
     public void clickedTheButtonOnAccountHomeMenu(String accountId) {
+        header = LoadPage.loadHeader();
         mainMenu = accountHomeMenu.clickButtonById(accountId);
     }
 
@@ -396,6 +392,25 @@ public class PersonalWalletSteps {
         incomePage = (IncomePage) incomePage.fillDateField(date);
     }
 
+    @Then("^check the 'Total Amount' label is \"([^\"]*)\" on 'Main Menu'$")
+    public void checkTheTotalAmountLabelIsOnMainMenu(String amount) {
+        Assert.assertEquals(mainMenu.getAmount(), "Total amount:\n"+amount+"\n Bs.");
+    }
+
+    @And("^click 'PersonalWallet' button on 'Header' page$")
+    public void clickPersonalWalletButtonOnHeaderPage() {
+        header = header.clickPersonalWalletButton();
+    }
+
+    @And("^Check number of transactions is \"([^\"]*)\" on 'Select a Transaction' on 'Expenses' page$")
+    public void checkNumberOfTransactionsIsOnSelectATransactionOnExpensesPage(String number) {
+        Assert.assertEquals(Integer.valueOf(number), Integer.valueOf(expensesPage.getTransactionNameSelectorNumberOptions()));
+    }
+
+    @And("^Search \"([^\"]*)\" option is not on 'Transaction Name' selector on 'Expenses' page$")
+    public void searchOptionIsNotOnTransactionNameSelectorOnExpensesPage(String option) {
+        Assert.assertTrue(expensesPage.searchOptionOnTransactionNameSelector(option));
+    }
     @Then("^Search 'transaction fail' alert on 'Income Page'$")
     public void searchTransactionFailAlertOnIncomePage() {
         Assert.assertTrue(incomePage.isTransactionFailAlertVisible());
@@ -405,8 +420,6 @@ public class PersonalWalletSteps {
     public void searchCategoryFailAlertOnIncomePage() {
         Assert.assertTrue(incomePage.isCategoryFailAlertVisible());
     }
-
-
 
     @And("^fill 'New name' field with \"([^\"]*)\" on 'Income page'$")
     public void fillNewNameFieldWithOnIncomePage(String newName) {
@@ -446,5 +459,6 @@ public class PersonalWalletSteps {
     @And("^fill 'Select transaction Name' with \"([^\"]*)\" field on 'Income page'$")
     public void fillSelectTransactionNameWithFieldOnIncomePage(String oldName) {
         incomePage = (IncomePage) incomePage.fillOldTransactionNameField(oldName);
+
     }
 }

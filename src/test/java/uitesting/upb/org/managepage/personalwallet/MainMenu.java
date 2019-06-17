@@ -19,10 +19,16 @@ public class MainMenu extends BasePage {
     private WebElement incomeButton;
     @FindBy(id = "settings")
     private WebElement accountSettingsButton;
+    @FindBy(xpath = "//div[@class='card']/div[@class=\"container content\"]/div[@class=\"d-flex my-1 mt-2\"]")
+    private WebElement totalAmount;
 
     public AccountSettingsPage clickAccountSettingsButton() {
         Events.click(accountSettingsButton);
         return new AccountSettingsPage();
+    }
+
+    public String getAmount() {
+        return Events.getText(totalAmount);
     }
 
     public ReportsPage clickReportsButton() {

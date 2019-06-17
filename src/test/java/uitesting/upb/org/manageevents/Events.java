@@ -66,5 +66,9 @@ public class Events {
         return select.getOptions().size();
     }
 
+    public static String getText(WebElement webElement) {
+        return DriverManager.getInstance().wait.until(ExpectedConditions.visibilityOf(webElement)).getText();
+    }
+
 
 }
