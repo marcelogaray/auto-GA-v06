@@ -46,6 +46,9 @@ public class TransactionsPage extends BasePage {
     @FindBy(xpath = "//a[@class='navbar-brand']")
     private WebElement personalWalletLink;
 
+    @FindBy (id = "old-name")
+    private WebElement transactionNameSelector;
+
     public boolean isTransactionFailAlertVisible() {
         return Events.isWebElementVisible(transactionFailAlert);
     }
@@ -56,6 +59,10 @@ public class TransactionsPage extends BasePage {
 
     public int getCategorySelectorNumberOptions () {
      return Events.getSelectorNumberOptions(new Select(categorySelector));
+    }
+
+    public int getTransactionNameSelectorNumberOptions () {
+        return Events.getSelectorNumberOptions(new Select(transactionNameSelector));
     }
 
     public boolean isTransactionSuccessAlertVisible() {
@@ -100,6 +107,10 @@ public class TransactionsPage extends BasePage {
 
     public boolean searchCategoryOnSelector(String category) {
         return Events.isElementOnSelector(categorySelector, category);
+    }
+
+    public boolean searchOptionOnTransactionNameSelector(String option) {
+        return Events.isElementOnSelector(transactionNameSelector, option);
     }
 
     public TransactionsPage selectCategory(String category) {

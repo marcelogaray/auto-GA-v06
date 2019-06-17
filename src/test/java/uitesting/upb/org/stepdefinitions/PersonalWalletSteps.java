@@ -8,13 +8,9 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
 import uitesting.upb.org.handlewebsite.LoadPage;
-import uitesting.upb.org.managepage.personalwallet.AccountHomeMenu;
-import uitesting.upb.org.managepage.personalwallet.AccountSettingsPage;
-import uitesting.upb.org.managepage.personalwallet.MainMenu;
-import uitesting.upb.org.managepage.personalwallet.ReportsPage;
+import uitesting.upb.org.managepage.personalwallet.*;
 import uitesting.upb.org.managepage.personalwallet.Transactions.ExpensesPage;
 import uitesting.upb.org.managepage.personalwallet.Transactions.IncomePage;
-import uitesting.upb.org.managepage.personalwallet.TransferPage;
 
 import java.util.List;
 
@@ -22,6 +18,7 @@ import java.util.List;
 public class PersonalWalletSteps {
 
     private AccountHomeMenu accountHomeMenu;
+    private Header header;
     private MainMenu mainMenu;
     private ReportsPage reportsPage;
     private ExpensesPage expensesPage;
@@ -42,6 +39,7 @@ public class PersonalWalletSteps {
     @Given("^Click \"(.*)\" button on 'home menu' page$")
     public void clickAccountButton(String accountId) {
         mainMenu = accountHomeMenu.clickButtonById(accountId);
+        header = LoadPage.loadHeader();
     }
 
     @When("^Click 'Reports' button on 'main menu' page$")
@@ -164,6 +162,7 @@ public class PersonalWalletSteps {
 
     @Given("^clicked \"([^\"]*)\" button on 'AccountHomeMenu'$")
     public void clickedTheButtonOnAccountHomeMenu(String accountId) {
+        header = LoadPage.loadHeader();
         mainMenu = accountHomeMenu.clickButtonById(accountId);
     }
 
@@ -215,6 +214,7 @@ public class PersonalWalletSteps {
     @And("^click 'Register Transaction' button on 'Expenses Page'$")
     public void clickRegisterTransactionButtonOnExpensesPage() {
         expensesPage = (ExpensesPage) expensesPage.clickRegisterTransactionButton();
+
     }
 
     @Then("^Search 'transaction fail' alert on 'Expenses Page'$")
@@ -372,5 +372,25 @@ public class PersonalWalletSteps {
     @And("^fill the 'Date of the Transaction' date field with \"([^\"]*)\" on the 'Income' page$")
     public void fillTheDateOfTheTransactionDateFieldWithOnTheIncomePage(String date) throws Throwable {
         incomePage = (IncomePage) incomePage.fillDateField(date);
+    }
+
+    @Then("^check the 'Total Amount' label is \"([^\"]*)\" on 'Main Menu'$")
+    public void checkTheTotalAmountLabelIsOnMainMenu(String amount) {
+        Assert.assertEquals(mainMenu.getAmount(), "Total amount:\n"+amount+"\n Bs.");
+    }
+
+    @And("^click 'PersonalWallet' button on 'Header' page$")
+    public void clickPersonalWalletButtonOnHeaderPage() {
+        header = header.clickPersonalWalletButton();
+    }
+
+    @And("^Check number of transactions is \"([^\"]*)\" on 'Select a Transaction' on 'Expenses' page$")
+    public void checkNumberOfTransactionsIsOnSelectATransactionOnExpensesPage(String number) {
+        Assert.assertEquals(Integer.valueOf(number), Integer.valueOf(expensesPage.getTransactionNameSelectorNumberOptions()));
+    }
+
+    @And("^Search \"([^\"]*)\" option is not on 'Transaction Name' selector on 'Expenses' page$")
+    public void searchOptionIsNotOnTransactionNameSelectorOnExpensesPage(String option) {
+        Assert.assertTrue(expensesPage.searchOptionOnTransactionNameSelector(option));
     }
 }
