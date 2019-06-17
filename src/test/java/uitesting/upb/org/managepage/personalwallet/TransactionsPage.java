@@ -63,6 +63,10 @@ public class TransactionsPage extends BasePage {
     @FindBy(id = "new-category")
     protected WebElement newCategoryField;
 
+    @FindBy(id = "buttonChange")
+    protected WebElement registerChangesButton;
+
+
 
 
 
@@ -129,5 +133,45 @@ public class TransactionsPage extends BasePage {
         Events.click(exitButton);
         return new AccountHomeMenu();
     }
+
+    public boolean isChangeSuccessAlertVisible() {
+        return Events.isWebElementVisible(changeSuccesAlert);
+    }
+
+    public boolean isChangeFailAlertVisible() {
+        return Events.isWebElementVisible(changeFailAlert);
+    }
+
+    public TransactionsPage fillNewCategoryField(String name) {
+        Events.fillField(newCategoryField, name);
+        return this;
+    }
+
+    public TransactionsPage fillNewNameField(String name) {
+        Events.fillField(newNameField, name);
+        return this;
+    }
+
+    public TransactionsPage fillNewAmountField(String name) {
+        Events.fillField(newAmountField, name);
+        return this;
+    }
+
+    public TransactionsPage fillNewDateField(String name) {
+        Events.fillField(newDateField, name);
+        return this;
+    }
+
+    public TransactionsPage fillOldTransactionNameField(String name) {
+        Events.fillField(oldNameField, name);
+        return this;
+    }
+
+    public TransactionsPage clickRegisterChangesButton() {
+        Events.click(registerChangesButton);
+        return this;
+    }
+
+
 
 }
