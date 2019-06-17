@@ -3,9 +3,14 @@ package uitesting.upb.org.manageevents;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import uitesting.upb.org.webdrivermanager.DriverManager;
 
 import java.util.List;
+
+/**
+ * @autor Marcelo Garay
+ */
 
 public class Events {
     public static void click(WebElement webElement){
@@ -28,6 +33,15 @@ public class Events {
     }
     public static boolean isWebElementVisible(WebElement webElement) {
         return DriverManager.getInstance().wait.until(ExpectedConditions.visibilityOf(webElement)).isDisplayed();
+    }
+
+    public static void selectOptionInSelectElement(Select selectElement, String value) {
+        selectElement.selectByValue(value);
+    }
+
+    public static int getNumberOfElements(By by) {
+        List<WebElement> webElements = DriverManager.getInstance().getWebDriver().findElements(by);
+        return webElements.size();
     }
     public static boolean isElementOnSelector(WebElement selector, String element) {
         WebElement option = selector.findElement(By.xpath("//option[contains(.," + element + ")]"));
