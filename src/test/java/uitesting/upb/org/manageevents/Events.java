@@ -21,6 +21,9 @@ public class Events {
     public static void fillField(WebElement searchTextField, String text) {
         searchTextField.sendKeys(text);
     }
+    public static void  clearField(WebElement texField){
+        texField.clear();
+    }
 
     public static boolean isVisibleWebElement(WebElement webElement) {
         return webElement.isDisplayed();

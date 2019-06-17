@@ -28,6 +28,10 @@ public class AccountSettings extends BasePage {
         Events.fillField(changeAccountNameTextField, nombreCuenta);
     }
 
+    public void clearChangeAccountNameTextField(){
+        Events.clearField(changeAccountNameTextField);
+    }
+
     public boolean windowIsVisible() {
         return Events.isVisibleWebElement(changeAccountNameTextField);
     }

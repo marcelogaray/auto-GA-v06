@@ -16,6 +16,9 @@ public class AccountCreator extends BasePage {
     @FindBy(id = "Mateo")
     private WebElement accountMateoButton;
 
+    @FindBy(className = "account-list")
+    private  WebElement[] accountList;
+
     public void clickAddAccountButton() {
         Events.click(addAccountButton);
     }
@@ -25,8 +28,17 @@ public class AccountCreator extends BasePage {
         return new NavBar();
     }
 
+    public AccountMainMenu clickAccountMButton(){
+        Events.click(accountMateoButton);
+        return new AccountMainMenu();
+    }
+
     public void writeInAccountTextField(String nombreCuenta) {
         Events.fillField(accountNameTextField, nombreCuenta);
+    }
+
+    public boolean isAccountNameTextFieldEmpty(){
+        return accountNameTextField.getText().equals("");
     }
 
 }
