@@ -2,6 +2,7 @@ package uitesting.upb.org.manageevents;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import uitesting.upb.org.webdrivermanager.DriverManager;
 
 /**
@@ -26,6 +27,11 @@ public class Events {
     }
     public static void clearFieldText(WebElement webElement){
         webElement.clear();
+    }
+
+    public static void selectByText(WebElement element, String text) {
+        Select selectElement = new Select(element);
+        selectElement.selectByVisibleText(text);
     }
 
 }

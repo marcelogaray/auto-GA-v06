@@ -11,8 +11,14 @@ public class IncomeExpensesView extends BasePage {
     @FindBy(id = "name")
     private WebElement fieldName;
 
+    @FindBy(id = "category")
+    private WebElement categorySelectField;
+
     @FindBy(xpath = "//select[@id='category']//option[contains(text(),'Others')]")
     private WebElement othersCategoryOption;
+
+    @FindBy(xpath = "//select[@id='old-name']//option[contains(text(),'Salario Junio')]")
+    private WebElement registeredExpenseOption;
 
     @FindBy(id = "amount")
     private WebElement fieldAmount;
@@ -26,6 +32,9 @@ public class IncomeExpensesView extends BasePage {
     @FindBy(id = "buttonTransaction")
     private WebElement transactionButton;
 
+    @FindBy(id = "account-main-menu")
+    private WebElement accountmainmenu;
+
     public IncomeExpensesView() {
         super();
     }
@@ -36,6 +45,10 @@ public class IncomeExpensesView extends BasePage {
 
     public void selectOthersCategory() {
         Events.click(othersCategoryOption);
+    }
+
+    public void selectCreatedExpense() {
+        Events.click(registeredExpenseOption);
     }
 
     public void fillAmountInput(String amount) {
@@ -67,5 +80,12 @@ public class IncomeExpensesView extends BasePage {
     public boolean newAmountIsZero() {
         return fieldModifiedAmount.getAttribute("value").equals("0");
     }
+
+    public void clickMainMenu() {
+        Events.click(accountmainmenu);
+    }
+
+    public void clickExpenseCategoryButton() {
+        Events.selectByText(categorySelectField, "Expenses");   }
 
 }

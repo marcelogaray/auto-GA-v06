@@ -285,4 +285,13 @@ public class WalletStepdefs {
         Assert.assertTrue(incomeExpensesView.newAmountIsZero());
     }
 
+    @Then("^go back home in 'Expenses'$")
+    public void goBackHomeInExpenses() {
+        incomeExpensesView.clickMainMenu();
+    }
+
+    @Then("^select expense registered on 'Expense View'$")
+    public void selectExpenseRegisteredOnExpenseView() {
+        incomeExpensesView.selectCreatedExpense();
+    }
 }
