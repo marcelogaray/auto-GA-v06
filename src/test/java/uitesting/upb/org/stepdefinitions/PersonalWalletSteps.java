@@ -1,6 +1,7 @@
 package uitesting.upb.org.stepdefinitions;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -271,11 +272,6 @@ public class PersonalWalletSteps {
         incomePage = (IncomePage) incomePage.fillAmountField(amount);
     }
 
-    @And("^fill 'Date of the Transaction' date field with \"([^\"]*)\" on 'Income' page$")
-    public void fillTheDateOfTheTransactionDateFieldWithOnTheIncomePage(String date) throws Throwable {
-        incomePage = (IncomePage) incomePage.fillDateField(date);
-    }
-
     @And("^click the 'Register Transaction' button on the 'Income' page$")
     public void clickTheRegisterTransactionButtonOnTheIncomePage() {
         incomePage = (IncomePage) incomePage.clickRegisterTransactionButton();
@@ -337,6 +333,20 @@ public class PersonalWalletSteps {
         Assert.assertTrue(incomePage.isTransactionSuccessAlertVisible());
     }
 
+    @Then("^check that title 'Transfer' title is visible on 'Transfer' Page$")
+    public void checkThatTitleTransferTitleIsVisibleOnTransferPage() {
+        Assert.assertTrue(transferPage.isTransferTitleVisible());
+    }
+
+    @Then("^check that 'Transfer' Button is visible on 'Transfer' page$")
+    public void checkThatTransferButtonIsVisibleOnTransferPage() {
+        Assert.assertTrue(transferPage.isTransferButtonVisible());
+    }
+
+    @Then("^check that 'Budget Available in BS' field is visible$")
+    public void checkThatBudgetAvailableInBSFieldIsVisible() {
+        Assert.assertTrue(transferPage.isBudgetAvailableFieldVisible());
+    }
     @Then("^Search 'Missing or repeat data to complete register category!' alert on 'Expenses page'$")
     public void searchMissingOrRepeatDataToCompleteRegisterCategoryAlertOnExpensesPage() {
         Assert.assertTrue(expensesPage.isCategoryFailAlertVisible());
@@ -357,5 +367,10 @@ public class PersonalWalletSteps {
         List< List<String> > reportsPageTable = reportsPage.getTableAsListOfLists();
         List< List<String> > tableAsList = table.raw();
         Assert.assertEquals(reportsPageTable, tableAsList);
+    }
+
+    @And("^fill the 'Date of the Transaction' date field with \"([^\"]*)\" on the 'Income' page$")
+    public void fillTheDateOfTheTransactionDateFieldWithOnTheIncomePage(String date) throws Throwable {
+        incomePage = (IncomePage) incomePage.fillDateField(date);
     }
 }
