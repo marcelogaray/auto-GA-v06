@@ -6,10 +6,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
 import uitesting.upb.org.handlewebsite.LoadPage;
-import uitesting.upb.org.managepage.wallet.AccountCreator;
-import uitesting.upb.org.managepage.wallet.AccountManager;
-import uitesting.upb.org.managepage.wallet.AccountSettings;
-import uitesting.upb.org.managepage.wallet.NavBar;
+import uitesting.upb.org.managepage.wallet.*;
 
 public class WalletStepdefs {
 
@@ -107,8 +104,11 @@ public class WalletStepdefs {
 
     @Then("^Fill 'Account Name' text field with \"([^\"]*)\" in 'Account Settings' page$")
     public void fillAccountNameTextFieldWithInAccountSettings(String nuevoNombre) {
+        accountSettings.clearChangeAccountNameTextField();
         accountSettings.writeInChangeAccountNameTextField(nuevoNombre);
     }
+
+
 
     @And("^Click 'Change name' button in 'Account Settings' page$")
     public void clickChangeNameButtonInAccountSettings() {
@@ -116,4 +116,73 @@ public class WalletStepdefs {
     }
 
 
+
+    AccountMainMenu accountMainMenu;
+    ReportsPage reportsPage;
+    ReportTable reportTable;
+
+
+    @Then("^Click 'Mateo' button in 'Account Creator' page to load Account Main Menu$")
+    public void clickMateoButtonInAccountCreatorPageToLoadAccountMainMenu() {
+
+
+        accountMainMenu = accountCreator.clickAccountMButton();
+
+
+    }
+
+    @When("^'Account Main Menu' Page is loaded$")
+    public void accountMainMenuPageIsLoaded() {
+
+        Assert.assertTrue(accountMainMenu.mainMenuisLoaded());
+
+    }
+
+    @Then("^Click 'Report' button in 'Account Main Menu' Page$")
+    public void clickReportButtonInAccountMainMenuPage() {
+        reportsPage = accountMainMenu.clickReportButton();
+    }
+
+    @And("^Click 'Report Type' Selector in 'Report' Page$")
+    public void clickReportTypeSelectorInReportPage() {
+        reportsPage.clickTypeSelector();
+    }
+
+    @And("^Click 'By category' Type in 'Report Type Selector' in 'Report' Page$")
+    public void clickByCategoryTypeInReportTypeSelectorInReportPage() {
+        reportsPage.clickCategoryType();
+    }
+
+    @Then("^Click 'Show Report' Button in 'Report' Page$")
+    public void clickShowReportButtonInReportPage() {
+        reportTable =  reportsPage.clickShowReportButton();
+    }
+
+    @And("^Click 'Mateo' delete button in 'Report' table in 'Report' page$")
+    public void clickMateoElementInReportTableInReportPage() {
+        reportTable.clickDeleteIncomeMateo();
+    }
+
+    @And("^Click 'Celular' delete button in 'Report' table in 'Report' page$")
+    public void clickCelularElementInReportTableInReportPage() {
+        reportTable.clickDeleteExpenseCelular();
+    }
+
+
+    @Then("^Text field 'Account Name' should be empty in  'Account Creator' Page$")
+    public void textFieldAccountNameShouldBeClear() {
+        Assert.assertTrue(accountCreator.isAccountNameTextFieldEmpty());
+    }
+
+    int lengthOfAccountListBefore;
+
+    @And("^List 'Account List' length should not change in 'Account Creator Page'$")
+    public void listAccountListShouldHaveTheSameLength() {
+
+    }
+
+    @Then("^Get length of 'Account List' List in 'Account Creator' Page$")
+    public void getLengthOfAccountListListInAccountCreatorPage() {
+         //accountCreator.getAccountListLength();
+    }
 }
