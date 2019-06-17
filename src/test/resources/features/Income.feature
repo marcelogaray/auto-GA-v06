@@ -30,25 +30,6 @@ Feature: Manage Income
     And click 'Register Transition' button on 'Income Page'
     Then Search 'transaction fail' alert on 'Income Page'
 
-    #1 income with empty amount is not created then fail alert is visible on ‘income page’ LISTO
-    #2income with empty name is not created then fail alert is visible on ‘income page’ LISTO
-    #3income with empty date is not created then fail alert is visible on ‘income page’ LISTO
-    #4 income with empty category is not created then fail alert is visible on ‘income page’ LISTO
-    #5 income with new created category is  created then 'succes alert' is visible on ‘income page’ LISTO
-    #6income with amount with letters is not created then fail alert is visible on ‘income page’ LISTO
-    #7income with duplicate name is not created then fail alert is visible on ‘income page’ listo
-
-    #8category with duplicate name is not created then fail alert is visible on ‘income page’ listo
-    #9 category with empy name is not created then fail alert is visible on ‘income page’ listo
-
-
-    #11 modify income without Select transaction Name is not registered then fail alert is visible on ‘income page’listo
-    #12 modify income with empty new transaction Name is not registered then fail alert is visible on ‘income page’listo
-    #13modify income with empty new category is not registered then fail alert is visible on ‘income page’ listo
-    #14 modify income with empty new date is not registered then fail alert is visible on ‘income page’ listo
-    #15 modify income with the same transaction name is not registered then fail alert is visible on ‘income page’ listo
-    #16 modify income with negative amount is not registered then fail alert is visible on ‘income page’ listo
-    #17 modify income with new transaction name is registered then succes alert is visible on ‘income page’ listo
   Scenario:  Try to create an income with  empty amount,name,category and date
     Given clicked 'Income' button on 'MainMenu' page
     And click 'Register Transition' button on 'Income Page'
