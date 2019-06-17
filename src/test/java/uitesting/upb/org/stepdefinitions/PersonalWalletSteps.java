@@ -1,5 +1,7 @@
 package uitesting.upb.org.stepdefinitions;
 
+import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -14,6 +16,8 @@ import uitesting.upb.org.managepage.personalwallet.Transactions.ExpensesPage;
 import uitesting.upb.org.managepage.personalwallet.Transactions.IncomePage;
 import uitesting.upb.org.managepage.personalwallet.TransferPage;
 
+import java.util.List;
+
 
 public class PersonalWalletSteps {
 
@@ -24,11 +28,6 @@ public class PersonalWalletSteps {
     private TransferPage transferPage;
     private IncomePage incomePage;
     private AccountSettingsPage accountSettingsPage;
-
-    @Given("^The main page is loaded$")
-    public void loadMainPage() {
-        accountHomeMenu = LoadPage.loadHomeMenu();
-    }
 
     @Given("^Fill account name field on 'home menu' page with \"(.*)\"$")
     public void fillAccountNameField(String accountName) {
@@ -50,14 +49,39 @@ public class PersonalWalletSteps {
         reportsPage = mainMenu.clickReportsButton();
     }
 
-    @And("^Select 'By category' in the select option on 'reports' page$")
+    @And("^Select 'By category' in 'Select report type' selector on 'reports' page$")
     public void selectByCategoryOption() {
-        reportsPage.selectByCategoryOption();
+        reportsPage.selectOptionByValue("category");
+    }
+
+    @Given("^Select 'By date' in 'Select report type' selector on 'reports' page$")
+    public void selectByDateOption() {
+        reportsPage.selectOptionByValue("date");
     }
 
     @And("^Click 'Show report' button on 'reports' page$")
     public void clickShowReportButton() {
         reportsPage.clickShowReportButton();
+    }
+
+    @Given("^Click 'Personal wallet' button on 'income' page$")
+    public void clickPersonalWalletButtonOnIncomePage() {
+        mainMenu = incomePage.clickPersonalWalletLink();
+    }
+
+    @Given("^Click 'Personal wallet' button on 'expense' page$")
+    public void clickPersonalWalletButtonOnExpensePage() {
+        mainMenu = expensesPage.clickPersonalWalletLink();
+    }
+
+    @When("^Fill 'From' date picker with \"([^\"]*)\" on 'reports' page$")
+    public void fillFromDatePickerOnReportsPage(String startDate) {
+        reportsPage.fillStartDate(startDate);
+    }
+
+    @And("^Fill 'To' date picker with \"([^\"]*)\" on 'reports' page$")
+    public void fillToDatePickerOnReportsPage(String endDate) {
+        reportsPage.fillEndDate(endDate);
     }
 
     @Then("^The title is \"(.*)\"$")
@@ -69,6 +93,22 @@ public class PersonalWalletSteps {
     public void assertTableRows(String rows) {
         int numberOfRows = Integer.parseInt(rows);
         Assert.assertEquals(reportsPage.getNumberOfRows(), numberOfRows);
+    }
+
+    @Then("^\"(.*)\" row is red$")
+    public void assertRowColorIsRed(String transactionName) {
+        Assert.assertEquals(reportsPage.getElementColor(transactionName), "rgba(255, 0, 0, 1)");
+    }
+
+    @Then("^\"(.*)\" row is green$")
+    public void assertRowColorIsGreen(String transactionName) {
+        Assert.assertEquals(reportsPage.getElementColor(transactionName), "rgba(0, 128, 0, 1)");
+    }
+
+    @Then("^\"([^\"]*)\" error shows up on 'reports' page$")
+    public void errorShowsUpOnReportsPage(String errorMessage){
+        String errorMessageFromReportsPage = reportsPage.getErrorMessage();
+        Assert.assertEquals(errorMessage, errorMessageFromReportsPage);
     }
 
 
@@ -132,7 +172,7 @@ public class PersonalWalletSteps {
         expensesPage = (ExpensesPage) expensesPage.fillCategoryRegisterField(name);
     }
 
-    @Given("^clicked 'Expenses' button on 'MainMenu' page$")
+    @Given("^click 'Expenses' button on 'MainMenu' page$")
     public void clickedTheExpensesButtonOnTheMainMenuPage() {
         expensesPage = mainMenu.clickExpensesButton();
     }
@@ -167,13 +207,13 @@ public class PersonalWalletSteps {
         expensesPage = (ExpensesPage) expensesPage.fillAmountField(amount);
     }
 
-    @And("^fill 'DateField' field with \"([^\"]*)\" on 'Expenses Page'$")
+    @And("^fill 'Date of the Transaction' field with \"([^\"]*)\" on 'Expenses Page'$")
     public void fillDateFieldFieldWithOnExpensesPage(String date) {
         expensesPage = (ExpensesPage) expensesPage.fillDateField(date);
     }
 
-    @And("^click 'Register Transition' button on 'Expenses Page'$")
-    public void clickRegisterTransitionButtonOnExpensesPage() {
+    @And("^click 'Register Transaction' button on 'Expenses Page'$")
+    public void clickRegisterTransactionButtonOnExpensesPage() {
         expensesPage = (ExpensesPage) expensesPage.clickRegisterTransactionButton();
     }
 
@@ -187,11 +227,9 @@ public class PersonalWalletSteps {
         transferPage = mainMenu.clickTransferButton();
     }
 
-    @Given("^clicked 'Income' button on 'MainMenu' page$")
+    @Given("^click 'Income' button on 'MainMenu' page$")
     public void clickedIncomeButtonOnMainMenuPage() {
         incomePage = mainMenu.clickIncomeButton();
-
-
     }
 
     @And("^filled 'amount in BS' text field with \"([^\"]*)\" on 'Transfer' page$")
@@ -232,11 +270,6 @@ public class PersonalWalletSteps {
     @And("^fill the 'Amount BS' field with \"([^\"]*)\" on the 'Income' page$")
     public void fillTheAmountBSFieldWithOnTheIncomePage(String amount) throws Throwable {
         incomePage = (IncomePage) incomePage.fillAmountField(amount);
-    }
-
-    @And("^fill the 'Date of the Transaction' date field with \"([^\"]*)\" on the 'Income' page$")
-    public void fillTheDateOfTheTransactionDateFieldWithOnTheIncomePage(String date) throws Throwable {
-        incomePage = (IncomePage) incomePage.fillDateField(date);
     }
 
     @And("^click the 'Register Transaction' button on the 'Income' page$")
@@ -290,8 +323,8 @@ public class PersonalWalletSteps {
         incomePage = (IncomePage) incomePage.fillDateField(date);
     }
 
-    @And("^click 'Register Transition' button on 'Income Page'$")
-    public void clickRegisterTransitionButtonOnIncomePage() {
+    @And("^click 'Register Transaction' button on 'Income Page'$")
+    public void clickRegisterTransactionButtonOnIncomePage() {
         incomePage = (IncomePage) incomePage.clickRegisterTransactionButton();
     }
 
@@ -313,5 +346,31 @@ public class PersonalWalletSteps {
     @Then("^check that 'Budget Available in BS' field is visible$")
     public void checkThatBudgetAvailableInBSFieldIsVisible() {
         Assert.assertTrue(transferPage.isBudgetAvailableFieldVisible());
+    }
+    @Then("^Search 'Missing or repeat data to complete register category!' alert on 'Expenses page'$")
+    public void searchMissingOrRepeatDataToCompleteRegisterCategoryAlertOnExpensesPage() {
+        Assert.assertTrue(expensesPage.isCategoryFailAlertVisible());
+    }
+
+    @And("^Confirm that \"([^\"]*)\" is not on 'category' selector on 'Expenses page'$")
+    public void confirmThatIsNotOnCategorySelectorOnExpensesPage(String category) {
+        Assert.assertFalse(expensesPage.searchCategoryOnSelector(category));
+    }
+
+    @And("^Confirm that number of options on 'category selector' is \"([^\"]*)\" on 'Expenses page'$")
+    public void confirmThatNumberOfOptionsOnCategorySelectorIsOnExpensesPage(String number) {
+        Assert.assertEquals(Integer.valueOf(number), Integer.valueOf(expensesPage.getCategorySelectorNumberOptions()));
+    }
+
+    @Then("^Reports table shows$")
+    public void asssertReportsTable(DataTable table) {
+        List< List<String> > reportsPageTable = reportsPage.getTableAsListOfLists();
+        List< List<String> > tableAsList = table.raw();
+        Assert.assertEquals(reportsPageTable, tableAsList);
+    }
+
+    @And("^fill the 'Date of the Transaction' date field with \"([^\"]*)\" on the 'Income' page$")
+    public void fillTheDateOfTheTransactionDateFieldWithOnTheIncomePage(String date) throws Throwable {
+        incomePage = (IncomePage) incomePage.fillDateField(date);
     }
 }

@@ -2,6 +2,7 @@ package uitesting.upb.org.managepage.personalwallet;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import uitesting.upb.org.manageevents.Events;
 import uitesting.upb.org.managepage.BasePage;
 
@@ -33,13 +34,28 @@ public class TransactionsPage extends BasePage {
     @FindBy(id = "transactionFail")
     protected WebElement transactionFailAlert;
 
+    @FindBy(id = "categoryFail")
+    protected WebElement categoryFailAlert;
+
     @FindBy(id = "exit")
     private WebElement exitButton;
+
     @FindBy(id = "transactionSuccess")
     protected WebElement transactionSuccessAlert;
 
+    @FindBy(xpath = "//a[@class='navbar-brand']")
+    private WebElement personalWalletLink;
+
     public boolean isTransactionFailAlertVisible() {
         return Events.isWebElementVisible(transactionFailAlert);
+    }
+
+    public boolean isCategoryFailAlertVisible() {
+        return Events.isWebElementVisible(categoryFailAlert);
+    }
+
+    public int getCategorySelectorNumberOptions () {
+     return Events.getSelectorNumberOptions(new Select(categorySelector));
     }
 
     public boolean isTransactionSuccessAlertVisible() {
@@ -47,6 +63,7 @@ public class TransactionsPage extends BasePage {
     }
 
     public TransactionsPage fillAmountField(String amount) {
+        Events.clearElement(amountField);
        Events.fillField(amountField,amount);
         return this;
     }
@@ -67,6 +84,7 @@ public class TransactionsPage extends BasePage {
     }
 
     public TransactionsPage fillTransactionNameField(String name) {
+        Events.clearElement(transactionNameField);
         Events.fillField(transactionNameField, name);
         return this;
     }
@@ -94,4 +112,8 @@ public class TransactionsPage extends BasePage {
         return new AccountHomeMenu();
     }
 
+    public MainMenu clickPersonalWalletLink() {
+        Events.click(personalWalletLink);
+        return new MainMenu();
+    }
 }
