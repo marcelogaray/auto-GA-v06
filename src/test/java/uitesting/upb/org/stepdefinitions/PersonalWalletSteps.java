@@ -2,7 +2,6 @@ package uitesting.upb.org.stepdefinitions;
 
 
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -220,7 +219,7 @@ public class PersonalWalletSteps {
         Assert.assertTrue(expensesPage.isTransactionFailAlertVisible());
     }
 
-    @Given("^clicked the 'Transfer' Button on 'MainMenu' page$")
+    @Given("^clicked 'Transfer' Button on 'MainMenu' page$")
     public void clickedTheTransferButtonOnMainMenuPage() {
         transferPage = mainMenu.clickTransferButton();
     }
@@ -235,17 +234,17 @@ public class PersonalWalletSteps {
         transferPage = transferPage.fillAmountTransferTextField(amount);
     }
 
-    @And("^click the 'Transfer' Button on 'Transfer' page$")
+    @And("^click 'Transfer' Button on 'Transfer' page$")
     public void clickTheTransferButtonOnTransferPage() {
         transferPage = transferPage.clickTransferButton();
     }
 
-    @Then("^Search the 'Error Message' fail alert on 'Transfer' page$")
+    @Then("^Search 'Error Message' fail alert on 'Transfer' page$")
     public void searchTheErrorMessageFailAlertOnTransferPage() {
         Assert.assertTrue(transferPage.isTransferErrorMessageVisible());
     }
 
-    @And("^select the \"([^\"]*)\" value on 'Destination Account' selector on 'Transfer' Page$")
+    @And("^select \"([^\"]*)\" value on 'Destination Account' selector on 'Transfer' Page$")
     public void selectTheValueOnDestinationAccountSelectorOnTransferPage(String accountDestination) throws Throwable {
         transferPage = transferPage.selectAccountDestination(accountDestination);
     }
@@ -255,27 +254,7 @@ public class PersonalWalletSteps {
         Assert.assertTrue(transferPage.isTransferSuccessMessageVisible());
     }
 
-    @And("^fill the 'Name' field with \"([^\"]*)\" on the 'Income' page$")
-    public void fillTheNameFieldWithOnTheIncomePage(String name) throws Throwable {
-        incomePage = (IncomePage) incomePage.fillTransactionNameField(name);
-    }
-
-    @And("^select \"([^\"]*)\" value on the 'Category' selector on the 'Income' page$")
-    public void selectValueOnTheCategorySelectorOnTheIncomePage(String category) throws Throwable {
-        incomePage = (IncomePage) incomePage.selectCategory(category);
-    }
-
-    @And("^fill the 'Amount BS' field with \"([^\"]*)\" on the 'Income' page$")
-    public void fillTheAmountBSFieldWithOnTheIncomePage(String amount) throws Throwable {
-        incomePage = (IncomePage) incomePage.fillAmountField(amount);
-    }
-
-    @And("^click the 'Register Transaction' button on the 'Income' page$")
-    public void clickTheRegisterTransactionButtonOnTheIncomePage() {
-        incomePage = (IncomePage) incomePage.clickRegisterTransactionButton();
-    }
-
-    @Then("^click the 'Exit' button on the 'Income' page$")
+    @Then("^click 'Exit' button on 'Income' page$")
     public void clickTheExitButtonOnTheIncomePage() {
         accountHomeMenu = incomePage.clickExitButton();
     }
@@ -385,11 +364,6 @@ public class PersonalWalletSteps {
         List< List<String> > reportsPageTable = reportsPage.getTableAsListOfLists();
         List< List<String> > tableAsList = table.raw();
         Assert.assertEquals(reportsPageTable, tableAsList);
-    }
-
-    @And("^fill 'Date of the Transaction' date field with \"([^\"]*)\" on 'Income' page$")
-    public void fillTheDateOfTheTransactionDateFieldWithOnTheIncomePage(String date) throws Throwable {
-        incomePage = (IncomePage) incomePage.fillDateField(date);
     }
 
     @Then("^check the 'Total Amount' label is \"([^\"]*)\" on 'Main Menu'$")

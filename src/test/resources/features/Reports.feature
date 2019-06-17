@@ -32,12 +32,12 @@ Feature: Test reports for new account
     And fill 'income name' field with "Ingreso1" on 'Income Page'
     And select "Salary" values on 'category' selector on 'Income Page'
     And fill 'AmountBS' field with "100" on 'Income Page'
-    And fill 'Date of the Transaction' date field with "12/04/2019" on 'Income' page
+    And fill 'DateField' field with "12/04/2019" on 'Income Page'
     And click 'Register Transaction' button on 'Income Page'
     Given fill 'income name' field with "Ingreso2" on 'Income Page'
     And select "Others" values on 'category' selector on 'Income Page'
     And fill 'AmountBS' field with "1000" on 'Income Page'
-    And fill 'Date of the Transaction' date field with "11/04/2019" on 'Income' page
+    And fill 'DateField' field with "11/04/2019" on 'Income Page'
     And click 'Register Transaction' button on 'Income Page'
     Given Click 'Personal wallet' button on 'income' page
     And Click 'Reports' button on 'main menu' page
@@ -55,12 +55,12 @@ Feature: Test reports for new account
     And fill 'income name' field with "Ingreso1" on 'Income Page'
     And select "Salary" values on 'category' selector on 'Income Page'
     And fill 'AmountBS' field with "100" on 'Income Page'
-    And fill 'Date of the Transaction' date field with "12/04/2019" on 'Income' page
+    And fill 'DateField' field with "12/04/2019" on 'Income Page'
     And click 'Register Transaction' button on 'Income Page'
     Given fill 'income name' field with "Ingreso2" on 'Income Page'
     And select "Others" values on 'category' selector on 'Income Page'
     And fill 'AmountBS' field with "1000" on 'Income Page'
-    And fill 'Date of the Transaction' date field with "11/04/2019" on 'Income' page
+    And fill 'DateField' field with "11/04/2019" on 'Income Page'
     And click 'Register Transaction' button on 'Income Page'
     Given Click 'Personal wallet' button on 'income' page
     And click 'Expenses' button on 'MainMenu' page
@@ -85,7 +85,7 @@ Feature: Test reports for new account
     And fill 'income name' field with "Ingreso1" on 'Income Page'
     And select "Salary" values on 'category' selector on 'Income Page'
     And fill 'AmountBS' field with "100" on 'Income Page'
-    And fill 'Date of the Transaction' date field with "12/04/2019" on 'Income' page
+    And fill 'DateField' field with "12/04/2019" on 'Income Page'
     And click 'Register Transaction' button on 'Income Page'
     Given Click 'Personal wallet' button on 'income' page
     And click 'Expenses' button on 'MainMenu' page
@@ -106,7 +106,7 @@ Feature: Test reports for new account
     And fill 'income name' field with "Ingreso1" on 'Income Page'
     And select "Salary" values on 'category' selector on 'Income Page'
     And fill 'AmountBS' field with "100" on 'Income Page'
-    And fill 'Date of the Transaction' date field with "12/04/2019" on 'Income' page
+    And fill 'DateField' field with "12/04/2019" on 'Income Page'
     And click 'Register Transaction' button on 'Income Page'
     Given Click 'Personal wallet' button on 'income' page
     And click 'Expenses' button on 'MainMenu' page
