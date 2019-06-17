@@ -185,4 +185,10 @@ public class WalletStepdefs {
     public void getLengthOfAccountListListInAccountCreatorPage() {
          //accountCreator.getAccountListLength();
     }
+
+    @And("^Click 'Home Page' button in 'NavBar' page$")
+    public void clickHomePageButtonInNavBarPage() {
+        navBar.clickHomeButton();
+
+    }
 }

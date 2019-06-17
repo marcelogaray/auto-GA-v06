@@ -10,6 +10,9 @@ public class NavBar extends BasePage {
     @FindBy(id = "settings")
     private WebElement accountSettingsButton;
 
+    @FindBy(id = "exit")
+    private WebElement homeButton;
+
 
     public AccountSettings clickAccountSettings() {
 
@@ -19,5 +22,9 @@ public class NavBar extends BasePage {
 
     public boolean navBarIsVisible() {
         return Events.isVisibleWebElement(accountSettingsButton);
+    }
+
+    public void clickHomeButton(){
+        Events.click(homeButton);
     }
 }
