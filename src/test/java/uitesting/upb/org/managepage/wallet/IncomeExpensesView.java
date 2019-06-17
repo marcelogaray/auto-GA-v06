@@ -85,7 +85,4 @@ public class IncomeExpensesView extends BasePage {
         Events.click(accountmainmenu);
     }
 
-    public void clickExpenseCategoryButton() {
-        Events.selectByText(categorySelectField, "Expenses");   }
-
 }

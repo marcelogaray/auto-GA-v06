@@ -24,7 +24,6 @@ Feature: Modify an existing expense
       Then click 'Register Transaction' button
       Then select expense registered on 'Expense View'
 
-
   Scenario: Can not enter letters in the modify amount field
     And fill "abc" 'Enter new amount' input on 'Income Expenses View'
     Then 'Enter new amount' input is zero
