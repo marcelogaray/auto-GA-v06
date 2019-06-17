@@ -20,14 +20,22 @@ public class Events {
         DriverManager.getInstance().wait.until(ExpectedConditions.elementToBeClickable(by)).click();
     }
 
+    public static void clearElement(WebElement element) {
+        DriverManager.getInstance().wait.until(ExpectedConditions.elementToBeClickable(element)).clear();
+    }
+
     public static void fillField(WebElement searchTextField, String text) {
         DriverManager.getInstance().wait.until(ExpectedConditions.elementToBeClickable(searchTextField)).sendKeys(text);
     }
 
-    public static WebElement GetWebElementById(String id) {
+    public static WebElement getElementByBy(By by) {
+        return DriverManager.getInstance().getWebDriver().findElement(by);
+    }
+
+    public static WebElement getWebElementById(String id) {
         return DriverManager.getInstance().getWebDriver().findElement(By.id(id));
     }
-    public static int GetNumberOfElements(String xpathSelector) {
+    public static int getNumberOfElements(String xpathSelector) {
         List<WebElement> webElements = DriverManager.getInstance().getWebDriver().findElements(By.xpath(xpathSelector));
         return webElements.size();
     }
@@ -35,8 +43,12 @@ public class Events {
         return DriverManager.getInstance().wait.until(ExpectedConditions.visibilityOf(webElement)).isDisplayed();
     }
 
-    public static void selectOptionInSelectElement(Select selectElement, String value) {
+    public static void selectOptionInSelectElementByValue(Select selectElement, String value) {
         selectElement.selectByValue(value);
+    }
+
+    public static void selectOptionInSelectElementByVisibleText(Select selectElement, String text) {
+        selectElement.selectByVisibleText(text);
     }
 
     public static int getNumberOfElements(By by) {
@@ -53,5 +65,6 @@ public class Events {
     public static int getSelectorNumberOptions (Select select) {
         return select.getOptions().size();
     }
+
 
 }

@@ -39,6 +39,7 @@ public class TransactionsPage extends BasePage {
 
     @FindBy(id = "exit")
     private WebElement exitButton;
+
     @FindBy(id = "transactionSuccess")
     protected WebElement transactionSuccessAlert;
 
@@ -70,6 +71,9 @@ public class TransactionsPage extends BasePage {
 
 
 
+    @FindBy(xpath = "//a[@class='navbar-brand']")
+    private WebElement personalWalletLink;
+
     public boolean isTransactionFailAlertVisible() {
         return Events.isWebElementVisible(transactionFailAlert);
     }
@@ -87,6 +91,7 @@ public class TransactionsPage extends BasePage {
     }
 
     public TransactionsPage fillAmountField(String amount) {
+        Events.clearElement(amountField);
        Events.fillField(amountField,amount);
         return this;
     }
@@ -107,6 +112,7 @@ public class TransactionsPage extends BasePage {
     }
 
     public TransactionsPage fillTransactionNameField(String name) {
+        Events.clearElement(transactionNameField);
         Events.fillField(transactionNameField, name);
         return this;
     }
@@ -134,6 +140,10 @@ public class TransactionsPage extends BasePage {
         return new AccountHomeMenu();
     }
 
+    public MainMenu clickPersonalWalletLink() {
+        Events.click(personalWalletLink);
+        return new MainMenu();
+    }
     public boolean isChangeSuccessAlertVisible() {
         return Events.isWebElementVisible(changeSuccesAlert);
     }
