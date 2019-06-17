@@ -360,7 +360,7 @@ public class PersonalWalletSteps {
 
     @Then("^Search 'changeFail' alert on 'Income page'$")
     public void searchChangeFailAlertOnIncomePage() {
-        Assert.assertTrue(incomePage.isCategoryFailAlertVisible());
+        Assert.assertTrue(incomePage.isChangeFailAlertVisible());
     }
 
     @And("^fill 'Select transaction Name' with \"([^\"]*)\" field on 'Income page'$")
