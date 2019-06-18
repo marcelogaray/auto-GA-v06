@@ -11,22 +11,26 @@ Feature: Editar una cuenta
     Then Click 'Account Settings' button in 'NavBar' page
     When 'Account Settings' window is loaded
 
-  Scenario: Edit account name with alphanumeric characters
+  Scenario: Verify Account name can be edited with alphanumeric characters in 'Account Main Menu' Page
 
     Then Fill 'Account Name' text field with "Puna" in 'Account Settings' page
     And Click 'Change name' button in 'Account Settings' page
 
-  Scenario: With empty character
+  Scenario: Verify Account name cannot be edited with empty character in 'Account Main Menu' Page
 
     Then Fill 'Account Name' text field with " " in 'Account Settings' page
     And Click 'Change name' button in 'Account Settings' page
 
-  Scenario: With special characters
+  Scenario: Verify Account name can be edited with special characters in 'Account Main Menu' Page
 
     Then Fill 'Account Name' text field with "!@#$%^" in 'Account Settings' page
     And Click 'Change name' button in 'Account Settings' page
 
-  Scenario: Cancel Edit
+  Scenario: Verify edit can be cancelled without changing the name in 'Account Main Menu' Page
 
     Then Fill 'Account Name' text field with "Fernando" in 'Account Settings' page
     And Click 'Home Page' button in 'NavBar' page
+
+  Scenario: Verify 'Delete' Button deletes 'Mateo' account in 'Account Settings' Page
+
+    Then Click 'Delete' button in Account Settings

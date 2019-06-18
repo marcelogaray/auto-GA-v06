@@ -1,7 +1,7 @@
 
 Feature: Anadir cuenta con nombre repetido
 
-Scenario: Add account with name repeated
+Scenario: Verify account with repeated name cannot be added in 'Account Creator' Page
     Given Browser is loaded
     Then Fill 'Account Name' text field in 'Account Creator' page
     And Click 'Add' button in 'Account Creator' page

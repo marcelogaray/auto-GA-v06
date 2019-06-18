@@ -32,7 +32,7 @@ Feature: ELiminar ingresos y egresos
     Then click 'Register Transaction' button
     Then Click 'Personal Wallet' Button in 'NavBar' Page
 
-  Scenario: Delete income
+  Scenario: Verify 'Delete' Button deletes income in 'Report Table' Page
 
     When  'Account Main Menu' Page is loaded
     Then Click 'Report' button in 'Account Main Menu' Page
@@ -41,7 +41,7 @@ Feature: ELiminar ingresos y egresos
     Then Click 'Show Report' Button in 'Report' Page
     And Click 'Mateo' delete button in 'Report' table in 'Report' page
 
-  Scenario: Delete expense
+  Scenario: Verify 'Delete' Button deletes expense in 'Report Table' Page
 
     When  'Account Main Menu' Page is loaded
     Then Click 'Report' button in 'Account Main Menu' Page
