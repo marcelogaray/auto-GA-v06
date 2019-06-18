@@ -215,8 +215,6 @@ public class WalletStepdefs {
         accountSettings.writeInChangeAccountNameTextField(nuevoNombre);
     }
 
-
-
     @And("^Click 'Change name' button in 'Account Settings' page$")
     public void clickChangeNameButtonInAccountSettings() {
         accountSettings.clickChangeNameButton();
@@ -345,6 +343,24 @@ public class WalletStepdefs {
     @Then("^Text field 'Account Name' should be empty in  'Account Creator' Page$")
     public void textFieldAccountNameShouldBeClear() {
         Assert.assertTrue(accountCreator.isAccountNameTextFieldEmpty());
+    }
+
+
+    int lengthOfAccountListBefore;
+
+    @And("^List 'Account List' length should not change in 'Account Creator Page'$")
+    public void listAccountListShouldHaveTheSameLength() {
+
+        Assert.assertEquals(lengthOfAccountListBefore,accountCreator.getAccountListLength());
+
+    }
+
+    @Then("^Get length of 'Account List' List in 'Account Creator' Page$")
+    public void getLengthOfAccountListListInAccountCreatorPage() {
+        
+          lengthOfAccountListBefore = accountCreator.getAccountListLength();
+        System.out.println(lengthOfAccountListBefore);
+
     }
 
     @And("^Click 'Home Page' button in 'NavBar' page$")
