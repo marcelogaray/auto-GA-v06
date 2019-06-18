@@ -8,18 +8,18 @@ import uitesting.upb.org.managepage.BasePage;
 public class ReportTable extends BasePage {
 
     @FindBy(xpath = "//*[@id=\"reportTable\"]/div/table/tbody/tr[1]/button")
-    private WebElement buttonEliminarIncomeMateo;
+    private WebElement buttonEliminarIncome0;
 
-    @FindBy(xpath = "//*[@id=\"reportTable\"]/div/table/tbody/tr[3]/button")
-    private  WebElement buttonEliminarExpenseCelular;
+    @FindBy(xpath = "//*[@id=\"reportTable\"]/div/table/tbody/tr[2]/button")
+    private  WebElement buttonEliminarExpense0;
 
 
     public void clickDeleteIncomeMateo(){
-        Events.click(buttonEliminarIncomeMateo);
+        Events.click(buttonEliminarIncome0);
     }
 
     public void clickDeleteExpenseCelular(){
-        Events.click(buttonEliminarExpenseCelular);
+        Events.click(buttonEliminarExpense0);
     }
 
 }

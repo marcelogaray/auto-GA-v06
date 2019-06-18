@@ -189,7 +189,7 @@ public class WalletStepdefs {
     @When("^'Navbar' is loaded in 'Nav Bar' page$")
     public void navbarIsLoaded() {
         boolean isVisible = navBar.navBarIsVisible();
-        org.junit.Assert.assertTrue(isVisible);
+        Assert.assertTrue(isVisible);
     }
 
     @Then("^Click 'Account Settings' button in 'NavBar' page$")
@@ -368,4 +368,15 @@ public class WalletStepdefs {
         navBar.clickHomeButton();
     }
 
+    @When("^'Navbar' is loaded in 'Income' page$")
+    public void navbarIsLoadedInIncomePage() {
+
+        navBar = new NavBar();
+
+    }
+
+    @Then("^Click 'Personal Wallet' Button in 'NavBar' Page$")
+    public void clickPersonalWalletButtonInNavBarPage() {
+       accountMainMenu = navBar.clickPersonalWalletButton();
+    }
 }
