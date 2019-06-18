@@ -249,11 +249,6 @@ public class PersonalWalletSteps {
         transferPage = transferPage.selectAccountDestination(accountDestination);
     }
 
-    @Then("^search the 'Success Message' alert on 'Transfer' page$")
-    public void searchTheSuccessMessageAlertOnTransferPage() {
-        Assert.assertTrue(transferPage.isTransferSuccessMessageVisible());
-    }
-
     @Then("^click 'Exit' button on 'Income' page$")
     public void clickTheExitButtonOnTheIncomePage() {
         accountHomeMenu = incomePage.clickExitButton();
@@ -434,5 +429,10 @@ public class PersonalWalletSteps {
     public void fillSelectTransactionNameWithFieldOnIncomePage(String oldName) {
         incomePage = (IncomePage) incomePage.fillOldTransactionNameField(oldName);
 
+    }
+
+    @Then("^search 'Success Message' alert on 'Transfer' page$")
+    public void searchSuccessMessageAlertOnTransferPage() {
+        Assert.assertTrue(transferPage.isTransferSuccessMessageVisible());
     }
 }

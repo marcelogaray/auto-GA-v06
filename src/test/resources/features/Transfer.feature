@@ -17,7 +17,7 @@ Feature: Trasnfer Between Accounts
 
   Scenario: Error Message is displayed when No Category is Selected to Transfer
     Given click 'Income' button on 'MainMenu' page
-      And fill 'category name' field with "TestIncome" on 'Income page'
+      And fill 'income name' field with "Prueba income 1" on 'Income Page'
       And select "Others" values on 'category' selector on 'Income Page'
       And fill 'AmountBS' field with "10000" on 'Income Page'
       And fill 'DateField' field with "12/06/2019" on 'Income Page'
@@ -31,7 +31,7 @@ Feature: Trasnfer Between Accounts
 
   Scenario: Error Message is displayed when No Ammount is filled in text field on 'Transfer' page
     Given click 'Income' button on 'MainMenu' page
-      And  fill 'category name' field with "TestIncome" on 'Income page'
+      And  fill 'income name' field with "Prueba income 1" on 'Income Page'
       And select "Others" values on 'category' selector on 'Income Page'
     And fill 'AmountBS' field with "10000" on 'Income Page'
     And fill 'DateField' field with "12/06/2019" on 'Income Page'
@@ -45,8 +45,8 @@ Feature: Trasnfer Between Accounts
 
   Scenario: Success Message is displayed when filled 'Amount BS' with natural number
     Given click 'Income' button on 'MainMenu' page
-      And  fill 'category name' field with "TestIncome" on 'Income page'
-      And select "Others" values on 'category' selector on 'Income Page'
+    And fill 'income name' field with "Prueba income 1" on 'Income Page'
+    And select "Others" values on 'category' selector on 'Income Page'
     And fill 'AmountBS' field with "10000" on 'Income Page'
     And fill 'DateField' field with "12/06/2019" on 'Income Page'
     And click 'Register Transaction' button on 'Income Page'
@@ -56,7 +56,7 @@ Feature: Trasnfer Between Accounts
     And select "Destination" value on 'Destination Account' selector on 'Transfer' Page
     And filled 'amount in BS' text field with "50" on 'Transfer' page
     And click 'Transfer' Button on 'Transfer' page
-    Then search the 'Success Message' alert on 'Transfer' page
+    Then search 'Success Message' alert on 'Transfer' page
 
   Scenario: Check title 'Transfer' appears on 'Transfer' Page
     Given clicked 'Transfer' Button on 'MainMenu' page
@@ -68,7 +68,7 @@ Feature: Trasnfer Between Accounts
 
   Scenario: 'Budget Available in Bs' field is visible after successfull transfer
     Given click 'Income' button on 'MainMenu' page
-      And fill 'category name' field with "TestIncome" on 'Income page'
+      And fill 'income name' field with "Prueba income 1" on 'Income Page'
       And select "Others" values on 'category' selector on 'Income Page'
     And fill 'AmountBS' field with "10000" on 'Income Page'
     And fill 'DateField' field with "12/06/2019" on 'Income Page'
@@ -79,12 +79,12 @@ Feature: Trasnfer Between Accounts
     And select "Destination" value on 'Destination Account' selector on 'Transfer' Page
     And filled 'amount in BS' text field with "20" on 'Transfer' page
     And click 'Transfer' Button on 'Transfer' page
-    Then search the 'Success Message' alert on 'Transfer' page
+    Then search 'Success Message' alert on 'Transfer' page
     Then check that 'Budget Available in BS' field is visible
 
       Scenario: Error Message is displayed when filled 'Amount BS' field with negative number
         Given click 'Income' button on 'MainMenu' page
-          And fill 'category name' field with "TestIncome" on 'Income page'
+          And fill 'income name' field with "Prueba income 1" on 'Income Page'
           And select "Others" values on 'category' selector on 'Income Page'
         And fill 'AmountBS' field with "10000" on 'Income Page'
         And fill 'DateField' field with "12/06/2019" on 'Income Page'
@@ -99,7 +99,7 @@ Feature: Trasnfer Between Accounts
 
       Scenario: Success Message is displayed when filled 'Amount BS' field with Rational number
         Given click 'Income' button on 'MainMenu' page
-        And fill 'category name' field with "TestIncome" on 'Income page'
+        And fill 'income name' field with "Prueba income 1" on 'Income Page'
         And select "Others" values on 'category' selector on 'Income Page'
         And fill 'AmountBS' field with "10000" on 'Income Page'
         And fill 'DateField' field with "12/06/2019" on 'Income Page'
@@ -110,11 +110,11 @@ Feature: Trasnfer Between Accounts
         And select "Destination" value on 'Destination Account' selector on 'Transfer' Page
         And filled 'amount in BS' text field with "50.12" on 'Transfer' page
         And click 'Transfer' Button on 'Transfer' page
-        Then search the 'Success Message' alert on 'Transfer' page
+        Then search 'Success Message' alert on 'Transfer' page
 
       Scenario: Error Message is displayed when natural number filled in 'Amount BS' field exceeds 'Budget available in Bs' amount
         Given click 'Income' button on 'MainMenu' page
-          And fill 'category name' field with "TestIncome" on 'Income page'
+          And fill 'income name' field with "Prueba income 1" on 'Income Page'
           And select "Others" values on 'category' selector on 'Income Page'
         And fill 'AmountBS' field with "10000" on 'Income Page'
         And fill 'DateField' field with "12/06/2019" on 'Income Page'
