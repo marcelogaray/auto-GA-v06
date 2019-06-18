@@ -179,11 +179,16 @@ public class WalletStepdefs {
     @And("^List 'Account List' length should not change in 'Account Creator Page'$")
     public void listAccountListShouldHaveTheSameLength() {
 
+        Assert.assertEquals(lengthOfAccountListBefore,accountCreator.getAccountListLength());
+
     }
 
     @Then("^Get length of 'Account List' List in 'Account Creator' Page$")
     public void getLengthOfAccountListListInAccountCreatorPage() {
-         //accountCreator.getAccountListLength();
+        
+          lengthOfAccountListBefore = accountCreator.getAccountListLength();
+        System.out.println(lengthOfAccountListBefore);
+
     }
 
     @And("^Click 'Home Page' button in 'NavBar' page$")
