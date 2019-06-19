@@ -2,6 +2,7 @@ package uitesting.upb.org.manageevents;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import uitesting.upb.org.webdrivermanager.DriverManager;
@@ -66,5 +67,9 @@ public class Events {
         return select.getOptions().size();
     }
 
+    public static void hoverElement(WebElement webElement) {
+        Actions action = new Actions(DriverManager.getInstance().getWebDriver());
+        action.moveToElement(webElement).build().perform();
+    }
 
 }
