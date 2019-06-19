@@ -8,21 +8,21 @@ import uitesting.upb.org.managepage.BasePage;
 
 public class ShoeButton extends BasePage {
 
-    @FindBy(xpath = "//*[@id=\"app\"]/div/div[3]/div/div[2]/div/div/div[2]/div[2]/div[2]/div/div")
+    @FindBy(xpath = "//*[@class=\"gl-product-card__image performance-item\" and @title=\"Calzado de Fútbol Nemeziz 19.3 Terreno Firme\"]")
     private WebElement shoeButton;
 
-    @FindBy(xpath = "//*[@id=\"app\"]/div/div[3]/div/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/div[2]/a/div[2]/div[2]/span")
+    @FindBy(xpath = "//*[@class=\"gl-price__value\" and contains(.,'$2,199')]")
     private WebElement priceTag;
 
 
 
     public String getPrecio(){
-        return priceTag.getText();
+
+        return Events.getText(priceTag);
     }
 
-    public ShoeDescription clickShoeButton(){
+    public void clickShoeButton(){
 
         Events.click(shoeButton);
-        return new ShoeDescription();
     }
 }

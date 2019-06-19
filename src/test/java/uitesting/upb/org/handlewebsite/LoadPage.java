@@ -18,6 +18,7 @@ public class LoadPage {
     }
 
     public static AdidasNavBar loadAdidasNavBar(){
+        DriverManager.getInstance().getWebDriver().manage().window().maximize();
         DriverManager.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getBaseURL());
             return new AdidasNavBar();
     }
@@ -32,31 +33,25 @@ public class LoadPage {
         return new ShoeButton();
     }
 
-    public static void main(String[] args) throws InterruptedException{
+    public static void main(String[] args){
 
 
         AdidasNavBar navBar;
         ShoeButton shoeButton;
         ShoeDescription shoeDescription;
 
-       /* AdidasNavBar navbar = LoadPage.loadAdidasNavBar();
+        navBar = LoadPage.loadAdidasNavBar();
+        navBar.hoverHombre();
 
-        try{
-            navbar.hoverHombre();
-            navbar.clickSubMenuFutbol();
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
-
+        /*
         shoeButton = LoadPage.loadShoeButton();
-       String precio = shoeButton.getPrecio();
+        String precio = shoeButton.getPrecio();
         System.out.println(precio);
        shoeDescription = shoeButton.clickShoeButton();
         TimeUnit.SECONDS.sleep(1);
 
         shoeDescription.clickEligeTuTalla();
-       shoeDescription.clickTalla85();
+       shoeDescription.clickTalla85();*/
 
     }
 }

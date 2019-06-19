@@ -379,4 +379,5 @@ public class WalletStepdefs {
     public void clickPersonalWalletButtonInNavBarPage() {
        accountMainMenu = navBar.clickPersonalWalletButton();
     }
+
 }

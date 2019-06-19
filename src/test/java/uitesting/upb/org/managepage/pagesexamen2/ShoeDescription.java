@@ -1,29 +1,34 @@
 package uitesting.upb.org.managepage.pagesexamen2;
 
+import com.sun.xml.internal.rngom.parse.host.Base;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import uitesting.upb.org.manageevents.Events;
+import uitesting.upb.org.managepage.BasePage;
 
-import java.awt.*;
+public class ShoeDescription extends BasePage {
 
-public class ShoeDescription {
-
-    @FindBy(xpath = "//*[@id=\"app\"]/div/div/div[3]/div/div[3]/div[3]/div[2]/div/div/form/div[2]/div[1]/div/div/button")
+    @FindBy(xpath = "//*[@class=\"gl-dropdown__select label dropdown-select\" and @title=\"Elige tu talla\"]")
     private WebElement eligeTuTalla;
 
 
-    @FindBy(xpath = "//*[@id=\"app\"]/div/div/div[3]/div/div[3]/div[3]/div[2]/div/div/form/div[2]/div[1]/div/div/div/div/ul/li[6]/button")
+    @FindBy(xpath = "//*[@class=\"gl-menu__element\" and @title=\"MX 8.5\"]")
     private  WebElement talla85;
 
-
+    @FindBy(xpath = "//*[@class=\"gl-cta gl-cta--primary gl-cta--full-width btn-bag\"]")
+    private  WebElement anadirAlCarritoButton;
 
     public void clickEligeTuTalla(){
         Events.click(eligeTuTalla);
     }
 
-
-
     public void clickTalla85(){
         Events.click(talla85);
     }
+
+    public ShoeAddedToCart clickAnadirCarrito(){
+        Events.click(anadirAlCarritoButton);
+        return new ShoeAddedToCart();
+    }
+
 }
