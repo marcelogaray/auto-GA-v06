@@ -2,6 +2,7 @@ package uitesting.upb.org.manageevents;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import uitesting.upb.org.webdrivermanager.DriverManager;
@@ -13,6 +14,10 @@ import java.util.List;
  */
 
 public class Events {
+    public static void mouseHover(WebElement webElement, WebElement subtab) {
+        Actions a = new Actions(DriverManager.getInstance().getWebDriver());
+        a.moveToElement(webElement).moveToElement(subtab).click().build().perform();
+    }
     public static void click(WebElement webElement){
         DriverManager.getInstance().wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
     }
