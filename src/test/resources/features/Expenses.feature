@@ -55,4 +55,128 @@ Feature: Manage Expenses
     And fill 'AmountBS' field with "1" on 'Expenses Page'
     And click 'Register Transaction' button on 'Expenses Page'
     Then Search 'transaction fail' alert on 'Expenses Page'
-
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    And fill 'expense name' field with "Prueba" on 'Expenses Page'
+    And select "Others" values on 'category' selector on 'Expenses Page'
+    And fill 'AmountBS' field with "1" on 'Expenses Page'
+    And fill 'Date of the Transaction' field with "05/23/2019" on 'Expenses Page'
+    And click 'Register Transaction' button on 'Expenses Page'
+    Then Search 'transaction success' alert on 'Expenses' page
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    And fill 'expense name' field with "Prueba" on 'Expenses Page'
+    And select "Others" values on 'category' selector on 'Expenses Page'
+    And fill 'AmountBS' field with "1" on 'Expenses Page'
+    And fill 'Date of the Transaction' field with "05/23/2019" on 'Expenses Page'
+    And click 'Register Transaction' button on 'Expenses Page'
+    Then Search 'transaction fail' alert on 'Expenses Page'
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    And fill 'expense name' field with "Prueba1" on 'Expenses Page'
+    And select "Others" values on 'category' selector on 'Expenses Page'
+    And fill 'AmountBS' field with "0" on 'Expenses Page'
+    And fill 'Date of the Transaction' field with "05/23/2019" on 'Expenses Page'
+    And click 'Register Transaction' button on 'Expenses Page'
+    Then Search 'transaction fail' alert on 'Expenses Page'
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    And fill 'expense name' field with "Prueba1" on 'Expenses Page'
+    And select "Others" values on 'category' selector on 'Expenses Page'
+    And fill 'AmountBS' field with "-10" on 'Expenses Page'
+    And fill 'Date of the Transaction' field with "05/23/2019" on 'Expenses Page'
+    And click 'Register Transaction' button on 'Expenses Page'
+    Then Search 'transaction fail' alert on 'Expenses Page'
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    And fill 'expense name' field with "Prueba1" on 'Expenses Page'
+    And select "Others" values on 'category' selector on 'Expenses Page'
+    And fill 'AmountBS' field with "100000" on 'Expenses Page'
+    And fill 'Date of the Transaction' field with "05/23/2019" on 'Expenses Page'
+    And click 'Register Transaction' button on 'Expenses Page'
+    Then Search 'transaction fail' alert on 'Expenses Page'
+    Then fill 'new name' field with "prueba1" on 'Expenses Page'
+    And select category "Others" in 'new caegory' on 'expenses page'
+    And fill 'new date' field with "05/23/2019" on 'expense page'
+    And fill 'new amount' with "1" on 'expense page'
+    And click 'Register Changes' button' on 'Expense' page
+    Then Search 'changeFail' alert on 'Expenses page'
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    Then Select 'name' "Prueba" on 'Expenses Page'
+    And select category "Others" in 'new caegory' on 'expenses page'
+    And fill 'new date' field with "05/23/2019" on 'expense page'
+    And fill 'new amount' with "1" on 'expense page'
+    And click 'Register Changes' button' on 'Expense' page
+    Then Search 'changeFail' alert on 'Expenses page'
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    Then Select 'name' "Prueba" on 'Expenses Page'
+    Then fill 'new name' field with "prueba1" on 'Expenses Page'
+    And fill 'new date' field with "05/23/2019" on 'expense page'
+    And fill 'new amount' with "1" on 'expense page'
+    And click 'Register Changes' button' on 'Expense' page
+    Then Search 'changeFail' alert on 'Expenses page'
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    Then Select 'name' "Prueba" on 'Expenses Page'
+    Then fill 'new name' field with "prueba1" on 'Expenses Page'
+    And select category "Others" in 'new caegory' on 'expenses page'
+    And fill 'new amount' with "1" on 'expense page'
+    And click 'Register Changes' button' on 'Expense' page
+    Then Search 'changeFail' alert on 'Expenses page'
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    Then Select 'name' "Prueba" on 'Expenses Page'
+    Then fill 'new name' field with "prueba1" on 'Expenses Page'
+    And select category "Others" in 'new caegory' on 'expenses page'
+    And fill 'new date' field with "05/23/2019" on 'expense page'
+    And click 'Register Changes' button' on 'Expense' page
+    Then Search 'changeFail' alert on 'Expenses page'
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    Then Select 'name' "Prueba" on 'Expenses Page'
+    Then fill 'new name' field with "prueba1" on 'Expenses Page'
+    And select category "Others" in 'new caegory' on 'expenses page'
+    And fill 'new date' field with "05/23/2019" on 'expense page'
+    And fill 'new amount' with "1" on 'expense page'
+    And click 'Register Changes' button' on 'Expense' page
+    Then Search 'changeFail' alert on 'Expenses page'
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    Then Select 'name' "Prueba" on 'Expenses Page'
+    Then fill 'new name' field with "Prueba" on 'Expenses Page'
+    And select category "Others" in 'new caegory' on 'expenses page'
+    And fill 'new date' field with "05/23/2019" on 'expense page'
+    And fill 'new amount' with "1" on 'expense page'
+    And click 'Register Changes' button' on 'Expense' page
+    Then Search 'changeFail' alert on 'Expenses page'
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    Then Select 'name' "Prueba" on 'Expenses Page'
+    Then fill 'new name' field with "prueba1" on 'Expenses Page'
+    And select category "Others" in 'new caegory' on 'expenses page'
+    And fill 'new date' field with "05/23/2019" on 'expense page'
+    And fill 'new amount' with "0" on 'expense page'
+    And click 'Register Changes' button' on 'Expense' page
+    Then Search 'changeFail' alert on 'Expenses page'
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    Then Select 'name' "Prueba" on 'Expenses Page'
+    Then fill 'new name' field with "prueba1" on 'Expenses Page'
+    And select category "Others" in 'new caegory' on 'expenses page'
+    And fill 'new date' field with "05/23/2019" on 'expense page'
+    And fill 'new amount' with "-10" on 'expense page'
+    And click 'Register Changes' button' on 'Expense' page
+    Then Search 'changeFail' alert on 'Expenses page'
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
+    Then Select 'name' "Prueba" on 'Expenses Page'
+    Then fill 'new name' field with "prueba1" on 'Expenses Page'
+    And select category "Others" in 'new caegory' on 'expenses page'
+    And fill 'new date' field with "05/23/2019" on 'expense page'
+    And fill 'new amount' with "100000" on 'expense page'
+    And click 'Register Changes' button' on 'Expense' page
+    Then Search 'changeFail' alert on 'Expenses page'
+    And click 'PersonalWallet' button on 'Header' page
+    Then click 'Expenses' button on 'MainMenu' page
