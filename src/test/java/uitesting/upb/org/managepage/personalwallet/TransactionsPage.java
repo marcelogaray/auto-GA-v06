@@ -69,15 +69,16 @@ public class TransactionsPage extends BasePage {
     @FindBy(id = "buttonChange")
     protected WebElement registerChangesButton;
 
-
-
-
-
     @FindBy(xpath = "//a[@class='navbar-brand']")
     private WebElement personalWalletLink;
 
     @FindBy (id = "old-name")
     private WebElement transactionNameSelector;
+
+    public TransactionsPage clearCategoryNameField () {
+        Events.clearElement(categoryRegisterField);
+        return this;
+    }
 
     public boolean isTransactionFailAlertVisible() {
         return Events.isWebElementVisible(transactionFailAlert);

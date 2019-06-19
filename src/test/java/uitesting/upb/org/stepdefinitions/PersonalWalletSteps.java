@@ -461,4 +461,9 @@ public class PersonalWalletSteps {
         incomePage = (IncomePage) incomePage.fillOldTransactionNameField(oldName);
 
     }
+
+    @And("^clear 'category name' field on 'Expenses page'$")
+    public void clearCategoryNameFieldOnExpensesPage() {
+        expensesPage = (ExpensesPage) expensesPage.clearCategoryNameField();
+    }
 }

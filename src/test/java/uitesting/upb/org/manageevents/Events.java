@@ -14,10 +14,6 @@ import java.util.List;
  */
 
 public class Events {
-    public static void mouseHover(WebElement webElement, WebElement subtab) {
-        Actions a = new Actions(DriverManager.getInstance().getWebDriver());
-        a.moveToElement(webElement).moveToElement(subtab).click().build().perform();
-    }
     public static void click(WebElement webElement){
         DriverManager.getInstance().wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
     }
