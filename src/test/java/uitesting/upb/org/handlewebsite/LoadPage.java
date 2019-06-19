@@ -1,6 +1,7 @@
 package uitesting.upb.org.handlewebsite;
 
 import uitesting.upb.org.managefile.PropertyAccesor;
+import uitesting.upb.org.managepage.adidas.AdidasHeader;
 import uitesting.upb.org.managepage.personalwallet.AccountHomeMenu;
 import uitesting.upb.org.managepage.personalwallet.MainMenu;
 import uitesting.upb.org.managepage.personalwallet.ReportsPage;
@@ -11,6 +12,11 @@ public class LoadPage {
         DriverManager.getInstance().getWebDriver().manage().window().maximize();
         DriverManager.getInstance().getWebDriver().navigate().to(PropertyAccesor.getInstance().getBaseURL());
         return new AccountHomeMenu();
+    }
+    public static AdidasHeader loadHeader() {
+        DriverManager.getInstance().getWebDriver().manage().window().maximize();
+        DriverManager.getInstance().getWebDriver().navigate().to(PropertyAccesor.getInstance().getBaseURL());
+        return new AdidasHeader();
     }
 
     public static void main(String[] args) {
