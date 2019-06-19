@@ -80,6 +80,15 @@ public class TransactionsPage extends BasePage {
         return this;
     }
 
+    public TransactionsPage clearRegisterExpenses () {
+        //WebElement [] array = {transactionNameField, amountField, dateField};
+        //Events.clearArrayOfElements(array);
+        transactionNameField.clear();
+       // amountField.
+        //Events.clearSelector(new Select(categorySelector));
+        return this;
+    }
+
     public boolean isTransactionFailAlertVisible() {
         return Events.isWebElementVisible(transactionFailAlert);
     }

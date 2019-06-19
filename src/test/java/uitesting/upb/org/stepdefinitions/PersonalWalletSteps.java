@@ -437,4 +437,9 @@ public class PersonalWalletSteps {
     public void searchSuccessMessageAlertOnTransferPage() {
         Assert.assertTrue(transferPage.isTransferSuccessMessageVisible());
     }
+
+    @And("^Clear 'Register Expense' fields on 'Expenses' page$")
+    public void clearRegisterExpenseFieldsOnExpensesPage() {
+        expensesPage = (ExpensesPage) expensesPage.clearRegisterExpenses();
+    }
 }
