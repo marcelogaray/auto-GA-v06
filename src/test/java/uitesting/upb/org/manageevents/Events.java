@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import uitesting.upb.org.webdrivermanager.DriverManager;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @autor Marcelo Garay
@@ -69,7 +70,9 @@ public class Events {
 
     public static void hoverElement(WebElement webElement) {
         Actions action = new Actions(DriverManager.getInstance().getWebDriver());
-        action.moveToElement(webElement).build().perform();
+        action.moveToElement(webElement).perform();
     }
-
+    public static WebElement getWebElementByXpath(String xpath) {
+        return DriverManager.getInstance().getWebDriver().findElement(By.xpath(xpath));
+    }
 }
