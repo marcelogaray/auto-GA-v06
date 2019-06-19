@@ -1,6 +1,5 @@
 package uitesting.upb.org.stepdefinitions;
 
-
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -13,7 +12,6 @@ import uitesting.upb.org.managepage.personalwallet.Transactions.ExpensesPage;
 import uitesting.upb.org.managepage.personalwallet.Transactions.IncomePage;
 
 import java.util.List;
-
 
 public class PersonalWalletSteps {
 
@@ -431,6 +429,10 @@ public class PersonalWalletSteps {
 
     }
 
+    @And("^clear 'category name' field on 'Expenses page'$")
+    public void clearCategoryNameFieldOnExpensesPage() {
+        expensesPage = (ExpensesPage) expensesPage.clearCategoryNameField();
+    }
     @Then("^search 'Success Message' alert on 'Transfer' page$")
     public void searchSuccessMessageAlertOnTransferPage() {
         Assert.assertTrue(transferPage.isTransferSuccessMessageVisible());
