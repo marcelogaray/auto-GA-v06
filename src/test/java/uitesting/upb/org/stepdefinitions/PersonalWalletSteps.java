@@ -1,6 +1,7 @@
 package uitesting.upb.org.stepdefinitions;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -438,8 +439,46 @@ public class PersonalWalletSteps {
         Assert.assertTrue(transferPage.isTransferSuccessMessageVisible());
     }
 
-    @And("^Clear 'Register Expense' fields on 'Expenses' page$")
-    public void clearRegisterExpenseFieldsOnExpensesPage() {
-        expensesPage = (ExpensesPage) expensesPage.clearRegisterExpenses();
+    @Then("^Search 'transaction success' alert on 'Expenses' page$")
+    public void searchTransactionSuccessAlertOnExpensesPage() {
+        Assert.assertTrue(expensesPage.isTransactionSuccessAlertVisible());
+    }
+
+    @Then("^fill 'new name' field with \"([^\"]*)\" on 'Expenses Page'$")
+    public void fillNewNameFieldWithOnExpensesPage(String newname) {
+        expensesPage = (ExpensesPage) expensesPage.fillNewNameField(newname);
+    }
+
+    @And("^select category \"([^\"]*)\" in 'new caegory' on 'expenses page'$")
+    public void selectCategoryInNewCaegoryOnExpensesPage(String arg0) {
+        expensesPage = (ExpensesPage) expensesPage.selectNewCategory(arg0);
+    }
+
+
+    @And("^fill 'new date' field with \"([^\"]*)\" on 'expense page'$")
+    public void fillNewDateFieldWithOnExpensePage(String date) throws Throwable {
+        expensesPage = (ExpensesPage)expensesPage.fillNewAmountField(date);
+    }
+
+
+    @And("^fill 'new amount' with \"([^\"]*)\" on 'expense page'$")
+    public void fillNewAmountWithOnExpensePage(String arg0) throws Throwable {
+        expensesPage = (ExpensesPage)expensesPage.fillNewAmountField(arg0);
+    }
+
+
+    @And("^click 'Register Changes' button' on 'Expense' page$")
+    public void clickRegisterChangesButtonOnExpensePage() {
+        expensesPage = (ExpensesPage)expensesPage.clickRegisterChangesButton();
+    }
+
+    @Then("^Search 'changeFail' alert on 'Expenses page'$")
+    public void searchChangeFailAlertOnExpensesPage() {
+        Assert.assertTrue(expensesPage.isChangeFailAlertVisible());
+    }
+
+    @Then("^Select 'name' \"([^\"]*)\" on 'Expenses Page'$")
+    public void selectNameOnExpensesPage(String arg0) throws Throwable {
+        expensesPage = (ExpensesPage) expensesPage.selectTransactionName(arg0);
     }
 }

@@ -75,17 +75,18 @@ public class TransactionsPage extends BasePage {
     @FindBy (id = "old-name")
     private WebElement transactionNameSelector;
 
-    public TransactionsPage clearCategoryNameField () {
-        Events.clearElement(categoryRegisterField);
+    public TransactionsPage selectNewCategory(String option) {
+        Events.selectOptionInSelectElementByVisibleText(new Select(newCategoryField), option);
         return this;
     }
 
-    public TransactionsPage clearRegisterExpenses () {
-        //WebElement [] array = {transactionNameField, amountField, dateField};
-        //Events.clearArrayOfElements(array);
-        transactionNameField.clear();
-       // amountField.
-        //Events.clearSelector(new Select(categorySelector));
+    public TransactionsPage selectTransactionName (String option) {
+        Events.selectOptionInSelectElementByVisibleText(new Select(transactionNameSelector), option);
+        return this;
+    }
+
+    public TransactionsPage clearCategoryNameField () {
+        Events.clearElement(categoryRegisterField);
         return this;
     }
 
