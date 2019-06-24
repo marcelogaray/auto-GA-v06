@@ -13,6 +13,9 @@ public class AccountMainMenu extends BasePage {
     @FindBy(id = "Expenses")
     private WebElement expensesButton;
 
+    @FindBy(id = "Transfer")
+    private WebElement transferButton;
+
     @FindBy(id = "Report")
     private WebElement reportButton;
 
@@ -22,6 +25,18 @@ public class AccountMainMenu extends BasePage {
 
     public boolean incomeButtonIsVisible() {
         return Events.isVisibleWebElement(incomeButton);
+    }
+
+    public boolean expensesButtonIsVisible() {
+        return Events.isVisibleWebElement(expensesButton);
+    }
+
+    public boolean transferButtonIsVisible() {
+        return Events.isVisibleWebElement(transferButton);
+    }
+
+    public boolean reportButtonIsVisible() {
+        return Events.isVisibleWebElement(reportButton);
     }
 
     public IncomeExpensesView clickIncomeButton() {

@@ -10,7 +10,7 @@ import uitesting.upb.org.managepage.wallet.*;
 
 public class WalletStepdefs {
 
-    public final static String EXAMPLE_ACCOUNT_NAME = "My new account";
+    private final static String EXAMPLE_ACCOUNT_NAME = "My new account";
 
     private AccountManager accountManager;
     private AccountCreator accountCreator;
@@ -154,7 +154,7 @@ public class WalletStepdefs {
     }
 
     @And("^fill \"([^\"]*)\" on field amount$")
-    public void fillOnFieldAmount(String amount) throws Throwable {
+    public void fillOnFieldAmount(String amount) {
         accountManager.clearFieldAmount();
         accountManager.fillAmountTransfer(amount);
     }
@@ -228,11 +228,6 @@ public class WalletStepdefs {
     @And("^'Account name' input is visible on 'Account Creator'$")
     public void accountNameInputIsVisibleOnAccountCreator() {
         Assert.assertTrue(accountManager.accountNameInputIsVisible());
-    }
-
-    @Then("^'Income' button from account choose is visible on 'Account Main Menu'$")
-    public void incomeButtonFromAccountChooseIsVisibleOnAccountMainMenu() {
-        Assert.assertTrue(accountMainMenu.incomeButtonIsVisible());
     }
 
     @And("^click \"([^\"]*)\" button on 'Account Manager'$")
@@ -366,6 +361,26 @@ public class WalletStepdefs {
     @And("^Click 'Home Page' button in 'NavBar' page$")
     public void clickHomePageButtonInNavBarPage() {
         navBar.clickHomeButton();
+    }
+
+    @Then("^'Income' button is visible on 'Account Main Menu'$")
+    public void incomeButtonIsVisibleOnAccountMainMenu() {
+        Assert.assertTrue(accountMainMenu.incomeButtonIsVisible());
+    }
+
+    @And("^'Expenses' button is visible on 'Account Main Menu'$")
+    public void expensesButtonIsVisibleOnAccountMainMenu() {
+        Assert.assertTrue(accountMainMenu.expensesButtonIsVisible());
+    }
+
+    @And("^'Transfer' button is visible on 'Account Main Menu'$")
+    public void transferButtonIsVisibleOnAccountMainMenu() {
+        Assert.assertTrue(accountMainMenu.transferButtonIsVisible());
+    }
+
+    @And("^'Report' button is visible on 'Account Main Menu'$")
+    public void reportButtonIsVisibleOnAccountMainMenu() {
+        Assert.assertTrue(accountMainMenu.reportButtonIsVisible());
     }
 
 }
