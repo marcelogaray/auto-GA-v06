@@ -34,5 +34,9 @@ public class NavBar extends BasePage {
         return new AccountMainMenu();
     }
 
+    public boolean isSettingsButtonVisible(){
+       return Events.isVisibleWebElement(accountSettingsButton);
+    }
+
 
 }

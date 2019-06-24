@@ -8,6 +8,7 @@ Feature: ELiminar ingresos y egresos
     Given  Browser is loaded
     And fill "Mateo" 'Account name' input on 'Account Manager'
     And click 'Add' button on 'Account Manager'
+    Then Get length of 'Account List' List in 'Account Creator' Page
     Then click "Mateo" button on 'Account Manager'
 
     #Añade un ingreso
@@ -49,6 +50,17 @@ Feature: ELiminar ingresos y egresos
     And Click 'By category' Type in 'Report Type Selector' in 'Report' Page
     Then Click 'Show Report' Button in 'Report' Page
     And Click 'Celular' delete button in 'Report' table in 'Report' page
+
+   Scenario:  Verify Account containing expenses or income cannot be deleted
+
+     Then Click 'Account Settings' button in 'Reports Navbar' Page
+     And Click 'Delete' button in Account Settings
+     Then List 'Account List' length should not change in 'Account Creator Page'
+
+
+
+
+
 
 
 
