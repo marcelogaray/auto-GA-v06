@@ -360,7 +360,6 @@ public class WalletStepdefs {
         
           lengthOfAccountListBefore = accountCreator.getAccountListLength();
         System.out.println(lengthOfAccountListBefore);
-
     }
 
     @And("^Click 'Home Page' button in 'NavBar' page$")
@@ -372,7 +371,6 @@ public class WalletStepdefs {
     public void navbarIsLoadedInIncomePage() {
 
         navBar = new NavBar();
-
     }
 
     @Then("^Click 'Personal Wallet' Button in 'NavBar' Page$")
