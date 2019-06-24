@@ -2,6 +2,7 @@ package uitesting.upb.org.managepage.wallet;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import uitesting.upb.org.manageevents.Events;
 import uitesting.upb.org.managepage.BasePage;
 
@@ -22,6 +23,24 @@ public class ExpensesPage extends BasePage {
     @FindBy(id = "buttonTransaction")
     private WebElement createExpenseButton;
 
+    public  void visibleExpensas(){
+        Select categoryExpense = new Select(expenseCategorySelector);
+        categoryExpense.selectByVisibleText("Expenses");
+
+    }
+
+    public  void visibleOthers(){
+        Select categoryExpense = new Select(expenseCategorySelector);
+        categoryExpense.selectByVisibleText("Others");
+
+    }
+
+
+    public  void isNotVisibleOthers(){
+        Select categoryExpense = new Select(expenseCategorySelector);
+       categoryExpense.deselectByVisibleText("Others");
+
+    }
     public ExpensesPage fillExpenseName(String name){
         Events.fillField(expenseNameField,name);
         return this;

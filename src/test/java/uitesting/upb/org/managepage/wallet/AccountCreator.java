@@ -26,6 +26,8 @@ public class AccountCreator extends BasePage {
     @FindBy(id = "Income")
     private WebElement incomeButton;
 
+    //new id
+
     @FindBy(id = "name")
     private WebElement ingresoNamefield;
 
@@ -58,11 +60,18 @@ public class AccountCreator extends BasePage {
 
     @FindBy(id="msg-error")
     private WebElement bad;
+    @FindBy(id = "Expenses")
+    private WebElement expenses;
+
+    public ExpensesPage clickexpenses(){
+        Events.click(expenses);
+        return new ExpensesPage();
+    }
 
     public void clickNameIngreso(){
         Events.click(ingresoNamefield);
     }
-    public void fieldNameIngreso (String fieldNameIngreso){
+    public void fieldNameIncome (String fieldNameIngreso){
         Events.fillField(ingresoNamefield,fieldNameIngreso);
     }
 
@@ -70,7 +79,7 @@ public class AccountCreator extends BasePage {
         Events.click(ingresoCategoriafield);
     }
 
-    public void fieldCategoriaIngreso(String CategoriaName){
+    public void fieldCategoryIncome(String CategoriaName){
         Events.fillField(ingresoCategoriafield,CategoriaName);
     }
 
@@ -78,16 +87,21 @@ public class AccountCreator extends BasePage {
         Events.click(ingresoMountfield);
     }
 
-    public void fieldMountIngreso(String MountField){
+    public void fieldMountIncome(String MountField){
         Events.fillField(ingresoMountfield,MountField);
     }
 
-    public void fieldDateIngreso(String Date){
+    public void fieldDateIncome(String Date){
         Events.fillField(ingresoDateField,Date);
     }
 
-    public void clickIngresoButton (){
+    public void clickRegisteTransactionButton (){
         Events.click(ingresoButton);
+    }
+
+    public TransferPage clickTranferbutton (){
+        Events.click(buttonTranfer);
+        return new TransferPage();
     }
 
     public void clickTranferButton(){

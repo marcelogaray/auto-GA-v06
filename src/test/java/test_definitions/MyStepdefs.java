@@ -22,8 +22,10 @@ public class MyStepdefs {
     private Income income;
     private AccountInfo accountInfo;
     private ExpensesPage expensesPage;
-    private String accountName="Cuenta1";
+    private String accountName = "Cuenta1";
     private String accountName2;
+    private String accountNameTranfer ;
+    private TransferPage transferPage;
 
     @Given("^'Account creator' is loaded$")
     public void accountCreatorIsLoaded() {
@@ -309,6 +311,16 @@ public class MyStepdefs {
         Assert.assertTrue(income.isModifyIncomeSuccessAlertVisible());
     }
 
+    @Then("^verify if the category 'Salary' is visible in the page 'Income'$")
+    public void verifyIfTheCategorySalaryIsVisibleInThePageIncome() {
+        income.isVisibleCategorySalary();
+    }
+
+    @Then("^verify if the category 'Others' is visible in the page 'Income'$")
+    public void verifyIfTheCategoryOthersIsVisibleInThePageIncome() {
+        income.isVisibleCategoryOthers();
+    }
+
     //------------- Income steps -------------//
 
     //EXPENSES
@@ -320,329 +332,458 @@ public class MyStepdefs {
     }
 
     @And("^Click 'Create Account' Button on 'Account Creator'$")
-    public void clickCreateAccount(){
+    public void clickCreateAccount() {
         accountCreator.clickAddButton();
     }
 
     @And("^Select and Click  Account \"Cuenta1\" Button on 'Account Creator'$")
-    public void clickAccountButton(){
+    public void clickAccountButton() {
         accountHome = accountCreator.clickAccountButton(accountName);
     }
 
     @And("^Check if \"Expenses\" Button is displayed and clickable on 'Account Home'$")
-    public void expenseButtonIsVisible(){
+    public void expenseButtonIsVisible() {
         Assert.assertTrue(accountHome.expensesButtonIsVisible());
     }
 
     @Given("^Check if 'Expense Name' TextField is visible on 'Expenses Page'$")
-    public void nameFieldVisible(){
+    public void nameFieldVisible() {
         Assert.assertTrue(expensesPage.nameFieldVisible());
     }
 
     @And("^Check if 'Expense Category Selector' is visible on 'Expense Page'$")
-    public void categorySelectorVisible(){
+    public void categorySelectorVisible() {
         Assert.assertTrue(expensesPage.categorySelectorVisible());
     }
+
     @And("^Check if 'Expense Amount' TextField is visible on 'Expenses Page'$")
-    public void amountFieldVisible(){
+    public void amountFieldVisible() {
         Assert.assertTrue(expensesPage.amountFieldVisible());
     }
 
     @And("^Check if 'Date Picker' is Visible on 'Expenses Page'$")
-    public void datePickerVisible(){
+    public void datePickerVisible() {
         Assert.assertTrue(expensesPage.datePickerVisible());
     }
 
 
-
     @Then("^Click 'Expenses' Button on 'Account Home'$")
-    public void clickExpenseButtonOnAccountHome(){
+    public void clickExpenseButtonOnAccountHome() {
         expensesPage = accountHome.clickExpenseButton();
     }
 
 
     @And("^Fill \"Medical Bills\" in 'Expense Name' on 'Expenses Page'$")
-    public void fillExpenseName(){
+    public void fillExpenseName() {
         expensesPage.fillExpenseName("Medical Bills");
     }
 
     @And("^Fill \"Expenses\" in 'Expense Category' on 'Expense Page'$")
-    public void fillExpenseCategory(){
+    public void fillExpenseCategory() {
         expensesPage.fillCategorySelector("Expenses");
     }
 
     @And("^Fill \"1000\" in 'Expense Amount' on 'Expense Page'$")
-    public void fillExpenseAmount(){
+    public void fillExpenseAmount() {
         expensesPage.fillExpenseAmount(1000);
     }
+
     @And("^Fill \"12/06/2019\" in 'Expense Date' on 'Expense Page'$")
-    public void fillExpenseDate(){
+    public void fillExpenseDate() {
         expensesPage.fillExpenseDate("12/06/2019");
     }
 
     @And("^Click 'Create Expense' Button on 'Expense Page'$")
-    public void clickCreateExpense(){
+    public void clickCreateExpense() {
         expensesPage.clickCreateExpenseButton();
     }
 
 
-    @Given("^Account creator is loadedd$")
-    public void accountCreatorIsLoadedd() {
-        accountCreator=loadAccountCreator();
+    @And("^Click button 'Expenses' on 'Account Home'$")
+    public void clickButtonExpensesOnAccountHome() {
+        expensesPage = accountCreator.clickexpenses();
+    }
+
+    @Then("^verify if the category 'Expenses' is visible$")
+    public void verifyIfTheCategoryExpensesIsVisible() {
+        expensesPage.visibleExpensas();
+    }
+
+    @Then("^verify if the category 'Others' is visible$")
+    public void verifyIfTheCategoryOthersIsVisible() {
+        expensesPage.visibleOthers();
+
+    }
+
+    @Then("^verify if the category 'Others' is not visible$")
+    public void verifyIfTheCategoryOthersIsNotVisible() {
+
+        expensesPage.isNotVisibleOthers();
     }
 
 
-    @Then("^insert name count \"([^\"]*)\"$")
-    public void insertNameCount(String NameAcount) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        accountName=NameAcount;
-        accountCreator.fillAccountNameTextField(NameAcount);
+
+
+    //TRANSFER STEPS
+    //==============================================================================================
+
+    @Then("^Insert the name \"([^\"]*)\" in the field account name for create a new Account$")
+    public void isertTheNameInTheFieldAccountNameForCreateANewAccount(String nameaccount) throws Throwable {
+        accountNameTranfer=nameaccount;
+        accountCreator.fillAccountNameTextField(nameaccount);
     }
 
-
-    @And("^click add button$")
-    public void clickAddButton() {
+    @And("^click in the add button for create the new accoun 'Count(\\d+)'$")
+    public void clickInTheAddButtonForCreateTheNewAccounCount(int arg0) {
     accountCreator.clickAddButton();
     }
 
-
-    @Then("^new acount \"([^\"]*)\"$")
-    public void newAcount(String NameAccouns) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        accountName2=NameAccouns;
-        accountCreator.fillAccountNameTextField(NameAccouns);
-    }
-
-
-    @And("^click two add button$")
-    public void clickTwoAddButton() {
-    accountCreator.clickAddButton();
+    @Then("^click in the 'Count (\\d+)'$")
+    public void clickInTheCount(int arg0) {
+        accountCreator.clickAccountButtonByXpath(accountNameTranfer);
 
     }
 
+    @And("^click 'Income' Button in the main page 'Count(\\d+)'$")
+    public void clickIncomeButtonInTheMainPageCount(int arg0) {
 
-    @And("^click Acount Button$")
-    public void clickAcountButton() {
-
-
-        accountHome= accountCreator.clickAccountButtonByXpath(accountName);
-    }
-
-
-    @And("^click income buttonn$")
-    public void clickIncomeButtonn() {
         accountCreator.clickIncomesButton();
     }
 
-
-    @And("^click button name$")
-    public void clickButtonName() {
-accountCreator.clickNameIngreso();
+    @Then("^Insert \"([^\"]*)\" in the field 'Name' in the page 'Icome'$")
+    public void insertInTheFieldNameInThePageIcome(String nameIcome) throws Throwable {
+    accountCreator.fieldNameIncome(nameIcome);
     }
 
-
-    @And("^complete name \"([^\"]*)\"$")
-    public void completeName(String name) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        accountCreator.fieldNameIngreso(name);
+    @And("^Insert \"([^\"]*)\" in the field 'Category' in the page 'Icome'$")
+    public void insertInTheFieldCategoryInThePageIcome(String categoryIcome) throws Throwable {
+    accountCreator.fieldCategoryIncome(categoryIcome);
     }
 
-
-    @And("^click Categoty$")
-    public void clickCategoty() {
-    accountCreator.clickCategoria();
-
+    @And("^Insert \"([^\"]*)\" in the field 'Mount' in the page 'Icome'$")
+    public void insertInTheFieldMountInThePageIcome(String mountIncome) throws Throwable {
+        accountCreator.fieldMountIncome(mountIncome);
     }
 
-
-    @And("^complete category \"([^\"]*)\"$")
-    public void completeCategory(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        accountCreator.fieldCategoriaIngreso(arg0);
+    @And("^Insert \"([^\"]*)\" in the field 'Date' in the page 'Icome'$")
+    public void insertInTheFieldDateInThePageIcome(String dateIncome) throws Throwable {
+    accountCreator.fieldDateIncome(dateIncome);
     }
 
-
-    @And("^click mont button$")
-    public void clickMontButton() {
-    accountCreator.clickMountIngreso();
-
+    @Then("^click the button 'Register Transaction' in the page 'Income'$")
+    public void clickTheButtonRegisterTransactionInThePageIncome() {
+        accountCreator.clickRegisteTransactionButton();
     }
 
+    @And("^click the button 'Transfer' in the main page in the 'Count (\\d+)'$")
+    public void clickTheButtonTransferInTheMainPageInTheCount(int arg0) {
 
-    @And("^field mont \"([^\"]*)\"$")
-    public void fieldMont(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        accountCreator.fieldMountIngreso(arg0);
-    }
-
-
-    @And("^fill data \"([^\"]*)\"$")
-    public void fillData(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        accountCreator.fieldDateIngreso(arg0);
-    }
-
-
-    @And("^click addtrnafer$")
-    public void clickAddtrnafer() {
-
-accountCreator.clickIngresoButton();
+    transferPage=accountCreator.clickTranferbutton();
 
     }
 
-    @Then("^click firstCount$")
-    public void clickFirstCount() {
-        accountHome = accountCreator.clickAccountButtonByXpath(accountName);
+    @Then("^insert \"([^\"]*)\" in the field destination in the page 'Tranfer'$")
+    public void insertInTheFieldDestinationInThePageTranfer(String nameTranfer2) throws Throwable {
+       transferPage.setFieldDestinationTranfer(nameTranfer2);
     }
 
-
-    @And("^click Transfer Button$")
-    public void clickTransferButton() {
-        accountCreator.clickTranferButton();
+    @And("^insert \"([^\"]*)\" in the fiel mount in the page 'Tranfer'$")
+    public void insertInTheFielMountInTheOageTranfer(String mountTranfer) throws Throwable {
+        transferPage.setIngresoMountfield(mountTranfer);
     }
 
+    @And("^click button 'Transfer' in the page 'Transfer'$")
+    public void clickButtonTransferInThePageTransfer() {
 
-    @Then("^click destination$")
-    public void clickDestination() {
-        accountCreator.clickFieldDestination();
+        transferPage.setButtonActionTransfer();
     }
 
+    @Then("^Verify if the mesage 'Succesfull' appears$")
+    public void verifyIfTheMesageSuccesfullAppears() {
 
-    @And("^filed countname \"([^\"]*)\"$")
-    public void filedCountname(String NameDestination) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        accountCreator.fieldDestination(NameDestination);
-    }
-
-
-    @And("^empty field amount$")
-    public void emptyFieldAmount() {
-        accountCreator.emptyFieldMount();
-
+        Assert.assertTrue(transferPage.messagegood(),"IS TRUE");
 
     }
 
-    @And("^field mount tranfer \"([^\"]*)\"$")
-    public void fieldMountTranfer(String Mont) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        accountCreator.fieldMountTransfer(Mont);
-    }
-
-    @Then("^click transerferButton$")
-    public void clickTranserferButton() {
-        accountCreator.clickActionTransferencia();
-    }
-
-    @And("^check msg-succesful$")
-    public void checkMsgSuccesful() {
-        org.junit.Assert.assertTrue("Se vio el mensaje",accountCreator.messagegood());
-
-
-    }
-
-    @Then("^click firstCountt$")
-    public void clickFirstCountt() {
-        accountHome=accountCreator.clickAccountButtonByXpath(accountName);
-
-    }
-
-
-    @And("^click Transfer Buttonn$")
-    public void clickTransferButtonn() {
-        accountCreator.clickTranferButton();
-    }
-
-    @Then("^click destinationn$")
-    public void clickDestinationn() {
-        accountCreator.clickFieldDestination();
-    }
-
-
-    @And("^filed countnamee \"([^\"]*)\"$")
-    public void filedCountnamee(String NameCountbad) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        accountCreator.fieldDestination(NameCountbad);
-    }
-
-
-    @Then("^click transerferButtonn$")
-    public void clickTranserferButtonn() {
-
-        accountCreator.clickActionTransferencia();
-    }
-
-    @And("^check msg-error$")
-    public void checkMsgError() {
-        org.junit.Assert.assertTrue( "si abrio",accountCreator.messagebad());
-
-    }
-
-
-    @Then("^click firstCoun$")
-    public void clickFirstCoun() {
-    accountHome =  accountCreator.clickAccountButtonByXpath(accountName);
-    }
-
-
-    @And("^Click Tranfer button$")
-    public void clickTranferButton() {
-    accountCreator.clickTranferButton();
-
-    }
-
-    @And("^Click trnasfer Button$")
-    public void clickTrnasferButton() {
-
-    accountCreator.clickActionTransferencia();
-    }
-
-
-    @And("^check message error is true$")
-    public void checkMessageErrorIsTrue() {
-
-    Assert.assertTrue(accountCreator.messagebad());
+    @Then("^Verify if the mesage 'Bad' appears$")
+    public void verifyIfTheMesageBadAppears() {
+        Assert.assertTrue(transferPage.messagebad(),"IS TRUE");
     }
 
 
 
 
 
-    @And("^click trasfer button$")
-    public void clickTrasferButton() {
+//
+//    @Given("^Account creator is loadedd$")
+//    public void accountCreatorIsLoadedd() {
+//        accountCreator=loadAccountCreator();
+//    }
+//
+//
+//    @Then("^insert name count \"([^\"]*)\"$")
+//    public void insertNameCount(String NameAcount) throws Throwable {
+//        // Write code here that turns the phrase above into concrete actions
+//        accountName=NameAcount;
+//        accountCreator.fillAccountNameTextField(NameAcount);
+//    }
+//
+//
+//    @And("^click add button$")
+//    public void clickAddButton() {
+//    accountCreator.clickAddButton();
+//    }
+//
+//
+//    @Then("^new acount \"([^\"]*)\"$")
+//    public void newAcount(String NameAccouns) throws Throwable {
+//        // Write code here that turns the phrase above into concrete actions
+//        accountName2=NameAccouns;
+//        accountCreator.fillAccountNameTextField(NameAccouns);
+//    }
+//
+//
+//    @And("^click two add button$")
+//    public void clickTwoAddButton() {
+//    accountCreator.clickAddButton();
+//
+//    }
+//
+//
+//    @And("^click Acount Button$")
+//    public void clickAcountButton() {
+//
+//
+//        accountHome= accountCreator.clickAccountButtonByXpath(accountName);
+//    }
+//
+//
+//    @And("^click income buttonn$")
+//    public void clickIncomeButtonn() {
+//        accountCreator.clickIncomesButton();
+//    }
+//
+//
+//    @And("^click button name$")
+//    public void clickButtonName() {
+//accountCreator.clickNameIngreso();
+//    }
+//
+//
+//    @And("^complete name \"([^\"]*)\"$")
+//    public void completeName(String name) throws Throwable {
+//        // Write code here that turns the phrase above into concrete actions
+//        accountCreator.fieldNameIngreso(name);
+//    }
+//
+//
+//    @And("^click Categoty$")
+//    public void clickCategoty() {
+//    accountCreator.clickCategoria();
+//
+//    }
+//
+//
+//    @And("^complete category \"([^\"]*)\"$")
+//    public void completeCategory(String arg0) throws Throwable {
+//        // Write code here that turns the phrase above into concrete actions
+//        accountCreator.fieldCategoriaIngreso(arg0);
+//    }
+//
+//
+//    @And("^click mont button$")
+//    public void clickMontButton() {
+//    accountCreator.clickMountIngreso();
+//
+//    }
+//
+//
+//    @And("^field mont \"([^\"]*)\"$")
+//    public void fieldMont(String arg0) throws Throwable {
+//        // Write code here that turns the phrase above into concrete actions
+//        accountCreator.fieldMountIngreso(arg0);
+//    }
+//
+//
+//    @And("^fill data \"([^\"]*)\"$")
+//    public void fillData(String arg0) throws Throwable {
+//        // Write code here that turns the phrase above into concrete actions
+//        accountCreator.fieldDateIngreso(arg0);
+//    }
+//
+//
+//    @And("^click addtrnafer$")
+//    public void clickAddtrnafer() {
+//
+//accountCreator.clickIngresoButton();
+//
+//    }
+//
+//    @Then("^click firstCount$")
+//    public void clickFirstCount() {
+//        accountHome = accountCreator.clickAccountButtonByXpath(accountName);
+//    }
+//
+//
+//    @And("^click Transfer Button$")
+//    public void clickTransferButton() {
+//        accountCreator.clickTranferButton();
+//    }
+//
+//
+//    @Then("^click destination$")
+//    public void clickDestination() {
+//        accountCreator.clickFieldDestination();
+//    }
+//
+//
+//    @And("^filed countname \"([^\"]*)\"$")
+//    public void filedCountname(String NameDestination) throws Throwable {
+//        // Write code here that turns the phrase above into concrete actions
+//        accountCreator.fieldDestination(NameDestination);
+//    }
+//
+//
+//    @And("^empty field amount$")
+//    public void emptyFieldAmount() {
+//        accountCreator.emptyFieldMount();
+//
+//
+//    }
+//
+//    @And("^field mount tranfer \"([^\"]*)\"$")
+//    public void fieldMountTranfer(String Mont) throws Throwable {
+//        // Write code here that turns the phrase above into concrete actions
+//        accountCreator.fieldMountTransfer(Mont);
+//    }
+//
+//    @Then("^click transerferButton$")
+//    public void clickTranserferButton() {
+//        accountCreator.clickActionTransferencia();
+//    }
+//
+//    @And("^check msg-succesful$")
+//    public void checkMsgSuccesful() {
+//        org.junit.Assert.assertTrue("Se vio el mensaje",accountCreator.messagegood());
+//
+//
+//    }
+//
+//    @Then("^click firstCountt$")
+//    public void clickFirstCountt() {
+//        accountHome=accountCreator.clickAccountButtonByXpath(accountName);
+//
+//    }
+//
+//
+//    @And("^click Transfer Buttonn$")
+//    public void clickTransferButtonn() {
+//        accountCreator.clickTranferButton();
+//    }
+//
+//    @Then("^click destinationn$")
+//    public void clickDestinationn() {
+//        accountCreator.clickFieldDestination();
+//    }
+//
+//
+//    @And("^filed countnamee \"([^\"]*)\"$")
+//    public void filedCountnamee(String NameCountbad) throws Throwable {
+//        // Write code here that turns the phrase above into concrete actions
+//        accountCreator.fieldDestination(NameCountbad);
+//    }
+//
+//
+//    @Then("^click transerferButtonn$")
+//    public void clickTranserferButtonn() {
+//
+//        accountCreator.clickActionTransferencia();
+//    }
+//
+//    @And("^check msg-error$")
+//    public void checkMsgError() {
+//        org.junit.Assert.assertTrue( "si abrio",accountCreator.messagebad());
+//
+//    }
+//
+//
+//    @Then("^click firstCoun$")
+//    public void clickFirstCoun() {
+//    accountHome =  accountCreator.clickAccountButtonByXpath(accountName);
+//    }
+//
+//
+//    @And("^Click Tranfer button$")
+//    public void clickTranferButton() {
+//    accountCreator.clickTranferButton();
+//
+//    }
+//
+//    @And("^Click trnasfer Button$")
+//    public void clickTrnasferButton() {
+//
+//    accountCreator.clickActionTransferencia();
+//    }
+//
+//
+//    @And("^check message error is true$")
+//    public void checkMessageErrorIsTrue() {
+//
+//    Assert.assertTrue(accountCreator.messagebad());
+//    }
+//
+//
+//
+//
+//
+//    @And("^click trasfer button$")
+//    public void clickTrasferButton() {
+//
+//    accountCreator.clickTranferButton();
+//    }
+//
+//
+//    @Then("^empty fiel ammunt$")
+//    public void emptyFielAmmunt() {
+//    accountCreator.emptyFieldMount();
+//
+//    }
+//
+//
+//    @And("^files ammount tranfer \"([^\"]*)\"$")
+//    public void filesAmmountTranfer(String arg0) throws Throwable {
+//        // Write code here that turns the phrase above into concrete actions
+//        accountCreator.fieldMountTransfer(arg0);
+//    }
+//
+//
+//    @Then("^try to make a biggest mount tranfer$")
+//    public void tryToMakeABiggestMountTranfer() {
+//
+//    accountCreator.clickActionTransferencia();
+//    }
+//
+//
+//    @And("^check message error$")
+//    public void checkMessageError() {
+//    Assert.assertTrue(accountCreator.messagebad(),"is true");
+//
+//    }
+//
+//    @Then("^click second count$")
+//    public void clickSecondCount() {
+//        accountHome=accountCreator.clickAccountButtonByXpath(accountName2);
+//    }
+//}
 
-    accountCreator.clickTranferButton();
-    }
+
+    //New steps
 
 
-    @Then("^empty fiel ammunt$")
-    public void emptyFielAmmunt() {
-    accountCreator.emptyFieldMount();
-
-    }
 
 
-    @And("^files ammount tranfer \"([^\"]*)\"$")
-    public void filesAmmountTranfer(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        accountCreator.fieldMountTransfer(arg0);
-    }
 
 
-    @Then("^try to make a biggest mount tranfer$")
-    public void tryToMakeABiggestMountTranfer() {
-
-    accountCreator.clickActionTransferencia();
-    }
 
 
-    @And("^check message error$")
-    public void checkMessageError() {
-    Assert.assertTrue(accountCreator.messagebad(),"is true");
-
-    }
-
-    @Then("^click second count$")
-    public void clickSecondCount() {
-        accountHome=accountCreator.clickAccountButtonByXpath(accountName2);
-    }
 }

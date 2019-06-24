@@ -2,6 +2,7 @@ package uitesting.upb.org.managepage.wallet;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import uitesting.upb.org.manageevents.Events;
 import uitesting.upb.org.managepage.BasePage;
 
@@ -67,6 +68,16 @@ public class Income extends BasePage {
     @FindBy(id = "changeFail")
     private WebElement editIncomeFailAlert;
 
+    public void isVisibleCategorySalary(){
+        Select visible = new Select(addIncomeCategorySelector);
+        visible.selectByVisibleText("Salary");
+    }
+
+
+    public void isVisibleCategoryOthers(){
+        Select visible = new Select(addIncomeCategorySelector);
+        visible.selectByVisibleText("Others");
+    }
 
     public boolean isCategoryButtonVisible() {
         return Events.isVisibleWebElement(addCategoryButton);
