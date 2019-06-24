@@ -1,6 +1,7 @@
 package uitesting.upb.org.manageevents;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,7 +9,6 @@ import org.openqa.selenium.support.ui.Select;
 import uitesting.upb.org.webdrivermanager.DriverManager;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @autor Marcelo Garay
@@ -22,8 +22,20 @@ public class Events {
         DriverManager.getInstance().wait.until(ExpectedConditions.elementToBeClickable(by)).click();
     }
 
+    public static void clearArrayOfElements(WebElement [] webElements) {
+        for (WebElement webElement: webElements){
+            DriverManager.getInstance().wait.until(ExpectedConditions.elementToBeClickable(webElement)).clear();
+        }
+    }
+
     public static void clearElement(WebElement element) {
-        DriverManager.getInstance().wait.until(ExpectedConditions.elementToBeClickable(element)).clear();
+        DriverManager.getInstance().wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+        element.clear();
+        element.sendKeys(Keys.DELETE);
+    }
+
+    public static void clearSelector (Select select) {
+        select.selectByIndex(0);
     }
 
     public static void fillField(WebElement searchTextField, String text) {
@@ -68,11 +80,9 @@ public class Events {
         return select.getOptions().size();
     }
 
-    public static void hoverElement(WebElement webElement) {
-        Actions action = new Actions(DriverManager.getInstance().getWebDriver());
-        action.moveToElement(webElement).perform();
+    public static String getText(WebElement webElement) {
+        return DriverManager.getInstance().wait.until(ExpectedConditions.visibilityOf(webElement)).getText();
     }
-    public static WebElement getWebElementByXpath(String xpath) {
-        return DriverManager.getInstance().getWebDriver().findElement(By.xpath(xpath));
-    }
+
+
 }

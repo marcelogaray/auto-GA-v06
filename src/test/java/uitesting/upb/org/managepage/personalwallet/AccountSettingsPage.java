@@ -44,4 +44,15 @@ public class AccountSettingsPage extends BasePage {
     public String getInputText() {
         return accountNameInput.getAttribute("value");
     }
+    public AccountSettingsPage setNewAccountName(String name) {
+        accountNameInput.clear();
+        accountNameInput.sendKeys(name);
+        return this;
+    }
+    public boolean deleteAccountButtonIsVisible() {
+        return Events.isWebElementVisible(deleteAccountButton);
+    }
+    public boolean changeNameButtonIsVisible() {
+        return Events.isWebElementVisible(changeNameButton);
+    }
 }

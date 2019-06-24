@@ -1,29 +1,24 @@
 package uitesting.upb.org.stepdefinitions;
 
-
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import uitesting.upb.org.handlewebsite.LoadPage;
-import uitesting.upb.org.managepage.personalwallet.AccountHomeMenu;
-import uitesting.upb.org.managepage.personalwallet.AccountSettingsPage;
-import uitesting.upb.org.managepage.personalwallet.MainMenu;
-import uitesting.upb.org.managepage.personalwallet.ReportsPage;
+import uitesting.upb.org.managepage.personalwallet.*;
 import uitesting.upb.org.managepage.personalwallet.Transactions.ExpensesPage;
 import uitesting.upb.org.managepage.personalwallet.Transactions.IncomePage;
-import uitesting.upb.org.managepage.personalwallet.TransferPage;
+import uitesting.upb.org.webdrivermanager.DriverManager;
 
 import java.util.List;
-
 
 public class PersonalWalletSteps {
 
     private AccountHomeMenu accountHomeMenu;
+    private Header header;
     private MainMenu mainMenu;
     private ReportsPage reportsPage;
     private ExpensesPage expensesPage;
@@ -44,6 +39,7 @@ public class PersonalWalletSteps {
     @Given("^Click \"(.*)\" button on 'home menu' page$")
     public void clickAccountButton(String accountId) {
         mainMenu = accountHomeMenu.clickButtonById(accountId);
+        header = LoadPage.loadHeader();
     }
 
     @When("^Click 'Reports' button on 'main menu' page$")
@@ -112,8 +108,6 @@ public class PersonalWalletSteps {
         String errorMessageFromReportsPage = reportsPage.getErrorMessage();
         Assert.assertEquals(errorMessage, errorMessageFromReportsPage);
     }
-
-
     @Given("^The 'AccountHomeMenu' is loaded$")
     public void mainPageIsLoaded() {
         accountHomeMenu = LoadPage.loadHomeMenu();
@@ -129,7 +123,7 @@ public class PersonalWalletSteps {
         accountHomeMenu.clickAddButton();
     }
 
-    @When("^Click 'Account Settings' button on 'MainMenu' page$")
+    @When("^Click 'Account Settings' button on 'Header'$")
     public void clickAccountSettingsButton() {
         accountSettingsPage = mainMenu.clickAccountSettingsButton();
     }
@@ -154,7 +148,7 @@ public class PersonalWalletSteps {
         accountSettingsPage.clickChangeNameButton();
     }
 
-    @And("^Click 'Exit' button on 'AccountSettings' page$")
+    @And("^Click 'Exit' button on 'Header'$")
     public void clickExitButton() {
         accountHomeMenu = accountSettingsPage.clickExitButton();
     }
@@ -166,6 +160,7 @@ public class PersonalWalletSteps {
 
     @Given("^clicked \"([^\"]*)\" button on 'AccountHomeMenu'$")
     public void clickedTheButtonOnAccountHomeMenu(String accountId) {
+        header = LoadPage.loadHeader();
         mainMenu = accountHomeMenu.clickButtonById(accountId);
     }
 
@@ -201,7 +196,7 @@ public class PersonalWalletSteps {
 
     @And("^select \"([^\"]*)\" values on 'category' selector on 'Expenses Page'$")
     public void selectValuesOnCategorySelectorOnExpensesPage(String category) {
-       expensesPage = (ExpensesPage) expensesPage.selectCategory(category);
+        expensesPage = (ExpensesPage) expensesPage.selectCategory(category);
     }
 
     @And("^fill 'AmountBS' field with \"([^\"]*)\" on 'Expenses Page'$")
@@ -224,7 +219,7 @@ public class PersonalWalletSteps {
         Assert.assertTrue(expensesPage.isTransactionFailAlertVisible());
     }
 
-    @Given("^clicked the 'Transfer' Button on 'MainMenu' page$")
+    @Given("^clicked 'Transfer' Button on 'MainMenu' page$")
     public void clickedTheTransferButtonOnMainMenuPage() {
         transferPage = mainMenu.clickTransferButton();
     }
@@ -239,47 +234,22 @@ public class PersonalWalletSteps {
         transferPage = transferPage.fillAmountTransferTextField(amount);
     }
 
-    @And("^click the 'Transfer' Button on 'Transfer' page$")
+    @And("^click 'Transfer' Button on 'Transfer' page$")
     public void clickTheTransferButtonOnTransferPage() {
         transferPage = transferPage.clickTransferButton();
     }
 
-    @Then("^Search the 'Error Message' fail alert on 'Transfer' page$")
+    @Then("^Search 'Error Message' fail alert on 'Transfer' page$")
     public void searchTheErrorMessageFailAlertOnTransferPage() {
         Assert.assertTrue(transferPage.isTransferErrorMessageVisible());
     }
 
-    @And("^select the \"([^\"]*)\" value on 'Destination Account' selector on 'Transfer' Page$")
+    @And("^select \"([^\"]*)\" value on 'Destination Account' selector on 'Transfer' Page$")
     public void selectTheValueOnDestinationAccountSelectorOnTransferPage(String accountDestination) throws Throwable {
         transferPage = transferPage.selectAccountDestination(accountDestination);
     }
 
-    @Then("^search the 'Success Message' alert on 'Transfer' page$")
-    public void searchTheSuccessMessageAlertOnTransferPage() {
-        Assert.assertTrue(transferPage.isTransferSuccessMessageVisible());
-    }
-
-    @And("^fill the 'Name' field with \"([^\"]*)\" on the 'Income' page$")
-    public void fillTheNameFieldWithOnTheIncomePage(String name) throws Throwable {
-        incomePage = (IncomePage) incomePage.fillTransactionNameField(name);
-    }
-
-    @And("^select \"([^\"]*)\" value on the 'Category' selector on the 'Income' page$")
-    public void selectValueOnTheCategorySelectorOnTheIncomePage(String category) throws Throwable {
-        incomePage = (IncomePage) incomePage.selectCategory(category);
-    }
-
-    @And("^fill the 'Amount BS' field with \"([^\"]*)\" on the 'Income' page$")
-    public void fillTheAmountBSFieldWithOnTheIncomePage(String amount) throws Throwable {
-        incomePage = (IncomePage) incomePage.fillAmountField(amount);
-    }
-
-    @And("^click the 'Register Transaction' button on the 'Income' page$")
-    public void clickTheRegisterTransactionButtonOnTheIncomePage() {
-        incomePage = (IncomePage) incomePage.clickRegisterTransactionButton();
-    }
-
-    @Then("^click the 'Exit' button on the 'Income' page$")
+    @Then("^click 'Exit' button on 'Income' page$")
     public void clickTheExitButtonOnTheIncomePage() {
         accountHomeMenu = incomePage.clickExitButton();
     }
@@ -391,11 +361,25 @@ public class PersonalWalletSteps {
         Assert.assertEquals(reportsPageTable, tableAsList);
     }
 
-    @And("^fill 'Date of the Transaction' date field with \"([^\"]*)\" on 'Income' page$")
-    public void fillTheDateOfTheTransactionDateFieldWithOnTheIncomePage(String date) throws Throwable {
-        incomePage = (IncomePage) incomePage.fillDateField(date);
+    @Then("^check the 'Total Amount' label is \"([^\"]*)\" on 'Main Menu'$")
+    public void checkTheTotalAmountLabelIsOnMainMenu(String amount) {
+        Assert.assertEquals(mainMenu.getAmount(), "Total amount:\n"+amount+"\n Bs.");
     }
 
+    @And("^click 'PersonalWallet' button on 'Header' page$")
+    public void clickPersonalWalletButtonOnHeaderPage() {
+        header = header.clickPersonalWalletButton();
+    }
+
+    @And("^Check number of transactions is \"([^\"]*)\" on 'Select a Transaction' on 'Expenses' page$")
+    public void checkNumberOfTransactionsIsOnSelectATransactionOnExpensesPage(String number) {
+        Assert.assertEquals(Integer.valueOf(number), Integer.valueOf(expensesPage.getTransactionNameSelectorNumberOptions()));
+    }
+
+    @And("^Search \"([^\"]*)\" option is not on 'Transaction Name' selector on 'Expenses' page$")
+    public void searchOptionIsNotOnTransactionNameSelectorOnExpensesPage(String option) {
+        Assert.assertTrue(expensesPage.searchOptionOnTransactionNameSelector(option));
+    }
     @Then("^Search 'transaction fail' alert on 'Income Page'$")
     public void searchTransactionFailAlertOnIncomePage() {
         Assert.assertTrue(incomePage.isTransactionFailAlertVisible());
@@ -405,8 +389,6 @@ public class PersonalWalletSteps {
     public void searchCategoryFailAlertOnIncomePage() {
         Assert.assertTrue(incomePage.isCategoryFailAlertVisible());
     }
-
-
 
     @And("^fill 'New name' field with \"([^\"]*)\" on 'Income page'$")
     public void fillNewNameFieldWithOnIncomePage(String newName) {
@@ -446,5 +428,111 @@ public class PersonalWalletSteps {
     @And("^fill 'Select transaction Name' with \"([^\"]*)\" field on 'Income page'$")
     public void fillSelectTransactionNameWithFieldOnIncomePage(String oldName) {
         incomePage = (IncomePage) incomePage.fillOldTransactionNameField(oldName);
+
+    }
+
+    @And("^clear 'category name' field on 'Expenses page'$")
+    public void clearCategoryNameFieldOnExpensesPage() {
+        expensesPage = (ExpensesPage) expensesPage.clearCategoryNameField();
+    }
+    @Then("^search 'Success Message' alert on 'Transfer' page$")
+    public void searchSuccessMessageAlertOnTransferPage() {
+        Assert.assertTrue(transferPage.isTransferSuccessMessageVisible());
+    }
+
+    @Then("^Search 'transaction success' alert on 'Expenses' page$")
+    public void searchTransactionSuccessAlertOnExpensesPage() {
+        Assert.assertTrue(expensesPage.isTransactionSuccessAlertVisible());
+    }
+
+    @Then("^fill 'new name' field with \"([^\"]*)\" on 'Expenses Page'$")
+    public void fillNewNameFieldWithOnExpensesPage(String newname) {
+        expensesPage = (ExpensesPage) expensesPage.fillNewNameField(newname);
+    }
+
+    @And("^select category \"([^\"]*)\" in 'new category' on 'expenses page'$")
+    public void selectCategoryInNewCaegoryOnExpensesPage(String category) {
+        if (category != ""){
+            expensesPage = (ExpensesPage) expensesPage.selectNewCategory(category);
+        }
+    }
+
+
+    @And("^fill 'new date' field with \"([^\"]*)\" on 'expense page'$")
+    public void fillNewDateFieldWithOnExpensePage(String date) throws Throwable {
+        expensesPage = (ExpensesPage)expensesPage.fillNewDateField(date);
+    }
+
+
+    @And("^fill 'new amount' with \"([^\"]*)\" on 'expense page'$")
+    public void fillNewAmountWithOnExpensePage(String arg0) throws Throwable {
+        expensesPage = (ExpensesPage)expensesPage.fillNewAmountField(arg0);
+    }
+
+
+    @And("^click 'Register Changes' button' on 'Expense' page$")
+    public void clickRegisterChangesButtonOnExpensePage() {
+        expensesPage = (ExpensesPage)expensesPage.clickRegisterChangesButton();
+    }
+
+    @Then("^Search 'changeFail' alert on 'Expenses page'$")
+    public void searchChangeFailAlertOnExpensesPage() {
+        Assert.assertTrue(expensesPage.isChangeFailAlertVisible());
+    }
+
+    @Then("^Select 'name' \"([^\"]*)\" on 'Expenses Page'$")
+    public void selectNameOnExpensesPage(String name) throws Throwable {
+        if (name != "") {
+            expensesPage = (ExpensesPage) expensesPage.selectTransactionName(name);
+        }
+    }
+
+    @Then("^Search 'changeSuccess' alert on 'Expenses page'$")
+    public void searchChangeSuccessAlertOnExpensesPage() {
+        Assert.assertTrue(expensesPage.isChangeSuccessAlertVisible());
+    }
+
+    @And("^Close Browser$")
+    public void closeBrowser() {
+        DriverManager.getInstance().closeWebDriver();
+    }
+
+    @And("^\"([^\"]*)\" row is visible on 'Reports' page$")
+    public void rowShouldBeVisibleOnReportsPage(String row) {
+        Assert.assertTrue(reportsPage.isRowVisible(row));
+    }
+
+    @Then("^Click on 'x' button in row \"([^\"]*)\" on 'Reports' page$")
+    public void clicOnXButtonInRowOnReportsPage(String row) {
+        reportsPage = reportsPage.deleteRow(row);
+    }
+
+    @And("^\"([^\"]*)\" row is not visible on 'Reports' page$")
+    public void rowIsNotVisibleOnReportsPage(String row) {
+        Assert.assertFalse(reportsPage.isRowVisible(row));
+    }
+
+    @Then("^click 'new amount' field on 'Expenses' page$")
+    public void clickNewAmountFieldOnExpensesPage() {
+        expensesPage = (ExpensesPage) expensesPage.clickNewAmountField();
+    }
+
+    @And("^'new amount' field should be empty on 'Expenses' page$")
+    public void newAmountFieldShouldBeEmptyOnExpensesPage() {
+        Assert.assertEquals("", expensesPage.getNewAmountFieldText());
+    }
+    @And("^Change 'Account name' field on 'AccountSettings' to \"([^\"]*)\"$")
+    public void changeAccountNameFieldOnAccountSettingsTo(String arg0) {
+        accountSettingsPage.setNewAccountName(arg0);
+    }
+
+    @Then("^'Delete account' button is visible$")
+    public void deleteAccountButtonIsVisible() {
+        Assert.assertTrue(accountSettingsPage.deleteAccountButtonIsVisible());
+    }
+
+    @And("^'Change name' button is visible$")
+    public void changeNameButtonIsVisible() {
+        Assert.assertTrue(accountSettingsPage.changeNameButtonIsVisible());
     }
 }

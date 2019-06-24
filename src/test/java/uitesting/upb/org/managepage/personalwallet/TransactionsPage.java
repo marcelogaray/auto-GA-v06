@@ -69,12 +69,26 @@ public class TransactionsPage extends BasePage {
     @FindBy(id = "buttonChange")
     protected WebElement registerChangesButton;
 
-
-
-
-
     @FindBy(xpath = "//a[@class='navbar-brand']")
     private WebElement personalWalletLink;
+
+    @FindBy (id = "old-name")
+    private WebElement transactionNameSelector;
+
+    public TransactionsPage selectNewCategory(String option) {
+        Events.selectOptionInSelectElementByVisibleText(new Select(newCategoryField), option);
+        return this;
+    }
+
+    public TransactionsPage selectTransactionName (String option) {
+        Events.selectOptionInSelectElementByVisibleText(new Select(transactionNameSelector), option);
+        return this;
+    }
+
+    public TransactionsPage clearCategoryNameField () {
+        Events.clearElement(categoryRegisterField);
+        return this;
+    }
 
     public boolean isTransactionFailAlertVisible() {
         return Events.isWebElementVisible(transactionFailAlert);
@@ -86,6 +100,10 @@ public class TransactionsPage extends BasePage {
 
     public int getCategorySelectorNumberOptions () {
      return Events.getSelectorNumberOptions(new Select(categorySelector));
+    }
+
+    public int getTransactionNameSelectorNumberOptions () {
+        return Events.getSelectorNumberOptions(new Select(transactionNameSelector));
     }
 
     public boolean isTransactionSuccessAlertVisible() {
@@ -132,6 +150,10 @@ public class TransactionsPage extends BasePage {
         return Events.isElementOnSelector(categorySelector, category);
     }
 
+    public boolean searchOptionOnTransactionNameSelector(String option) {
+        return Events.isElementOnSelector(transactionNameSelector, option);
+    }
+
     public TransactionsPage selectCategory(String category) {
         Events.fillField(categorySelector, category);
         return this;
@@ -153,6 +175,15 @@ public class TransactionsPage extends BasePage {
     }
     public boolean isChangeSuccessAlertVisible() {
         return Events.isWebElementVisible(changeSuccesAlert);
+    }
+
+    public TransactionsPage clickNewAmountField () {
+        Events.click(newAmountField);
+        return this;
+    }
+
+    public String getNewAmountFieldText () {
+        return Events.getText(newAmountField);
     }
 
     public boolean isChangeFailAlertVisible() {
