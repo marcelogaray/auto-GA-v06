@@ -11,7 +11,7 @@ public class ReportsPage extends BasePage {
     @FindBy(id = "reportType")
     private WebElement typeSelector;
 
-    @FindBy(xpath = "//*[@id=\"reportType\"]/option[2]")
+    @FindBy(xpath = "//*[@value=\"category\"]")
     private  WebElement categorySelector;
 
     @FindBy(id = "showReport")

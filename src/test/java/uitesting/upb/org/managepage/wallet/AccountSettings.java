@@ -7,7 +7,7 @@ import uitesting.upb.org.managepage.BasePage;
 
 public class AccountSettings extends BasePage {
 
-    @FindBy(xpath = "//*[@id=\"app\"]/div/div/form/div[1]/input")
+    @FindBy(xpath = "//*[@placeholder = \"Account name\"]")
     private WebElement changeAccountNameTextField;
 
     @FindBy(id = "changeNameButton")

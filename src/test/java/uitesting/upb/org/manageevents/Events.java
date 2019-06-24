@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import uitesting.upb.org.webdrivermanager.DriverManager;
 
 /**
@@ -51,5 +52,15 @@ public class Events {
         return DriverManager.getInstance().wait.until(ExpectedConditions.visibilityOf(element)).getText();
     }
 
+    public static void waitForElementToBeVisible(String webElementXpath) {
+        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getWebDriver(), 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(webElementXpath)));
+    }
+
+    public static void waitForElementToBeVisible(By by, int timeInSeconds) {
+        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getWebDriver(), timeInSeconds);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+        DriverManager.getInstance().restoreWaiters();
+    }
 
 }
