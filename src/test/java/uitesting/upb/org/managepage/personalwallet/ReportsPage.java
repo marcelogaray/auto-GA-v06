@@ -97,4 +97,19 @@ public class ReportsPage extends BasePage {
         WebElement webElement = Events.getElementByBy(new By.ByXPath("//*[text()[contains(.,'" + element + "')]]"));
         return webElement.getCssValue("color");
     }
+
+    public boolean isRowVisible (String element) {
+        try{
+            WebElement webElement = Events.getElementByBy(new By.ByXPath("//*[text()[contains(.,'" + element + "')]]"));
+            return Events.isWebElementVisible(webElement);
+        }catch (Exception e) {
+            return  false;
+        }
+    }
+
+    public ReportsPage deleteRow (String element) {
+        WebElement webElement = Events.getElementByBy(new By.ByXPath("//*/tbody/tr[td [contains(.,'" + element + "')]]/button"));
+        Events.click(webElement);
+        return this;
+    }
 }
