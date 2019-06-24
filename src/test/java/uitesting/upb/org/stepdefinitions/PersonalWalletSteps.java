@@ -11,6 +11,7 @@ import uitesting.upb.org.handlewebsite.LoadPage;
 import uitesting.upb.org.managepage.personalwallet.*;
 import uitesting.upb.org.managepage.personalwallet.Transactions.ExpensesPage;
 import uitesting.upb.org.managepage.personalwallet.Transactions.IncomePage;
+import uitesting.upb.org.webdrivermanager.DriverManager;
 
 import java.util.List;
 
@@ -449,15 +450,17 @@ public class PersonalWalletSteps {
         expensesPage = (ExpensesPage) expensesPage.fillNewNameField(newname);
     }
 
-    @And("^select category \"([^\"]*)\" in 'new caegory' on 'expenses page'$")
-    public void selectCategoryInNewCaegoryOnExpensesPage(String arg0) {
-        expensesPage = (ExpensesPage) expensesPage.selectNewCategory(arg0);
+    @And("^select category \"([^\"]*)\" in 'new category' on 'expenses page'$")
+    public void selectCategoryInNewCaegoryOnExpensesPage(String category) {
+        if (category != ""){
+        expensesPage = (ExpensesPage) expensesPage.selectNewCategory(category);
+        }
     }
 
 
     @And("^fill 'new date' field with \"([^\"]*)\" on 'expense page'$")
     public void fillNewDateFieldWithOnExpensePage(String date) throws Throwable {
-        expensesPage = (ExpensesPage)expensesPage.fillNewAmountField(date);
+        expensesPage = (ExpensesPage)expensesPage.fillNewDateField(date);
     }
 
 
@@ -478,7 +481,44 @@ public class PersonalWalletSteps {
     }
 
     @Then("^Select 'name' \"([^\"]*)\" on 'Expenses Page'$")
-    public void selectNameOnExpensesPage(String arg0) throws Throwable {
-        expensesPage = (ExpensesPage) expensesPage.selectTransactionName(arg0);
+    public void selectNameOnExpensesPage(String name) throws Throwable {
+        if (name != "") {
+        expensesPage = (ExpensesPage) expensesPage.selectTransactionName(name);
+        }
+    }
+
+    @Then("^Search 'changeSuccess' alert on 'Expenses page'$")
+    public void searchChangeSuccessAlertOnExpensesPage() {
+        Assert.assertTrue(expensesPage.isChangeSuccessAlertVisible());
+    }
+
+    @And("^Close Browser$")
+    public void closeBrowser() {
+        DriverManager.getInstance().closeWebDriver();
+    }
+
+    @And("^\"([^\"]*)\" row is visible on 'Reports' page$")
+    public void rowShouldBeVisibleOnReportsPage(String row) {
+        Assert.assertTrue(reportsPage.isRowVisible(row));
+    }
+
+    @Then("^Click on 'x' button in row \"([^\"]*)\" on 'Reports' page$")
+    public void clicOnXButtonInRowOnReportsPage(String row) {
+        reportsPage = reportsPage.deleteRow(row);
+    }
+
+    @And("^\"([^\"]*)\" row is not visible on 'Reports' page$")
+    public void rowIsNotVisibleOnReportsPage(String row) {
+        Assert.assertFalse(reportsPage.isRowVisible(row));
+    }
+
+    @Then("^click 'new amount' field on 'Expenses' page$")
+    public void clickNewAmountFieldOnExpensesPage() {
+        expensesPage = (ExpensesPage) expensesPage.clickNewAmountField();
+    }
+
+    @And("^'new amount' field should be empty on 'Expenses' page$")
+    public void newAmountFieldShouldBeEmptyOnExpensesPage() {
+        Assert.assertEquals("", expensesPage.getNewAmountFieldText());
     }
 }
