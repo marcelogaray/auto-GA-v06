@@ -10,6 +10,6 @@ Feature: Delete Account
     Then Click 'Account Settings' button in 'NavBar' page
     When 'Account Settings' window is loaded
 
-  Scenario : Verify 'Delete' Button deletes 'Mateo' account in 'Account Settings' Page
+  Scenario: Verify 'Delete' Button deletes 'Mateo' account in 'Account Settings' Page
 
     Then Click 'Delete' button in Account Settings

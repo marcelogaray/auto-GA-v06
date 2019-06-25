@@ -6,8 +6,6 @@ Feature: Crear cuenta y asignarle un nombre
 
     Given Browser is loaded
 
-
-
   Scenario Outline: Verify account with repeated name cannot be added in 'Account Creator' Page
 
     Then Fill "<AccountName>" text field in 'Account Creator' page
