@@ -7,6 +7,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 import uitesting.upb.org.handlecucumber.StringListTransformer;
 import uitesting.upb.org.handlewebsite.LoadPage;
 import uitesting.upb.org.managepage.wallet.*;
@@ -419,5 +420,19 @@ public class WalletStepdefs {
     public void verifyTheNameWasnTAddedToAnAccountInAccountCreatorPage(String name) {
         accountCreator = new AccountCreator();
         Assert.assertNull(accountCreator.accountButtonExists(name));
+    }
+
+    @Then("^Verify all elements are visible in 'Account Settings' Page$")
+    public void verifyAllElementsAreVisibleInAccountSettingsPage() {
+
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(!accountSettings.isVisibleAccountInfoTitle());
+        softAssert.assertTrue(accountSettings.isVisibleAccountNameLabel());
+        softAssert.assertTrue(!accountSettings.isVisibleChangeAccountNameTextField());
+        softAssert.assertTrue(accountSettings.isVisibleChangeNameButton());
+        softAssert.assertTrue(accountSettings.isVisibledeleteAccountButton());
+
+        softAssert.assertAll();
+
     }
 }
