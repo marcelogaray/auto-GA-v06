@@ -1,7 +1,5 @@
-Feature: Delete Account
-
+Feature: Elements are visible in 'Account Settings' Page
   Background:
-
     Given Browser is loaded
     Then Fill "Mateo" text field in 'Account Creator' page
     And Click 'Add' button in 'Account Creator' page
@@ -10,6 +8,6 @@ Feature: Delete Account
     Then Click 'Account Settings' button in 'NavBar' page
     When 'Account Settings' window is loaded
 
-  Scenario: Verify 'Delete' Button deletes 'Mateo' account in 'Account Settings' Page
+  Scenario:  Verify all elements are visible in 'Account Settings' Page
 
-    Then Click 'Delete' button in Account Settings
+    Then Verify all elements are visible in 'Account Settings' Page

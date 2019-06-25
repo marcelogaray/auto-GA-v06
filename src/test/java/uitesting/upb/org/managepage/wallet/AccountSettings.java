@@ -16,6 +16,16 @@ public class AccountSettings extends BasePage {
     @FindBy(id = "deleteAccountButton")
     private WebElement deleteAccountButton;
 
+    @FindBy(xpath = "//*[@for = 'account name']")
+    private  WebElement accountNameLabel;
+
+    @FindBy(xpath = "//*[@class = \"text-center\" and contains(.,\"Account Info\")]")
+    private  WebElement accountInfoTitle;
+
+
+
+
+
     public void clickChangeNameButton() {
         Events.click(changeNameButton);
     }
@@ -34,6 +44,23 @@ public class AccountSettings extends BasePage {
 
     public boolean windowIsVisible() {
         return Events.isVisibleWebElement(changeAccountNameTextField);
+    }
+
+
+    public boolean isVisibleChangeAccountNameTextField(){
+        return Events.isVisibleWebElement(changeAccountNameTextField);
+    }
+    public boolean isVisibleChangeNameButton(){
+        return Events.isVisibleWebElement(changeNameButton);
+    }
+    public boolean isVisibledeleteAccountButton(){
+        return Events.isVisibleWebElement(deleteAccountButton);
+    }
+    public boolean isVisibleAccountNameLabel(){
+        return Events.isVisibleWebElement(accountNameLabel);
+    }
+    public boolean isVisibleAccountInfoTitle(){
+        return  Events.isVisibleWebElement(accountInfoTitle);
     }
 
 }

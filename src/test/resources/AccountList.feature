@@ -12,7 +12,7 @@ Feature: Select an account
     And fill "A new account" 'Account name' input on 'Account Manager'
     And click 'Add' button on 'Account Manager'
     And click "A new account" button on 'Account Manager'
-    Then 'Income' button from account choose is visible on 'Account Main Menu'
+    Then 'Income' button is visible on 'Account Main Menu'
 
   Scenario: Choose the general user account on 'Account List'
     And click 'General' account button on 'Account Manager'

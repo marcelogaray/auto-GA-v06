@@ -7,6 +7,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 import uitesting.upb.org.handlecucumber.StringListTransformer;
 import uitesting.upb.org.handlewebsite.LoadPage;
 import uitesting.upb.org.managepage.wallet.*;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class WalletStepdefs {
 
-    public final static String EXAMPLE_ACCOUNT_NAME = "My new account";
+    private final static String EXAMPLE_ACCOUNT_NAME = "My new account";
 
     private AccountManager accountManager;
     private AccountCreator accountCreator;
@@ -161,7 +162,7 @@ public class WalletStepdefs {
     }
 
     @And("^fill \"([^\"]*)\" on field amount$")
-    public void fillOnFieldAmount(String amount) throws Throwable {
+    public void fillOnFieldAmount(String amount) {
         accountManager.clearFieldAmount();
         accountManager.fillAmountTransfer(amount);
     }
@@ -245,11 +246,6 @@ public class WalletStepdefs {
     @And("^'Account name' input is visible on 'Account Creator'$")
     public void accountNameInputIsVisibleOnAccountCreator() {
         Assert.assertTrue(accountManager.accountNameInputIsVisible());
-    }
-
-    @Then("^'Income' button from account choose is visible on 'Account Main Menu'$")
-    public void incomeButtonFromAccountChooseIsVisibleOnAccountMainMenu() {
-        Assert.assertTrue(accountMainMenu.incomeButtonIsVisible());
     }
 
     @And("^click \"([^\"]*)\" button on 'Account Manager'$")
@@ -365,11 +361,32 @@ public class WalletStepdefs {
     @Then("^Get length of 'Account List' List in 'Account Creator' Page$")
     public void getLengthOfAccountListListInAccountCreatorPage() {
           lengthOfAccountListBefore = accountCreator.getAccountListLength();
+
     }
 
     @And("^Click 'Home Page' button in 'NavBar' page$")
     public void clickHomePageButtonInNavBarPage() {
         navBar.clickHomeButton();
+    }
+
+    @Then("^'Income' button is visible on 'Account Main Menu'$")
+    public void incomeButtonIsVisibleOnAccountMainMenu() {
+        Assert.assertTrue(accountMainMenu.incomeButtonIsVisible());
+    }
+
+    @And("^'Expenses' button is visible on 'Account Main Menu'$")
+    public void expensesButtonIsVisibleOnAccountMainMenu() {
+        Assert.assertTrue(accountMainMenu.expensesButtonIsVisible());
+    }
+
+    @And("^'Transfer' button is visible on 'Account Main Menu'$")
+    public void transferButtonIsVisibleOnAccountMainMenu() {
+        Assert.assertTrue(accountMainMenu.transferButtonIsVisible());
+    }
+
+    @And("^'Report' button is visible on 'Account Main Menu'$")
+    public void reportButtonIsVisibleOnAccountMainMenu() {
+        Assert.assertTrue(accountMainMenu.reportButtonIsVisible());
     }
 
     @When("^'Navbar' is loaded in 'Income' page$")
@@ -401,8 +418,21 @@ public class WalletStepdefs {
 
     @Then("^Verify the name \"([^\"]*)\" wasn't added to an account in 'Account Creator' Page$")
     public void verifyTheNameWasnTAddedToAnAccountInAccountCreatorPage(String name) {
-
         accountCreator = new AccountCreator();
         Assert.assertNull(accountCreator.accountButtonExists(name));
+    }
+
+    @Then("^Verify all elements are visible in 'Account Settings' Page$")
+    public void verifyAllElementsAreVisibleInAccountSettingsPage() {
+
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(!accountSettings.isVisibleAccountInfoTitle());
+        softAssert.assertTrue(accountSettings.isVisibleAccountNameLabel());
+        softAssert.assertTrue(!accountSettings.isVisibleChangeAccountNameTextField());
+        softAssert.assertTrue(accountSettings.isVisibleChangeNameButton());
+        softAssert.assertTrue(accountSettings.isVisibledeleteAccountButton());
+
+        softAssert.assertAll();
+
     }
 }
