@@ -1,5 +1,6 @@
 package uitesting.upb.org.managepage.wallet;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import uitesting.upb.org.manageevents.Events;
 import uitesting.upb.org.managepage.BasePage;
@@ -20,6 +21,13 @@ public class AccountCreator extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'account-list')]")
     private  List<WebElement> accountList;
 
+    @FindBy(xpath = "//*[@id='general']")
+    private  WebElement general;
+
+    public NavBar clickAccountGeneralButton(){
+        Events.click(general);
+        return new NavBar();
+    }
     public void clickAddAccountButton() {
         Events.click(addAccountButton);
     }
@@ -48,4 +56,7 @@ public class AccountCreator extends BasePage {
         return accountList.size();
     }
 
+    public WebElement accountButtonExists(String accountName) {
+        return  webDriver.findElement(By.id(accountName));
+    }
 }

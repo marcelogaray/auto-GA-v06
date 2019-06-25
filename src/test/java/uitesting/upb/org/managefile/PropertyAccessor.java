@@ -6,12 +6,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+
 /**
- * @autor Marcelo Garay
+ * @autor Mateo Puña
  */
 public class PropertyAccessor {
-
-    private static PropertyAccessor propertyAccessor;
+    private static PropertyAccessor propertyAccesor;
     private Properties prop;
 
     private PropertyAccessor() {
@@ -26,10 +26,10 @@ public class PropertyAccessor {
     }
 
     public static PropertyAccessor getInstance(){
-        if(propertyAccessor == null){
-            propertyAccessor = new PropertyAccessor();
+        if(propertyAccesor == null){
+            propertyAccesor = new PropertyAccessor();
         }
-        return propertyAccessor;
+        return propertyAccesor;
     }
 
     public String getBaseURL(){
@@ -54,4 +54,11 @@ public class PropertyAccessor {
         System.out.println(PropertyAccessor.getInstance().getPassword());
     }
 
+    public int getImplicitTimeWait() {
+        return Integer.parseInt(prop.getProperty("implicitTimeWait"));
+    }
+
+    public int getExplicitTimeWait() {
+        return Integer.parseInt(prop.getProperty("explicitTimeWait"));
+    }
 }

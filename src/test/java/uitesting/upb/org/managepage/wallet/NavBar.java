@@ -13,6 +13,9 @@ public class NavBar extends BasePage {
     @FindBy(id = "exit")
     private WebElement homeButton;
 
+    @FindBy(id = "account-main-menu")
+    private  WebElement personalWalletButton;
+
     public AccountSettings clickAccountSettings() {
         Events.click(accountSettingsButton);
         return new AccountSettings();
@@ -25,5 +28,15 @@ public class NavBar extends BasePage {
     public void clickHomeButton(){
         Events.click(homeButton);
     }
+
+    public AccountMainMenu clickPersonalWalletButton(){
+        Events.click(personalWalletButton);
+        return new AccountMainMenu();
+    }
+
+    public boolean isSettingsButtonVisible(){
+       return Events.isVisibleWebElement(accountSettingsButton);
+    }
+
 
 }
