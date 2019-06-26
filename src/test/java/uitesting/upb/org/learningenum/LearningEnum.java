@@ -1,4 +1,4 @@
-package uittesting.upb.org.learningenum;
+package uitesting.upb.org.learningenum;
 
 /**
  * @autor Marcelo Garay
